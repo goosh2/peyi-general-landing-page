@@ -31,7 +31,7 @@ export function Hero() {
                     <div className="space-y-4">
                         <h1 className="font-heading font-bold text-5xl md:text-7xl leading-[1.1] tracking-tight text-white">
                             AI That Works{" "}
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B6B] via-[#D946EF] to-[#8B5CF6]">
+                            <span className="text-transparent bg-clip-text gradient-text">
                                 For
                                 <br />
                                 Your Business
@@ -46,7 +46,7 @@ export function Hero() {
                     <div className="flex flex-col sm:flex-row gap-4 items-center sm:items-start">
                         <Button
                             size="xl"
-                            className="group relative border-0 text-white bg-gradient-to-r from-[#FF7E5F] via-[#EB5897] to-[#9F48DA] hover:scale-105 transition-transform duration-300 shadow-lg shadow-purple-500/25"
+                            className="group relative border-0 text-white bg-[image:var(--gradient-ai)] hover:scale-105 transition-all duration-300 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40"
                             asChild
                         >
                             <Link href="/ai-readiness-quiz">
@@ -58,9 +58,9 @@ export function Hero() {
                         <Button
                             size="xl"
                             variant="heroOutline"
-                            className="group border border-gray-700 bg-white/5 hover:bg-white/10 text-white"
+                            className="group border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 text-white transition-all duration-300"
                         >
-                            <Calendar className="mr-2 w-5 h-5 text-gray-400" />
+                            <Calendar className="mr-2 w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
                             Book AI Audit
                         </Button>
                     </div>

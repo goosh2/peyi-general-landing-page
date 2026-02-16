@@ -6,19 +6,19 @@ const solutionsData = [
         title: "Marketing Automation",
         icon: Zap,
         description: "Automate email, SMS, and voicemail campaigns. Nurture leads on autopilot while you focus on closing deals.",
-        gradient: "from-primary to-[#D61A6A]", // approximating hsl(340)
+        gradient: "from-[hsl(var(--primary))] to-[hsl(340,80%,60%)]", // Brand Orange -> Pink
     },
     {
         title: "CRM & Pipeline Management",
         icon: BarChart3,
         description: "Track every lead from first touch to closed deal. Never lose a prospect with smart pipeline automation.",
-        gradient: "from-[#D61A6A] to-secondary",
+        gradient: "from-[hsl(340,80%,60%)] to-[hsl(270,80%,65%)]", // Pink -> Purple
     },
     {
         title: "Reputation & Reviews",
         icon: Users,
         description: "Automate review requests and manage your online reputation. Turn happy customers into 5-star advocates.",
-        gradient: "from-secondary to-accent",
+        gradient: "from-[hsl(270,80%,65%)] to-[hsl(200,90%,55%)]", // Purple -> Accent
     },
 ];
 
@@ -42,7 +42,7 @@ export function Solutions() {
                 {/* Grid */}
                 <div className="grid md:grid-cols-3 gap-8">
                     {solutionsData.map((item, idx) => (
-                        <Card key={idx} className="group hover:-translate-y-2 transition-transform duration-500 hover:shadow-2xl hover:shadow-primary/10 border-white/5">
+                        <Card key={idx} className="group hover:-translate-y-2 transition-transform duration-300 hover:shadow-2xl hover:shadow-primary/10 border-white/5 bg-white/5 backdrop-blur-sm">
                             <CardHeader className="space-y-6">
                                 <div className={`w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-br ${item.gradient} text-white shadow-lg`}>
                                     <item.icon className="w-7 h-7" />

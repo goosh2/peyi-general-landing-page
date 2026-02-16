@@ -19,7 +19,7 @@ export function Navbar() {
     return (
         <nav
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                ? "bg-background/80 backdrop-blur-md border-b border-border/50 py-3"
+                ? "bg-background/90 backdrop-blur-xl border-b border-white/5 py-3 shadow-lg shadow-purple-500/5"
                 : "bg-transparent py-6"
                 }`}
         >
@@ -63,7 +63,7 @@ export function Navbar() {
                 </div>
 
                 {/* Mobile Toggle */}
-                <button className="md:hidden text-foreground">
+                <button className="md:hidden text-foreground hover:text-primary transition-colors" aria-label="Toggle menu">
                     <Menu className="w-6 h-6" />
                 </button>
             </div>

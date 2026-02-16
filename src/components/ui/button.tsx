@@ -18,8 +18,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 className={cn(
                     "inline-flex items-center justify-center rounded-md font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
                     // Variants
-                    variant === "default" && "bg-primary text-primary-foreground shadow hover:scale-105 active:scale-95",
-                    variant === "hero" && "bg-gradient-primary text-white shadow-lg bg-[length:200%_200%] animate-gradient hover:scale-105 active:scale-95 group relative overflow-hidden",
+                    variant === "default" && "bg-primary text-primary-foreground shadow hover:scale-105 active:scale-95 transition-transform duration-200",
+                    variant === "hero" && "bg-[image:var(--gradient-ai)] text-white shadow-lg bg-[length:200%_200%] animate-gradient hover:scale-105 active:scale-95 group relative overflow-hidden transition-all duration-300",
                     variant === "heroOutline" && "bg-transparent border-2 border-foreground/20 text-foreground backdrop-blur-sm hover:bg-foreground/10 hover:border-foreground/40",
                     variant === "ghost" && "bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground",
 
