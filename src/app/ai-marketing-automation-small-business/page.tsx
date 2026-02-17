@@ -4,10 +4,11 @@ import { Footer } from "@/components/layout/Footer";
 import { PageHeader } from "@/components/ui/page-header";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { ComparisonTable } from "@/components/ui/comparison-table";
+import { ToolTable } from "@/components/ui/tool-table";
 import { FAQ } from "@/components/sections/FAQ";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Mail, Share2, PenTool, Target, BarChart2, Repeat } from "lucide-react";
+import { Mail, Share2, PenTool, Target, BarChart2, Repeat, CheckCircle2, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "AI Marketing Automation for Small Business: Email, Social & Ads",
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
         description: "Stop posting sporadically. Let AI handle your content calendar, email nurture, and ad targeting.",
         type: "article",
         url: "https://www.peyiai.com/ai-marketing-automation-small-business",
+        authors: ["Peyi Solutions"],
     },
 };
 
@@ -46,6 +48,34 @@ const marketingFaqs = [
 export default function MarketingPage() {
     return (
         <main className="min-h-screen bg-background">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Article",
+                        "headline": "AI Marketing Automation Guide for Small Business",
+                        "description": "How to automate email, social media, and ad campaigns using AI tools.",
+                        "author": {
+                            "@type": "Organization",
+                            "name": "Peyi Solutions",
+                            "url": "https://www.peyiai.com"
+                        },
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Peyi Solutions",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://www.peyiai.com/logo.png"
+                            }
+                        },
+                        "mainEntityOfPage": {
+                            "@type": "WebPage",
+                            "@id": "https://www.peyiai.com/ai-marketing-automation-small-business"
+                        }
+                    })
+                }}
+            />
             <Navbar />
 
             <PageHeader
@@ -88,6 +118,55 @@ export default function MarketingPage() {
                                 <p className="text-muted-foreground">{item.desc}</p>
                             </div>
                         ))}
+                    </div>
+                </section>
+
+                {/* Tool Stack Table */}
+                <ToolTable
+                    title="The Modern AI Marketing Stack"
+                    description="Tools that punch way above their weight class."
+                    headers={["Category", "Recommended Tool", "Est. Price", "Why We Use It"]}
+                    rows={[
+                        { category: "All-in-One", tool: "GoHighLevel", price: "$97/mo", whatItDoes: "Replaces Mailchimp, ClickFunnels, Calendly, and more." },
+                        { category: "Social Video", tool: "OpusClip", price: "$19/mo", whatItDoes: "Turns 1 long video into 10 viral shorts instantly." },
+                        { category: "Writing", tool: "ChatGPT / Claude", price: "$20/mo", whatItDoes: "Strategy, copywriting, and idea generation." },
+                        { category: "Design", tool: "Canva + AI", price: "$15/mo", whatItDoes: "Instant graphic creation with 'Magic Studio'." },
+                        { category: "Scheduling", tool: "Metricool", price: "Free - $20/mo", whatItDoes: "Auto-posts your content to all platforms at once." }
+                    ]}
+                />
+
+                {/* Budget Breakdown */}
+                <section className="mb-24 bg-white/5 p-8 md:p-12 rounded-3xl border border-white/10">
+                    <h2 className="text-3xl font-bold text-white mb-8 text-center">Marketing Stacks by Budget</h2>
+                    <div className="grid md:grid-cols-2 gap-8">
+                        <div className="p-6 rounded-2xl bg-[#0B0F19] border border-white/10">
+                            <h3 className="text-xl font-bold text-white mb-2">The "DIY" Starter Stack</h3>
+                            <p className="text-muted-foreground mb-6 text-sm">Output: 3 posts/week + 1 newsletter.</p>
+                            <ul className="space-y-3 mb-6">
+                                <li className="flex justify-between text-gray-300 text-sm"><span>ChatGPT Plus (Copy)</span> <span>$20/mo</span></li>
+                                <li className="flex justify-between text-gray-300 text-sm"><span>Canva Pro (Design)</span> <span>$15/mo</span></li>
+                                <li className="flex justify-between text-gray-300 text-sm"><span>Metricool (Posting)</span> <span>Free</span></li>
+                            </ul>
+                            <div className="border-t border-white/10 pt-4 flex justify-between items-center">
+                                <span className="font-bold text-white">Monthly Cost</span>
+                                <span className="text-2xl font-bold text-primary">$35/mo</span>
+                            </div>
+                        </div>
+                        <div className="p-6 rounded-2xl bg-[#0B0F19] border border-white/10 relative overflow-hidden">
+                            <div className="absolute top-0 right-0 bg-primary/20 px-3 py-1 rounded-bl-xl text-xs font-bold text-primary border-b border-l border-white/10">RECOMMENDED</div>
+                            <h3 className="text-xl font-bold text-white mb-2">The "Growth" Automation Stack</h3>
+                            <p className="text-muted-foreground mb-6 text-sm">Output: Daily video/posts + Automated Nurture Sequences.</p>
+                            <ul className="space-y-3 mb-6">
+                                <li className="flex justify-between text-gray-300 text-sm"><span>GoHighLevel (CRM/Email)</span> <span>$97/mo</span></li>
+                                <li className="flex justify-between text-gray-300 text-sm"><span>OpusClip (Video Repurposing)</span> <span>$19/mo</span></li>
+                                <li className="flex justify-between text-gray-300 text-sm"><span>Vapi (Inbound Lead Calls)</span> <span>~$50/mo</span></li>
+                                <li className="flex justify-between text-gray-300 text-sm"><span>Make.com (Integrations)</span> <span>$29/mo</span></li>
+                            </ul>
+                            <div className="border-t border-white/10 pt-4 flex justify-between items-center">
+                                <span className="font-bold text-white">Monthly Cost</span>
+                                <span className="text-2xl font-bold text-primary">~$195/mo</span>
+                            </div>
+                        </div>
                     </div>
                 </section>
 

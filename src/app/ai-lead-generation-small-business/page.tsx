@@ -4,10 +4,11 @@ import { Footer } from "@/components/layout/Footer";
 import { PageHeader } from "@/components/ui/page-header";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { ComparisonTable } from "@/components/ui/comparison-table";
+import { ToolTable } from "@/components/ui/tool-table";
 import { FAQ } from "@/components/sections/FAQ";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Users, Filter, MessageSquare, Database, Zap, Search } from "lucide-react";
+import { Users, Filter, MessageSquare, Database, Zap, Search, ArrowRight, Target, Magnet } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "AI Lead Generation & CRM for Small Business: Capture & Convert",
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
         description: "Automate your sales pipeline. From cold outreach to warm appointment, let AI handle the heavy lifting.",
         type: "article",
         url: "https://www.peyiai.com/ai-lead-generation-small-business",
+        authors: ["Peyi Solutions"],
     },
 };
 
@@ -46,6 +48,34 @@ const leadGenFaqs = [
 export default function LeadGenPage() {
     return (
         <main className="min-h-screen bg-background">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Article",
+                        "headline": "AI Lead Generation & CRM Implementation Guide",
+                        "description": "How to automate sales prospecting and pipeline management with AI.",
+                        "author": {
+                            "@type": "Organization",
+                            "name": "Peyi Solutions",
+                            "url": "https://www.peyiai.com"
+                        },
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Peyi Solutions",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://www.peyiai.com/logo.png"
+                            }
+                        },
+                        "mainEntityOfPage": {
+                            "@type": "WebPage",
+                            "@id": "https://www.peyiai.com/ai-lead-generation-small-business"
+                        }
+                    })
+                }}
+            />
             <Navbar />
 
             <PageHeader
@@ -91,6 +121,74 @@ export default function LeadGenPage() {
                     </div>
                 </section>
 
+                {/* Strategy Section */}
+                <section className="mb-24">
+                    <h2 className="text-3xl font-bold text-white mb-12 text-center">Which System Do You Need?</h2>
+                    <div className="grid md:grid-cols-2 gap-8">
+                        {/* Outbound Card */}
+                        <div className="p-8 rounded-3xl border border-white/10 bg-[#0B0F19] relative overflow-hidden group">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-bl-full transition-transform group-hover:scale-110" />
+                            <div className="relative z-10">
+                                <Target className="w-12 h-12 text-blue-400 mb-6" />
+                                <h3 className="text-2xl font-bold text-white mb-4">Outbound Engine</h3>
+                                <p className="text-muted-foreground mb-6">"I need to go find clients."</p>
+                                <ul className="space-y-4 mb-8">
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0 mt-0.5"><span className="text-blue-400 text-xs">1</span></div>
+                                        <span className="text-gray-300 text-sm">AI scrapes leads from Maps/LinkedIn.</span>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0 mt-0.5"><span className="text-blue-400 text-xs">2</span></div>
+                                        <span className="text-gray-300 text-sm">AI enriches data (email, phone, size).</span>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0 mt-0.5"><span className="text-blue-400 text-xs">3</span></div>
+                                        <span className="text-gray-300 text-sm">Sends personalized cold email/DM.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Inbound Card */}
+                        <div className="p-8 rounded-3xl border border-white/10 bg-[#0B0F19] relative overflow-hidden group">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-bl-full transition-transform group-hover:scale-110" />
+                            <div className="relative z-10">
+                                <Magnet className="w-12 h-12 text-primary mb-6" />
+                                <h3 className="text-2xl font-bold text-white mb-4">Inbound Capture</h3>
+                                <p className="text-muted-foreground mb-6">"I have traffic, but no leads."</p>
+                                <ul className="space-y-4 mb-8">
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5"><span className="text-primary text-xs">1</span></div>
+                                        <span className="text-gray-300 text-sm">AI Chatbot engages site visitors.</span>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5"><span className="text-primary text-xs">2</span></div>
+                                        <span className="text-gray-300 text-sm">Captures name, email, & intent.</span>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5"><span className="text-primary text-xs">3</span></div>
+                                        <span className="text-gray-300 text-sm">Instantly books to your CRM.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Tool Stack Table */}
+                <ToolTable
+                    title="Top AI Sales Tools"
+                    description="The engines behind high-growth sales teams."
+                    headers={["Category", "Tool", "Est. Price", "Function"]}
+                    rows={[
+                        { category: "Prospecting", tool: "Apollo.io", price: "$49/mo", whatItDoes: "Database of 250M+ contacts with emails." },
+                        { category: "Enrichment", tool: "Clay", price: "$149/mo", whatItDoes: "AI research on every prospect (company news, hiring, etc)." },
+                        { category: "CRM & Funnel", tool: "GoHighLevel", price: "$97/mo", whatItDoes: "The destination for all leads (Landing Pages + Auto-Nurture)." },
+                        { category: "Outreach", tool: "Instantly.ai", price: "$37/mo", whatItDoes: "Sends unlimited cold emails with high deliverability." },
+                        { category: "Voice Agent", tool: "Bland AI", price: "Usage based", whatItDoes: "Calls leads instantly to qualify and book." }
+                    ]}
+                />
+
                 {/* Comparison */}
                 <section className="mb-24 max-w-5xl mx-auto">
                     <div className="text-center mb-12">
@@ -98,7 +196,7 @@ export default function LeadGenPage() {
                         <p className="text-muted-foreground">The difference between linear growth and exponential scale.</p>
                     </div>
                     <ComparisonTable
-                        headers={["Manual Sales Rep", "AI Sales System"]}
+                        headers={["Manual Sales Rep", "AI Sales System (We Build)"]}
                         rowHeaders={["Leads Contacted/Day", "Response Time", "Follow-up Duration", "Cost Per Activity", "Data Accuracy"]}
                         rows={[
                             ["50-100", "Unlimited (1000+)"],

@@ -4,10 +4,11 @@ import { Footer } from "@/components/layout/Footer";
 import { PageHeader } from "@/components/ui/page-header";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { ComparisonTable } from "@/components/ui/comparison-table";
+import { ToolTable } from "@/components/ui/tool-table";
 import { FAQ } from "@/components/sections/FAQ";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { FileText, Calculator, Calendar, Brain, Clock, DollarSign } from "lucide-react";
+import { FileText, Calculator, Calendar, Brain, Clock, DollarSign, Settings, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "AI for Business Ops: Bookkeeping, Scheduling & Admin Automation",
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
         description: "Reduce overhead by 40%. Automate the boring stuff with AI.",
         type: "article",
         url: "https://www.peyiai.com/ai-operations-automation",
+        authors: ["Peyi Solutions"],
     },
 };
 
@@ -46,6 +48,34 @@ const opsFaqs = [
 export default function OpsPage() {
     return (
         <main className="min-h-screen bg-background">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Article",
+                        "headline": "AI Operations Automation Guide for Business",
+                        "description": "How to automate bookkeeping, scheduling, and admin tasks with AI.",
+                        "author": {
+                            "@type": "Organization",
+                            "name": "Peyi Solutions",
+                            "url": "https://www.peyiai.com"
+                        },
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Peyi Solutions",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://www.peyiai.com/logo.png"
+                            }
+                        },
+                        "mainEntityOfPage": {
+                            "@type": "WebPage",
+                            "@id": "https://www.peyiai.com/ai-operations-automation"
+                        }
+                    })
+                }}
+            />
             <Navbar />
 
             <PageHeader
@@ -91,6 +121,20 @@ export default function OpsPage() {
                     </div>
                 </section>
 
+                {/* Tool Stack Table */}
+                <ToolTable
+                    title="The AI Ops Tech Stack"
+                    description="Tools that act as your digital COO."
+                    headers={["Category", "Tool", "Est. Price", "What It Automates"]}
+                    rows={[
+                        { category: "Smart Calendar", tool: "Motion / Reclaim", price: "$19/mo", whatItDoes: "Auto-schedules tasks & protects focus time." },
+                        { category: "Meeting Notes", tool: "Fireflies.ai / Otter", price: "Free - $10/mo", whatItDoes: "Records calls & syncs action items to CRM." },
+                        { category: "Bookkeeping", tool: "QuickBooks + AI", price: "$35/mo", whatItDoes: "Auto-tags expenses & predicts cash flow." },
+                        { category: "Project Mgmt", tool: "ClickUp AI", price: "$12/mo", whatItDoes: "Summarizes tasks & writes project updates." },
+                        { category: "Workflow", tool: "Zapier", price: "$29/mo", whatItDoes: "Moves data between apps (Glue of the internet)." }
+                    ]}
+                />
+
                 {/* Comparison */}
                 <section className="mb-24 max-w-5xl mx-auto">
                     <div className="text-center mb-12">
@@ -128,6 +172,7 @@ export default function OpsPage() {
                         </div>
                     </div>
                 </section>
+
 
                 <FAQ
                     items={opsFaqs}

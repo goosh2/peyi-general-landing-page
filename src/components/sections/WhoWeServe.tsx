@@ -27,8 +27,8 @@ const personas = [
         title: "Small Business Owners",
         description: "Not sure where to start with AI? We help you identify the highest-ROI opportunities and implement them fast.",
         icon: Briefcase,
-        href: "/ai-readiness-quiz", // Direct to quiz for general biz owners
-        cta: "Start Your AI Journey",
+        href: "/ai-lead-generation-small-business",
+        cta: "Explore Lead Gen AI",
         gradient: "from-orange-500/20 to-pink-500/20"
     }
 ];

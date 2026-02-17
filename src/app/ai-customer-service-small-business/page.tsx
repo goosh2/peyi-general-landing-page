@@ -4,10 +4,11 @@ import { Footer } from "@/components/layout/Footer";
 import { PageHeader } from "@/components/ui/page-header";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { ComparisonTable } from "@/components/ui/comparison-table";
+import { ToolTable } from "@/components/ui/tool-table";
 import { FAQ } from "@/components/sections/FAQ";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { MessageCircle, Phone, Globe, Clock, ShieldCheck, Zap } from "lucide-react";
+import { MessageCircle, Phone, Globe, Clock, ShieldCheck, Zap, Server, Headphones, Bot } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "AI Customer Service for Small Business: Chatbots, Voice & Automation",
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
         description: "Reduce support tickets by 80% with AI automation. 24/7 answers, instant resolution, and happy customers.",
         type: "article",
         url: "https://www.peyiai.com/ai-customer-service-small-business",
+        authors: ["Peyi Solutions"],
     },
 };
 
@@ -46,6 +48,34 @@ const customerServiceFaqs = [
 export default function CustomerServicePage() {
     return (
         <main className="min-h-screen bg-background">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Article",
+                        "headline": "AI Customer Service for Small Business: Implementation Guide",
+                        "description": "How to automate customer support with AI chatbots and voice agents.",
+                        "author": {
+                            "@type": "Organization",
+                            "name": "Peyi Solutions",
+                            "url": "https://www.peyiai.com"
+                        },
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Peyi Solutions",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://www.peyiai.com/logo.png"
+                            }
+                        },
+                        "mainEntityOfPage": {
+                            "@type": "WebPage",
+                            "@id": "https://www.peyiai.com/ai-customer-service-small-business"
+                        }
+                    })
+                }}
+            />
             <Navbar />
 
             <PageHeader
@@ -91,6 +121,20 @@ export default function CustomerServicePage() {
                     </div>
                 </section>
 
+                {/* Tool Stack Table */}
+                <ToolTable
+                    title="Top AI Customer Support Tools"
+                    description="The modern tech stack for automated, efficient support."
+                    headers={["Category", "Tool", "Est. Price", "Best Use Case"]}
+                    rows={[
+                        { category: "Help Desk + AI", tool: "Intercom", price: "$39/mo + usage", whatItDoes: "Best-in-class AI chatbot and ticketing for SaaS/Tech." },
+                        { category: "SMB Chatbot", tool: "Tidio", price: "$29/mo", whatItDoes: "Simple, effective AI chat for e-commerce and local biz." },
+                        { category: "CRM Integrated", tool: "GoHighLevel", price: "$97/mo", whatItDoes: "Chatbot unified with your marketing/sales CRM." },
+                        { category: "Voice AI", tool: "Vapi.ai / Bland", price: "~$0.05/min", whatItDoes: "Automated phone support and appointment setting." },
+                        { category: "Internal Answer Bot", tool: "Guru / Notion AI", price: "$15/user", whatItDoes: "Helps your human agents find answers faster." }
+                    ]}
+                />
+
                 {/* Comparison */}
                 <section className="mb-24 max-w-5xl mx-auto">
                     <div className="text-center mb-12">
@@ -108,6 +152,25 @@ export default function CustomerServicePage() {
                             ["Gets stuck loops", "Escalates to human seamlessly"],
                         ]}
                     />
+                </section>
+
+                {/* Implementation Guide */}
+                <section className="mb-24">
+                    <h2 className="text-3xl font-bold text-white mb-12 text-center">Implementation Roadmap</h2>
+                    <div className="grid md:grid-cols-4 gap-6">
+                        {[
+                            { step: "01", title: "Audit", desc: "Analyze past tickets to find the top 10 repetitive questions." },
+                            { step: "02", title: "Knowledge Base", desc: "Clean up your FAQs and documentation for the AI to learn from." },
+                            { step: "03", title: "Train & Test", desc: "Configure the AI Agent and stress-test it with sample queries." },
+                            { step: "04", title: "Deploy", desc: "Go live, monitor conversations, and refine answers weekly." }
+                        ].map((phase, i) => (
+                            <div key={i} className="relative p-6 pt-12 rounded-xl border border-white/10 bg-white/5">
+                                <span className="absolute top-6 left-6 text-4xl font-bold text-white/5 font-heading">{phase.step}</span>
+                                <h3 className="text-xl font-bold text-white mb-3 relative z-10">{phase.title}</h3>
+                                <p className="text-muted-foreground relative z-10">{phase.desc}</p>
+                            </div>
+                        ))}
+                    </div>
                 </section>
 
                 {/* ROI / Stats */}
