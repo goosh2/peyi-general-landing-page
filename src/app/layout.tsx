@@ -16,8 +16,25 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Peyi Solutions | Practical AI Implementation for Business Growth",
-  description: "Don't know where to start with AI? We help businesses identify high-ROI opportunities, build a custom AI roadmap, and implement solutions that increase profitability.",
+  metadataBase: new URL('https://www.peyiai.com'),
+  title: "Peyi Solutions | AI Implementation for Small Businesses & Real Estate",
+  description: "We help small businesses and real estate professionals implement AI tools that automate workflows, capture leads, and drive revenue. Strategy, automation, and training — no jargon, just results.",
+  keywords: ["AI for small business", "AI implementation", "AI for real estate agents", "business automation", "AI CRM", "AI lead generation", "AI customer service", "AI marketing automation"],
+  alternates: {
+    canonical: "https://www.peyiai.com/",
+  },
+  openGraph: {
+    title: "Peyi Solutions | AI Implementation for Small Businesses & Real Estate",
+    description: "Turn AI into profit for your business. We implement AI tools that automate workflows, capture leads, and drive revenue.",
+    type: "website",
+    url: "https://www.peyiai.com/",
+    images: [{ url: "/og-image.jpg" }], // Assuming default or will need to act on it
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Peyi Solutions | AI Implementation for Small Businesses",
+    description: "Turn AI into profit for your business. Strategy, automation, and training for small businesses and real estate professionals.",
+  },
 };
 
 export default function RootLayout({
@@ -37,17 +54,15 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "Peyi Solutions",
-              "url": "https://peyi.solutions",
-              "logo": "https://peyi.solutions/logo.png",
-              "description": "We help businesses identify high-ROI opportunities, build a custom AI roadmap, and implement solutions that increase profitability.",
-              "makesOffer": {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "AI Roadmap & Implementation Consulting",
-                  "description": "Custom AI strategy to increase business profitability and automate revenue-generating tasks."
-                }
-              }
+              "url": "https://www.peyiai.com",
+              "description": "AI implementation partner helping small businesses and real estate professionals choose, configure, and deploy AI tools for automation, lead generation, and growth.",
+              "serviceArea": "United States",
+              "knowsAbout": ["Artificial Intelligence", "Business Automation", "CRM Implementation", "AI for Real Estate", "AI for Small Business", "Marketing Automation", "Lead Generation"],
+              "sameAs": [
+                "https://www.facebook.com/people/Peyi-Solutions/61578259621787/",
+                "https://www.youtube.com/channel/UClyFCi9ex6v2xhCx5TKppyQ",
+                "https://www.linkedin.com/company/peyi-solutions"
+              ]
             })
           }}
         />

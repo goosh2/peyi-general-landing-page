@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Hero } from "@/components/sections/Hero";
+import { WhoWeServe } from "@/components/sections/WhoWeServe";
 import { Solutions } from "@/components/sections/Solutions";
 import { WhyUs } from "@/components/sections/WhyUs";
 import { FAQ } from "@/components/sections/FAQ";
@@ -11,6 +12,7 @@ export default function Home() {
     <main className="min-h-screen bg-background text-foreground selection:bg-primary/30">
       <Navbar />
       <Hero />
+      <WhoWeServe />
       <Solutions />
       <WhyUs />
       <FAQ />

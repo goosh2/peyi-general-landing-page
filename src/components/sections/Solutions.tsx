@@ -1,60 +1,72 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Zap, BarChart3, Users } from "lucide-react";
+import { Zap, BarChart3 } from "lucide-react";
+import Link from "next/link";
+import { MessageSquare, Megaphone, Users, Briefcase } from "lucide-react";
 
-const solutionsData = [
+const solutions = [
     {
-        title: "Automate Revenue Tasks",
-        icon: Zap,
-        description: "Stop wasting time on manual work. Automate outreach, follow-ups, and admin so you can focus on strategy.",
-        gradient: "from-[hsl(var(--primary))] to-[hsl(340,80%,60%)]", // Brand Orange -> Pink
+        icon: MessageSquare,
+        title: "AI Customer Service",
+        description: "Deploy intelligent chatbots and voice agents that handle 80% of support queries instantly, 24/7.",
+        href: "/ai-customer-service-small-business"
     },
     {
-        title: "Stop Leaking Money",
-        icon: BarChart3,
-        description: "Plug the holes in your sales pipeline. Ensure every lead is nurtured and no opportunity slips through the cracks.",
-        gradient: "from-[hsl(340,80%,60%)] to-[hsl(270,80%,65%)]", // Pink -> Purple
+        icon: Megaphone,
+        title: "Marketing Automation",
+        description: "Generate content, schedule posts, and nurture leads with personalized email sequences on autopilot.",
+        href: "/ai-marketing-automation-small-business"
     },
     {
-        title: "Turn Reviews into Cash",
         icon: Users,
-        description: "Automatically generate 5-star reviews to build trust and attract more high-paying customers on autopilot.",
-        gradient: "from-[hsl(270,80%,65%)] to-[hsl(200,90%,55%)]", // Purple -> Accent
+        title: "AI CRM & Lead Gen",
+        description: "Automatically capture, qualify, and follow up with leads until they book a meeting on your calendar.",
+        href: "/ai-lead-generation-small-business"
     },
+    {
+        icon: Briefcase,
+        title: "Operations Automation",
+        description: "Streamline invoicing, scheduling, and data entry. Reduce operational overhead by 40%.",
+        href: "/ai-operations-automation"
+    }
 ];
 
 export function Solutions() {
     return (
-        <section id="solutions" className="py-24 px-6 relative">
-            {/* Background accent */}
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/5 to-background pointer-events-none" />
+        <section className="py-24 bg-background relative overflow-hidden" id="solutions">
+            {/* Background Elements */}
+            <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-secondary/5 rounded-full blur-3xl pointer-events-none" />
 
-            <div className="container mx-auto max-w-[1400px]">
-                {/* Header */}
-                <div className="text-center mb-16 space-y-4">
-                    <h2 className="font-heading font-bold text-4xl md:text-5xl">
-                        Solutions Built for <span className="gradient-text">Real Challenges</span>
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="text-center mb-16 max-w-2xl mx-auto">
+                    <h2 className="text-3xl md:text-5xl font-bold font-heading mb-6">
+                        Solutions Built for{" "}
+                        <span className="text-transparent bg-clip-text gradient-text">
+                            Real Profit
+                        </span>
                     </h2>
-                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                        We don&apos;t sell features. We solve problems. From workflow automation to customer insights, we implement AI that moves the needle.
+                    <p className="text-muted-foreground text-lg">
+                        We don&apos;t just install tools. We build complete workflows that increase efficiency and drive revenue.
                     </p>
                 </div>
 
-                {/* Grid */}
-                <div className="grid md:grid-cols-3 gap-8">
-                    {solutionsData.map((item, idx) => (
-                        <Card key={idx} className="group hover:-translate-y-2 transition-transform duration-300 hover:shadow-2xl hover:shadow-primary/10 border-white/5 bg-white/5 backdrop-blur-sm">
-                            <CardHeader className="space-y-6">
-                                <div className={`w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-br ${item.gradient} text-white shadow-lg`}>
-                                    <item.icon className="w-7 h-7" />
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {solutions.map((solution, index) => (
+                        <Link href={solution.href} key={index} className="block group">
+                            <div
+                                className="h-full p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 group-hover:transform group-hover:-translate-y-2 group-hover:shadow-2xl hover:shadow-primary/10"
+                            >
+                                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                    <solution.icon className="w-7 h-7 text-primary" />
                                 </div>
-                                <CardTitle>{item.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-muted-foreground leading-relaxed">
-                                    {item.description}
+                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
+                                    {solution.title}
+                                </h3>
+                                <p className="text-gray-400 leading-relaxed">
+                                    {solution.description}
                                 </p>
-                            </CardContent>
-                        </Card>
+                            </div>
+                        </Link>
                     ))}
                 </div>
             </div>
