@@ -1,80 +1,78 @@
 "use client";
 
-import * as React from "react";
-
-// Let's use simple state for now since I didn't add radix to the install command.
-// Actually, I can just build a custom one easily.
-import { ChevronDown } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
-
-interface AccordionItemProps {
-    title: string;
-    children: React.ReactNode;
-    isOpen: boolean;
-    onClick: () => void;
-}
-
-function AccordionItem({ title, children, isOpen, onClick }: AccordionItemProps) {
-    return (
-        <div className="border border-white/10 rounded-lg bg-card/30 backdrop-blur-sm overflow-hidden">
-            <button
-                onClick={onClick}
-                className="w-full flex items-center justify-between p-6 text-left"
-            >
-                <span className="font-heading font-medium text-lg">{title}</span>
-                <ChevronDown className={cn("w-5 h-5 text-muted-foreground transition-transform duration-300", isOpen && "rotate-180")} />
-            </button>
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                    >
-                        <div className="px-6 pb-6 text-muted-foreground leading-relaxed border-t border-white/5 pt-4">
-                            {children}
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </div>
-    );
-}
+import { motion } from "framer-motion";
+import { Plus, Minus } from "lucide-react";
+import { useState } from "react";
 
 const faqs = [
-    { q: "What is Peyi Solutions and how does it help businesses with AI?", a: "Peyi Solutions is an AI consulting and implementation partner that helps small and mid-sized businesses understand, choose, and use AI effectively. We specialize in practical AI strategy, automation, training, and custom AI systems that solve real business problems, not experiments or hype." },
-    { q: "How can a small business start using AI the right way?", a: "The right way to start using AI is by identifying specific business problems first, not tools. Peyi Solutions helps businesses assess where AI can save time, improve workflows, increase revenue, or reduce manual effort, then recommends and implements the most appropriate AI solutions for those needs." },
-    { q: "Is ChatGPT good enough for running a business?", a: "ChatGPT is useful, but most businesses need more than ChatGPT alone. While ChatGPT can assist with writing and ideas, businesses often benefit more from custom AI systems, automated workflows, and AI tools connected to their data and existing software." },
-    { q: "How can AI help my business make more money?", a: "AI can help businesses make more money by improving lead response times, automating follow-ups, reducing operational costs, enhancing customer experience, and freeing up time for high-value work." },
-    { q: "Do I need technical skills or coding experience to use AI?", a: "No. You do not need technical or coding skills to use AI effectively. Peyi Solutions handles the technical setup and provides clear training so business owners and teams can confidently use AI tools without needing to become technical experts." },
-    { q: "Can Peyi Solutions build a custom AI system for my business?", a: "Yes. Peyi Solutions designs and implements custom AI systems tailored to each business. This can include AI assistants, automated workflows, internal AI tools, customer-facing AI, or AI systems trained on your business data." },
-    { q: "How do businesses stay up to date with AI without chasing every new tool?", a: "Businesses stay up to date by focusing on stable, proven AI use cases, not trends. Peyi Solutions acts as a long-term AI partner, helping clients evaluate new tools, avoid unnecessary complexity, and update systems only when it makes strategic sense." },
-    { q: "Who should work with Peyi Solutions?", a: "Peyi Solutions works best with small and mid-sized business owners, entrepreneurs, and teams who want clear guidance on how to use AI and who need help implementing AI systems that deliver practical business value." }
+    {
+        question: "How can AI actually help my business make more money?",
+        answer: "AI isn't just a buzzword—it's a profit multiplier. We help you automate repetitive tasks (saving labor costs), nurture leads 24/7 (increasing conversion rates), and identify upsell opportunities in your customer data. Our clients typically see ROI within the first 3 months."
+    },
+    {
+        question: "I don't know where to start. What is the first step?",
+        answer: "The first step is identifying your 'Low Hanging Fruit'—processes that are high-volume, repetitive, and rule-based. We recommend starting with our AI Readiness Quiz or booking a discovery call where we map out a phased roadmap, starting with a single high-impact pilot project."
+    },
+    {
+        question: "Is AI expensive to implement for a small business?",
+        answer: "It doesn't have to be. We focus on 'Practical AI'—using affordable, off-the-shelf tools and custom integrations rather than building expensive models from scratch. You can start with a small pilot to prove the value before scaling up."
+    },
+    {
+        question: "Will AI replace my employees?",
+        answer: "No, it empowers them. By automating the drudgery (data entry, scheduling, basic follow-ups), your team gets freed up to focus on high-value tasks like strategy, creative problem solving, and closing deals. It's about augmentation, not replacement."
+    }
 ];
 
 export function FAQ() {
-    const [openIndex, setOpenIndex] = React.useState<number | null>(0);
+    const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     return (
-        <section className="py-20 px-6 max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-                <h2 className="font-heading font-bold text-4xl mb-4">Frequently Asked <span className="gradient-text">Questions</span></h2>
-                <p className="text-muted-foreground">Get answers to common questions about AI implementation and how we can help.</p>
-            </div>
+        <section className="py-24 bg-background relative overflow-hidden" id="faq">
+            <div className="container mx-auto px-4 max-w-4xl relative z-10">
+                <div className="text-center mb-16 space-y-4">
+                    <h2 className="text-3xl md:text-5xl font-bold font-heading">
+                        Common{" "}
+                        <span className="text-transparent bg-clip-text gradient-text">
+                            Questions
+                        </span>
+                    </h2>
+                    <p className="text-gray-400 max-w-2xl mx-auto">
+                        Clear answers about how we help you turn AI into a competitive advantage.
+                    </p>
+                </div>
 
-            <div className="space-y-4">
-                {faqs.map((faq, idx) => (
-                    <AccordionItem
-                        key={idx}
-                        title={faq.q}
-                        isOpen={openIndex === idx}
-                        onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-                    >
-                        {faq.a}
-                    </AccordionItem>
-                ))}
+                <div className="space-y-4">
+                    {faqs.map((faq, index) => (
+                        <div
+                            key={index}
+                            className="border border-white/5 rounded-2xl bg-white/5 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-white/10"
+                        >
+                            <button
+                                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                                className="w-full flex items-center justify-between p-6 text-left"
+                                aria-expanded={openIndex === index}
+                            >
+                                <span className="text-lg font-medium text-white pr-8">
+                                    {faq.question}
+                                </span>
+                                <span className={`flex-shrink-0 text-primary transition-transform duration-300 ${openIndex === index ? "rotate-180" : ""}`}>
+                                    {openIndex === index ? <Minus className="w-6 h-6" /> : <Plus className="w-6 h-6" />}
+                                </span>
+                            </button>
+
+                            <motion.div
+                                initial={false}
+                                animate={{ height: openIndex === index ? "auto" : 0, opacity: openIndex === index ? 1 : 0 }}
+                                transition={{ duration: 0.3, ease: "easeInOut" }}
+                                className="overflow-hidden"
+                            >
+                                <div className="p-6 pt-0 text-gray-400 leading-relaxed border-t border-white/5">
+                                    {faq.answer}
+                                </div>
+                            </motion.div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     );

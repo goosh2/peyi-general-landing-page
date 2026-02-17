@@ -30,15 +30,15 @@ export function Hero() {
                     {/* Headline */}
                     <div className="space-y-4">
                         <h1 className="font-heading font-bold text-5xl md:text-7xl leading-[1.1] tracking-tight text-white">
-                            AI That Works{" "}
+                            Turn AI Into{" "}
                             <span className="text-transparent bg-clip-text gradient-text">
-                                For
+                                Profit For
                                 <br />
                                 Your Business
                             </span>
                         </h1>
-                        <p className="text-lg md:text-xl text-gray-300 font-sans leading-relaxed max-w-lg">
-                            Stop guessing which AI tools to use. We help SMBs and creators implement practical AI solutions that drive real results.
+                        <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                            Overwhelmed by AI hype? We give you a clear roadmap to start small, scale fast, and see real returns. No jargon, just results.
                         </p>
                     </div>
 
@@ -50,7 +50,7 @@ export function Hero() {
                             asChild
                         >
                             <Link href="/ai-readiness-quiz">
-                                Take AI Readiness Quiz
+                                Find Your AI Starting Point
                                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </Link>
                         </Button>

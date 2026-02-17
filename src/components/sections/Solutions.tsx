@@ -3,21 +3,21 @@ import { Zap, BarChart3, Users } from "lucide-react";
 
 const solutionsData = [
     {
-        title: "Marketing Automation",
+        title: "Automate Revenue Tasks",
         icon: Zap,
-        description: "Automate email, SMS, and voicemail campaigns. Nurture leads on autopilot while you focus on closing deals.",
+        description: "Stop wasting time on manual work. Automate outreach, follow-ups, and admin so you can focus on strategy.",
         gradient: "from-[hsl(var(--primary))] to-[hsl(340,80%,60%)]", // Brand Orange -> Pink
     },
     {
-        title: "CRM & Pipeline Management",
+        title: "Stop Leaking Money",
         icon: BarChart3,
-        description: "Track every lead from first touch to closed deal. Never lose a prospect with smart pipeline automation.",
+        description: "Plug the holes in your sales pipeline. Ensure every lead is nurtured and no opportunity slips through the cracks.",
         gradient: "from-[hsl(340,80%,60%)] to-[hsl(270,80%,65%)]", // Pink -> Purple
     },
     {
-        title: "Reputation & Reviews",
+        title: "Turn Reviews into Cash",
         icon: Users,
-        description: "Automate review requests and manage your online reputation. Turn happy customers into 5-star advocates.",
+        description: "Automatically generate 5-star reviews to build trust and attract more high-paying customers on autopilot.",
         gradient: "from-[hsl(270,80%,65%)] to-[hsl(200,90%,55%)]", // Purple -> Accent
     },
 ];

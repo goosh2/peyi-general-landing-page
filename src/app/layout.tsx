@@ -16,8 +16,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Peyi Solutions - Your Partner in Practical AI",
-  description: "Strategy, Automation & Training for SMBs and Creators. We help you Implement practical AI solutions that drive real results.",
+  title: "Peyi Solutions | Practical AI Implementation for Business Growth",
+  description: "Don't know where to start with AI? We help businesses identify high-ROI opportunities, build a custom AI roadmap, and implement solutions that increase profitability.",
 };
 
 export default function RootLayout({
@@ -27,7 +27,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={clsx(inter.variable, spaceGrotesk.variable, "antialiased font-sans bg-background text-foreground overflow-x-hidden")}>
+      <body
+        className={clsx(inter.variable, spaceGrotesk.variable, "antialiased font-sans bg-background text-foreground overflow-x-hidden")}
+      >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Peyi Solutions",
+              "url": "https://peyi.solutions",
+              "logo": "https://peyi.solutions/logo.png",
+              "description": "We help businesses identify high-ROI opportunities, build a custom AI roadmap, and implement solutions that increase profitability.",
+              "makesOffer": {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "AI Roadmap & Implementation Consulting",
+                  "description": "Custom AI strategy to increase business profitability and automate revenue-generating tasks."
+                }
+              }
+            })
+          }}
+        />
         {children}
       </body>
     </html>
