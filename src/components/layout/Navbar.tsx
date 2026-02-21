@@ -79,6 +79,9 @@ export function Navbar() {
                                     <Link href="/ai-customer-service-small-business" className="block px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
                                         AI Customer Service
                                     </Link>
+                                    <Link href="/voice-ai-agent" className="block px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors font-semibold text-primary/90">
+                                        Self-Selling Voice AI
+                                    </Link>
                                     <Link href="/ai-marketing-automation-small-business" className="block px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
                                         AI Marketing Automation
                                     </Link>
@@ -159,6 +162,7 @@ export function Navbar() {
                             <div className="flex flex-col gap-4">
                                 <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">Solutions</p>
                                 <Link href="/ai-customer-service-small-business" className="text-lg font-medium text-gray-300" onClick={() => setMobileMenuOpen(false)}>Customer Service</Link>
+                                <Link href="/voice-ai-agent" className="text-lg font-bold text-primary/90" onClick={() => setMobileMenuOpen(false)}>Self-Selling Voice AI</Link>
                                 <Link href="/ai-marketing-automation-small-business" className="text-lg font-medium text-gray-300" onClick={() => setMobileMenuOpen(false)}>Marketing Automation</Link>
                                 <Link href="/ai-lead-generation-small-business" className="text-lg font-medium text-gray-300" onClick={() => setMobileMenuOpen(false)}>AI Lead Gen & CRM</Link>
                             </div>
