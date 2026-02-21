@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -67,6 +68,7 @@ export default function RootLayout({
           }}
         />
         {children}
+        <Analytics />
       </body>
     </html>
   );
