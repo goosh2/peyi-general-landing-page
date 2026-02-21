@@ -178,7 +178,7 @@ export default function VoiceAIPage() {
                             </div>
 
                             <div className="text-center">
-                                <Link href="/ai-readiness-quiz">
+                                <Link href="https://app.peyisolutions.com/v2/preview/BwcvezOZwVBDDlG2CB4D" target="_blank">
                                     <Button size="lg" className="rounded-full px-12 text-lg h-14 bg-primary hover:bg-primary/90 text-background font-bold shadow-[0_0_20px_rgba(var(--primary),0.3)]">
                                         START WORKING WITH PEYI AI NOW
                                     </Button>
@@ -218,7 +218,7 @@ export default function VoiceAIPage() {
                         Simple, straightforward, and totally covered. We handle the setup so you can focus on doing what you do best.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link href="/ai-readiness-quiz">
+                        <Link href="https://app.peyisolutions.com/v2/preview/BwcvezOZwVBDDlG2CB4D" target="_blank">
                             <Button size="lg" className="rounded-full px-8 text-lg h-14 bg-white text-black hover:bg-gray-200 font-bold">
                                 Buy Now
                             </Button>
