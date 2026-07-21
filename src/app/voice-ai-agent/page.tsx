@@ -97,7 +97,7 @@ export default function VoiceAIPage() {
                             </li>
                             <li className="flex items-start gap-3">
                                 <MessageSquare className="w-6 h-6 text-primary shrink-0" />
-                                <span><strong>Instant responses:</strong> "What’s your availability?", "Can I get a quote?", "What's your process?" — answered instantly.</span>
+                                <span><strong>Instant responses:</strong> &quot;What’s your availability?&quot;, &quot;Can I get a quote?&quot;, &quot;What&apos;s your process?&quot; — answered instantly.</span>
                             </li>
                             <li className="flex items-start gap-3">
                                 <CalendarCheck className="w-6 h-6 text-primary shrink-0" />
@@ -122,7 +122,7 @@ export default function VoiceAIPage() {
 
                 {/* How It Works */}
                 <section className="mb-24">
-                    <h2 className="text-3xl font-bold text-white mb-12 text-center">Here's How It Works</h2>
+                    <h2 className="text-3xl font-bold text-white mb-12 text-center">Here&apos;s How It Works</h2>
                     <div className="grid md:grid-cols-3 gap-8">
                         {[
                             { step: "STEP 1", title: "We Train Your Peyi AI", desc: "Share your FAQs, common scripts, and preferences. Peyi AI learns your style and business inside-out." },
@@ -144,7 +144,7 @@ export default function VoiceAIPage() {
                     <div className="bg-gradient-to-br from-primary/20 to-purple-500/20 p-1 rounded-3xl max-w-5xl mx-auto">
                         <div className="bg-[#0B0F19] p-8 md:p-12 rounded-[22px] border border-white/5">
                             <div className="text-center mb-10">
-                                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">The "Peyi AI" Bundle</h2>
+                                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">The &quot;Peyi AI&quot; Bundle</h2>
                                 <p className="text-xl text-primary font-heading font-medium">Your Complete Client-Handling Solution</p>
                                 <div className="mt-6 inline-block bg-white/10 px-6 py-2 rounded-full border border-white/10">
                                     <span className="text-gray-300">Just </span>
@@ -152,7 +152,7 @@ export default function VoiceAIPage() {
                                     <span className="text-sm text-gray-400"> (with a one-time $500 setup fee)</span>
                                 </div>
                                 <p className="mt-4 text-gray-400 text-sm max-w-2xl mx-auto">
-                                    With Peyi AI, you get a complete client-handling system which you'd typically pay nearly $4,000 per month for. It's like having an entire team behind you without the extra hires!
+                                    With Peyi AI, you get a complete client-handling system which you&apos;d typically pay nearly $4,000 per month for. It&apos;s like having an entire team behind you without the extra hires!
                                 </p>
                             </div>
 
@@ -178,7 +178,7 @@ export default function VoiceAIPage() {
                             </div>
 
                             <div className="text-center">
-                                <Link href="https://app.peyisolutions.com/v2/preview/BwcvezOZwVBDDlG2CB4D" target="_blank">
+                                <Link href="/book">
                                     <Button size="lg" className="rounded-full px-12 text-lg h-14 bg-primary hover:bg-primary/90 text-background font-bold shadow-[0_0_20px_rgba(var(--primary),0.3)]">
                                         START WORKING WITH PEYI AI NOW
                                     </Button>
@@ -213,14 +213,14 @@ export default function VoiceAIPage() {
 
                 {/* Final CTA */}
                 <section className="text-center py-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">You Don't Need To Be A Tech Wizard</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">You Don&apos;t Need To Be A Tech Wizard</h2>
                     <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
                         Simple, straightforward, and totally covered. We handle the setup so you can focus on doing what you do best.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link href="https://app.peyisolutions.com/v2/preview/BwcvezOZwVBDDlG2CB4D" target="_blank">
+                        <Link href="/book">
                             <Button size="lg" className="rounded-full px-8 text-lg h-14 bg-white text-black hover:bg-gray-200 font-bold">
-                                Buy Now
+                                Book AI Audit
                             </Button>
                         </Link>
                         <a href="tel:9548334829">

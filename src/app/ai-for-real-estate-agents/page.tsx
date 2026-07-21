@@ -41,7 +41,7 @@ const realEstateFaqs = [
     },
     {
         question: "What is the ROI of AI for a real estate agent?",
-        answer: "The primary ROI comes from 'Speed to Lead' and 'Long-term Nurture'. AI contacts leads within seconds 24/7, increasing conversion rates by up to 300%. Additionally, saving 10-15 hours of admin time per week allows you to focus on high-dollar activities like showing homes and negotiating contracts."
+        answer: "The primary ROI comes from 'Speed to Lead' and 'Long-term Nurture'. AI contacts leads within seconds 24/7, so you reach them before a competitor does and stay in front of them for months. It also takes hours of weekly admin—follow-ups, data entry, scheduling—off your plate, freeing you for high-dollar activities like showing homes and negotiating contracts."
     },
     {
         question: "Do I need to be tech-savvy to manage this?",
@@ -213,10 +213,10 @@ export default function RealEstatePage() {
                         <BadgeCheck className="w-16 h-16 text-primary mb-6" />
                         <h2 className="text-3xl font-bold text-white mb-6">Why Partner With Peyi Solutions?</h2>
                         <p className="text-lg text-muted-foreground mb-6">
-                            We don't just sell you software and wish you luck. <strong>We build the entire system for you.</strong>
+                            We don&apos;t just sell you software and wish you luck. <strong>We build the entire system for you.</strong>
                         </p>
                         <p className="text-gray-400 leading-relaxed mb-6">
-                            Real estate is a relationship business. You shouldn't be stuck behind a computer configuring webhooks or training chatbots. Peyi Solutions specializes in the technical implementation of AI for real estate. We configure the voice agents to sound like you, build the nurtures to convert your leads, and train your team on how to manage the dashboard.
+                            Real estate is a relationship business. You shouldn&apos;t be stuck behind a computer configuring webhooks or training chatbots. Peyi Solutions specializes in the technical implementation of AI for real estate. We configure the voice agents to sound like you, build the nurtures to convert your leads, and train your team on how to manage the dashboard.
                         </p>
                         <ul className="space-y-2 text-gray-300">
                             <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> <span>Custom-built workflows for your market</span></li>
@@ -266,7 +266,7 @@ export default function RealEstatePage() {
                         <div className="relative">
                             <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full" />
                             <div className="relative bg-[#0B0F19] p-8 rounded-2xl border border-white/10 shadow-2xl">
-                                <h3 className="text-xl font-bold text-white mb-6 border-b border-white/10 pb-4">The "Old Way" vs "AI Way"</h3>
+                                <h3 className="text-xl font-bold text-white mb-6 border-b border-white/10 pb-4">The &quot;Old Way&quot; vs &quot;AI Way&quot;</h3>
                                 <div className="space-y-6">
                                     <div className="flex justify-between items-center text-sm">
                                         <span className="text-red-400">Manual Follow-up</span>
@@ -327,7 +327,7 @@ export default function RealEstatePage() {
                                 Take the AI Readiness Quiz
                             </Button>
                         </Link>
-                        <Link href="/#contact">
+                        <Link href="/book">
                             <Button variant="heroOutline" size="lg" className="rounded-full px-8 text-lg h-14">
                                 Book a Strategy Call
                             </Button>

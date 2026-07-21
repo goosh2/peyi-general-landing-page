@@ -94,9 +94,9 @@ export default function LeadGenPage() {
 
                 {/* Intro */}
                 <section className="mb-24 max-w-4xl">
-                    <h2 className="text-2xl font-bold text-white mb-6">The "Speed to Lead" Advantage</h2>
+                    <h2 className="text-2xl font-bold text-white mb-6">The &quot;Speed to Lead&quot; Advantage</h2>
                     <p className="text-lg text-muted-foreground leading-relaxed border-l-4 border-primary pl-6">
-                        In modern sales, the first vendor to respond wins 70% of the deals. AI gives you a chemically unfair advantage by responding to every lead within seconds—whether it's 2 PM or 2 AM—qualifying them, and booking the appointment before your competitor even opens their email.
+                        In modern sales, the first vendor to respond wins 70% of the deals. AI gives you a chemically unfair advantage by responding to every lead within seconds—whether it&apos;s 2 PM or 2 AM—qualifying them, and booking the appointment before your competitor even opens their email.
                     </p>
                 </section>
 
@@ -131,7 +131,7 @@ export default function LeadGenPage() {
                             <div className="relative z-10">
                                 <Target className="w-12 h-12 text-blue-400 mb-6" />
                                 <h3 className="text-2xl font-bold text-white mb-4">Outbound Engine</h3>
-                                <p className="text-muted-foreground mb-6">"I need to go find clients."</p>
+                                <p className="text-muted-foreground mb-6">&quot;I need to go find clients.&quot;</p>
                                 <ul className="space-y-4 mb-8">
                                     <li className="flex items-start gap-3">
                                         <div className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0 mt-0.5"><span className="text-blue-400 text-xs">1</span></div>
@@ -155,7 +155,7 @@ export default function LeadGenPage() {
                             <div className="relative z-10">
                                 <Magnet className="w-12 h-12 text-primary mb-6" />
                                 <h3 className="text-2xl font-bold text-white mb-4">Inbound Capture</h3>
-                                <p className="text-muted-foreground mb-6">"I have traffic, but no leads."</p>
+                                <p className="text-muted-foreground mb-6">&quot;I have traffic, but no leads.&quot;</p>
                                 <ul className="space-y-4 mb-8">
                                     <li className="flex items-start gap-3">
                                         <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5"><span className="text-primary text-xs">1</span></div>
@@ -208,21 +208,33 @@ export default function LeadGenPage() {
                     />
                 </section>
 
-                {/* ROI / Stats */}
-                <section className="mb-24 bg-gradient-to-br from-blue-500/10 to-transparent p-12 rounded-3xl border border-blue-500/20 text-center">
-                    <h2 className="text-3xl font-bold text-white mb-8">Pipeline Velocity</h2>
-                    <div className="grid md:grid-cols-3 gap-12">
-                        <div>
-                            <div className="text-4xl font-bold text-blue-400 mb-2">300%</div>
-                            <p className="text-muted-foreground">increase in appointments booked when responding in under 5 minutes.</p>
+                {/* What the system does for your pipeline */}
+                <section className="mb-24 bg-gradient-to-br from-blue-500/10 to-transparent p-12 rounded-3xl border border-blue-500/20">
+                    <h2 className="text-3xl font-bold text-white mb-4 text-center">What a Lead System Actually Does For You</h2>
+                    <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
+                        No dashboards to babysit. The system works your pipeline in the background so you only talk to people worth talking to.
+                    </p>
+                    <div className="grid md:grid-cols-3 gap-10">
+                        <div className="text-center">
+                            <div className="w-14 h-14 rounded-2xl bg-blue-500/15 flex items-center justify-center mx-auto mb-5">
+                                <Zap className="w-7 h-7 text-blue-400" />
+                            </div>
+                            <h3 className="text-xl font-bold text-white mb-2">Answer leads first</h3>
+                            <p className="text-muted-foreground">Every new lead gets a reply in seconds&mdash;day, night, or weekend&mdash;before they move on to the next name on their list.</p>
                         </div>
-                        <div>
-                            <div className="text-4xl font-bold text-blue-400 mb-2">98%</div>
-                            <p className="text-muted-foreground">of website visitors leave without converting. AI captures them.</p>
+                        <div className="text-center">
+                            <div className="w-14 h-14 rounded-2xl bg-blue-500/15 flex items-center justify-center mx-auto mb-5">
+                                <Magnet className="w-7 h-7 text-blue-400" />
+                            </div>
+                            <h3 className="text-xl font-bold text-white mb-2">Nothing slips through</h3>
+                            <p className="text-muted-foreground">Form fills, DMs, and missed calls are captured, logged, and followed up automatically. No lead dies forgotten in an inbox.</p>
                         </div>
-                        <div>
-                            <div className="text-4xl font-bold text-blue-400 mb-2">10x</div>
-                            <p className="text-muted-foreground">ROI on lead generation spend by filtering out bad leads early.</p>
+                        <div className="text-center">
+                            <div className="w-14 h-14 rounded-2xl bg-blue-500/15 flex items-center justify-center mx-auto mb-5">
+                                <Filter className="w-7 h-7 text-blue-400" />
+                            </div>
+                            <h3 className="text-xl font-bold text-white mb-2">Only real buyers reach you</h3>
+                            <p className="text-muted-foreground">Leads are qualified before they hit your calendar, so your time goes to the people actually ready to move.</p>
                         </div>
                     </div>
                 </section>
@@ -245,7 +257,7 @@ export default function LeadGenPage() {
                                 Get Your Lead Gen Audit
                             </Button>
                         </Link>
-                        <Link href="/#contact">
+                        <Link href="/book">
                             <Button variant="heroOutline" size="lg" className="rounded-full px-8 text-lg h-14">
                                 Book a Strategy Call
                             </Button>

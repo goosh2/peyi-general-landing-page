@@ -23,9 +23,11 @@ export function CTA() {
                             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </Link>
                     </Button>
-                    <Button size="xl" variant="heroOutline">
-                        <Calendar className="mr-2 w-5 h-5" />
-                        Book AI Audit
+                    <Button size="xl" variant="heroOutline" asChild>
+                        <Link href="/book">
+                            <Calendar className="mr-2 w-5 h-5" />
+                            Book AI Audit
+                        </Link>
                     </Button>
                 </div>
             </div>

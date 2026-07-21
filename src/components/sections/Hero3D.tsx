@@ -111,9 +111,9 @@ export function Hero3D() {
 
                     // Normal is just the radial vector from curve center
                     // n_final = (cx * N + cy * B) normalized
-                    let nfx = cx * nx + cy * bx;
-                    let nfy = cx * ny + cy * by;
-                    let nfz = cx * nz + cy * bz;
+                    const nfx = cx * nx + cy * bx;
+                    const nfy = cx * ny + cy * by;
+                    const nfz = cx * nz + cy * bz;
                     const nfl = Math.sqrt(nfx * nfx + nfy * nfy + nfz * nfz);
                     normals.push({ x: nfx / nfl, y: nfy / nfl, z: nfz / nfl });
                 }

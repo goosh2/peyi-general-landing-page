@@ -46,7 +46,7 @@ export function Footer() {
                         <ul className="space-y-4">
                             <li><Link href="/ai-customer-service-small-business" className="text-muted-foreground hover:text-primary transition-colors">AI Customer Service</Link></li>
                             <li><Link href="/ai-marketing-automation-small-business" className="text-muted-foreground hover:text-primary transition-colors">AI Marketing Automation</Link></li>
-                            <li><Link href="/ai-crm-small-business" className="text-muted-foreground hover:text-primary transition-colors">AI CRM Systems</Link></li>
+                            <li><Link href="/ai-operations-automation" className="text-muted-foreground hover:text-primary transition-colors">AI Operations Automation</Link></li>
                             <li><Link href="/ai-lead-generation-small-business" className="text-muted-foreground hover:text-primary transition-colors">AI Lead Generation</Link></li>
                         </ul>
                     </div>
@@ -56,7 +56,7 @@ export function Footer() {
                         <h3 className="font-bold text-white mb-6">Industries</h3>
                         <ul className="space-y-4">
                             <li><Link href="/ai-for-real-estate-agents" className="text-muted-foreground hover:text-primary transition-colors">AI for Real Estate Agents</Link></li>
-                            <li><Link href="/ai-for-real-estate-agents" className="text-muted-foreground hover:text-primary transition-colors">Real Estate Voice AI</Link></li>
+                            <li><Link href="/voice-ai-agent" className="text-muted-foreground hover:text-primary transition-colors">Real Estate Voice AI</Link></li>
                             <li><Link href="/ai-customer-service-small-business" className="text-muted-foreground hover:text-primary transition-colors">Small Business Automation</Link></li>
                         </ul>
                     </div>
@@ -65,9 +65,9 @@ export function Footer() {
                     <div>
                         <h3 className="font-bold text-white mb-6">Company</h3>
                         <ul className="space-y-4">
-                            <li><Link href="#why-us" className="text-muted-foreground hover:text-primary transition-colors">Why Peyi Solutions</Link></li>
+                            <li><Link href="/#why-us" className="text-muted-foreground hover:text-primary transition-colors">Why Peyi Solutions</Link></li>
                             <li><Link href="/ai-readiness-quiz" className="text-muted-foreground hover:text-primary transition-colors">AI Readiness Quiz</Link></li>
-                            <li><Link href="#contact" className="text-muted-foreground hover:text-primary transition-colors">Contact Us</Link></li>
+                            <li><Link href="/book" className="text-muted-foreground hover:text-primary transition-colors">Book AI Audit</Link></li>
                             <li><Link href="/privacy" className="text-muted-foreground hover:text-primary transition-colors">Privacy Policy</Link></li>
                             <li><Link href="/terms" className="text-muted-foreground hover:text-primary transition-colors">Terms of Service</Link></li>
                         </ul>

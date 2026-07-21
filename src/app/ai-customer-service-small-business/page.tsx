@@ -96,7 +96,7 @@ export default function CustomerServicePage() {
                 <section className="mb-24 max-w-4xl">
                     <h2 className="text-2xl font-bold text-white mb-6">Automate Support Without Losing the Human Touch</h2>
                     <p className="text-lg text-muted-foreground leading-relaxed border-l-4 border-primary pl-6">
-                        AI Customer Service isn't about replacing your support team—it's about removing the repetitive "busy work" so they can focus on complex issues. By implementing intelligent chatbots and voice agents, you can answer 80% of questions instantly, 24/7, improving customer satisfaction and freeing up your staff.
+                        AI Customer Service isn&apos;t about replacing your support team—it&apos;s about removing the repetitive &quot;busy work&quot; so they can focus on complex issues. By implementing intelligent chatbots and voice agents, you can answer 80% of questions instantly, 24/7, improving customer satisfaction and freeing up your staff.
                     </p>
                 </section>
 
@@ -179,7 +179,7 @@ export default function CustomerServicePage() {
                     <div className="grid md:grid-cols-3 gap-12">
                         <div>
                             <div className="text-4xl font-bold text-primary mb-2">67%</div>
-                            <p className="text-muted-foreground">of customers hang up if they can't reach a human or get an answer quickly.</p>
+                            <p className="text-muted-foreground">of customers hang up if they can&apos;t reach a human or get an answer quickly.</p>
                         </div>
                         <div>
                             <div className="text-4xl font-bold text-primary mb-2">20h+</div>
@@ -210,7 +210,7 @@ export default function CustomerServicePage() {
                                 Get Your Support Audit
                             </Button>
                         </Link>
-                        <Link href="/#contact">
+                        <Link href="/book">
                             <Button variant="heroOutline" size="lg" className="rounded-full px-8 text-lg h-14">
                                 Book a Demo
                             </Button>

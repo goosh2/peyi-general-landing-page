@@ -1,5 +1,3 @@
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Zap, BarChart3 } from "lucide-react";
 import Link from "next/link";
 import { MessageSquare, Megaphone, Users, Briefcase } from "lucide-react";
 

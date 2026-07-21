@@ -6,6 +6,17 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+// Dropdown Item Component (hoisted so it isn't re-created on every Navbar render)
+const DropdownItem = ({ href, children, onNavigate }: { href: string; children: React.ReactNode; onNavigate: () => void }) => (
+    <Link
+        href={href}
+        className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/5 rounded-md transition-colors"
+        onClick={onNavigate}
+    >
+        {children}
+    </Link>
+);
+
 export function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -20,19 +31,10 @@ export function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // Dropdown Item Component
-    const DropdownItem = ({ href, children }: { href: string; children: React.ReactNode }) => (
-        <Link
-            href={href}
-            className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/5 rounded-md transition-colors"
-            onClick={() => {
-                setSolutionsOpen(false);
-                setResourcesOpen(false);
-            }}
-        >
-            {children}
-        </Link>
-    );
+    const closeDropdowns = () => {
+        setSolutionsOpen(false);
+        setResourcesOpen(false);
+    };
 
     return (
         <nav
@@ -109,7 +111,7 @@ export function Navbar() {
                     </Link>
 
                     <Link
-                        href="#why-us"
+                        href="/#why-us"
                         className="text-sm font-medium text-foreground/90 hover:text-primary transition-colors"
                     >
                         Why Us
@@ -129,7 +131,7 @@ export function Navbar() {
                                     transition={{ duration: 0.2 }}
                                     className="absolute top-full text-center left-1/2 -translate-x-1/2 w-48 bg-[#0B0F19] border border-white/10 rounded-xl shadow-2xl p-2 mt-1 backdrop-blur-3xl"
                                 >
-                                    <DropdownItem href="/ai-readiness-quiz">AI Readiness Quiz</DropdownItem>
+                                    <DropdownItem href="/ai-readiness-quiz" onNavigate={closeDropdowns}>AI Readiness Quiz</DropdownItem>
                                     {/* <DropdownItem href="/blog">Blog & Guides</DropdownItem> */}
                                 </motion.div>
                             )}
@@ -176,7 +178,7 @@ export function Navbar() {
 
                             <div className="h-px bg-white/10 w-full" />
 
-                            <Link href="#why-us" className="text-xl font-bold text-white block" onClick={() => setMobileMenuOpen(false)}>Why Us</Link>
+                            <Link href="/#why-us" className="text-xl font-bold text-white block" onClick={() => setMobileMenuOpen(false)}>Why Us</Link>
                             <Link href="/ai-readiness-quiz" className="text-xl font-bold text-white block" onClick={() => setMobileMenuOpen(false)}>AI Readiness Quiz</Link>
 
                             <div className="mt-8">

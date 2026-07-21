@@ -49,7 +49,7 @@ export function WhoWeServe() {
                         </span>
                     </h2>
                     <p className="text-lg text-muted-foreground">
-                        We don't just talk about AI. We build the systems that save you time and make you money.
+                        We don&apos;t just talk about AI. We build the systems that save you time and make you money.
                     </p>
                 </div>
 

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { quizQuestions, profiles, ProfileType } from "@/data/quiz";
-import { ArrowLeft, ArrowRight, CheckCircle, Download, Calendar } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle, Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -12,7 +12,6 @@ export function QuizContainer() {
     const [currentStep, setCurrentStep] = useState(0);
     const [answers, setAnswers] = useState<number[]>(new Array(quizQuestions.length).fill(-1));
     const [showResults, setShowResults] = useState(false);
-    const [emailSubmitted, setEmailSubmitted] = useState(false);
 
     const totalSteps = quizQuestions.length;
     const progress = ((currentStep) / totalSteps) * 100;
@@ -32,39 +31,14 @@ export function QuizContainer() {
     };
 
     const calculateResult = () => {
-        // Scoring Logic:
-        // Simple heuristic for demo:
-        // More advanced selections (later indices) => higher score
-        // Total max points = 7 questions * 3 (max index if 4 options) approx.
-        // Let's just sum the indices for simplicity as a proxy for "advancement"
-
-        let score = 0;
-        let maxPossible = 0;
-
-        answers.forEach((ans, idx) => {
-            score += ans; // 0 to N
-            maxPossible += (quizQuestions[idx].options.length - 1);
-        });
-
-        const percentage = score / maxPossible;
-
-        // <35% Curious, 35-65 Operator, >65 Scaler
-        let profile: ProfileType = "AI Curious";
-        if (percentage >= 0.35 && percentage <= 0.65) profile = "AI Operator";
-        if (percentage > 0.65) profile = "AI Scaler";
-
-        // In a real app, we'd pass this result state up or save it
-        // For now we just use a local derived var in render or set state
-        // To keep it simple, I'll allow the render logic to derive it from answers, but storing it is safer.
-        // I'll just set showResults true, and derive profile in render.
         setShowResults(true);
     };
 
-    // Derive profile
+    // Derive profile from the sum of chosen option indices as a proxy for "AI maturity".
     let score = 0;
     let maxPossible = 0;
     answers.forEach((ans, idx) => {
-        // If we haven't answered (ans=-1), valid for incomplete, but here we enforce completeness
+        // Skip unanswered questions (ans === -1).
         if (ans !== -1) {
             score += ans;
             maxPossible += (quizQuestions[idx].options.length - 1);
@@ -103,39 +77,16 @@ export function QuizContainer() {
                     </div>
                 </div>
 
-                {/* Email Capture */}
-                <div className="bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/20 rounded-2xl p-8 text-center space-y-6">
-                    {!emailSubmitted ? (
-                        <>
-                            <h3 className="font-heading font-bold text-xl">Get Your Customized Resource</h3>
-                            <p className="text-muted-foreground">{profileData.resource}</p>
-                            <div className="flex flex-col sm:flex-row gap-3">
-                                <input
-                                    type="email"
-                                    placeholder="Enter your work email"
-                                    className="flex-1 bg-background/50 border border-white/10 rounded-md px-4 py-2 focus:ring-2 focus:ring-primary outline-none"
-                                />
-                                <Button variant="hero" onClick={() => setEmailSubmitted(true)}>
-                                    Send My Resource
-                                </Button>
-                            </div>
-                        </>
-                    ) : (
-                        <div className="flex flex-col items-center gap-4 py-4 animate-in zoom-in duration-300">
-                            <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-500">
-                                <CheckCircle className="w-6 h-6" />
-                            </div>
-                            <div className="font-bold text-lg">Check Your Inbox!</div>
-                            <Button variant="heroOutline" size="lg">
-                                <Download className="mr-2 w-4 h-4" /> Download Resource
-                            </Button>
-                        </div>
-                    )}
-                </div>
-
-                <div className="mt-12 text-center">
-                    <Button variant="heroOutline" size="xl" className="w-full sm:w-auto">
-                        <Calendar className="mr-2 w-5 h-5" /> Book a Free AI Strategy Session
+                {/* Next Step: turn the result into action */}
+                <div className="bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/20 rounded-2xl p-8 text-center space-y-4">
+                    <h3 className="font-heading font-bold text-xl">Your next step</h3>
+                    <p className="text-muted-foreground max-w-md mx-auto">
+                        The fastest way to act on this is an AI audit&mdash;a clear map of where AI actually pays off in your business.
+                    </p>
+                    <Button variant="hero" size="xl" className="w-full sm:w-auto" asChild>
+                        <Link href="/book">
+                            <Calendar className="mr-2 w-5 h-5" /> Book AI Audit
+                        </Link>
                     </Button>
                 </div>
             </div>

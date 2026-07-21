@@ -1,4 +1,4 @@
-import { Wrench, Target, Rocket } from "lucide-react";
+import { Wrench, Target, Rocket, Search, Map, Hammer } from "lucide-react";
 
 export function WhyUs() {
     return (
@@ -41,37 +41,34 @@ export function WhyUs() {
 
                     <div className="relative glass-card rounded-3xl p-8 md:p-12 overflow-hidden border-white/10">
                         {/* Header Row */}
-                        <div className="flex items-center gap-4 mb-8">
-                            <div className="w-16 h-16 rounded-xl bg-gradient-primary flex items-center justify-center text-white font-heading font-bold text-2xl">
-                                P
-                            </div>
-                            <div>
-                                <div className="font-heading font-bold text-lg">Peyi Solutions</div>
-                                <div className="text-sm text-muted-foreground">Your Partner in Practical AI</div>
-                            </div>
+                        <div className="mb-8">
+                            <div className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-1">How We Work</div>
+                            <div className="font-heading font-bold text-2xl">One audit. A clear roadmap. Real systems.</div>
                         </div>
 
-                        {/* Progress Bar */}
-                        <div className="space-y-3 mb-8">
-                            <div className="flex justify-between text-sm">
-                                <span className="text-muted-foreground">AI Capability Readiness</span>
-                                <span className="text-primary font-medium">85%</span>
-                            </div>
-                            <div className="h-3 w-full bg-muted rounded-full overflow-hidden">
-                                <div className="h-full bg-gradient-to-r from-primary to-secondary w-[85%] rounded-full" />
-                            </div>
-                        </div>
+                        {/* Process Steps */}
+                        <div className="relative space-y-6">
+                            {/* Connecting line */}
+                            <div className="absolute left-6 top-6 bottom-6 w-px bg-gradient-to-b from-primary/60 via-secondary/40 to-transparent" />
 
-                        {/* Stats Grid */}
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="bg-muted/50 rounded-xl p-4">
-                                <div className="gradient-text font-heading font-bold text-2xl mb-1">12</div>
-                                <div className="text-xs text-muted-foreground uppercase tracking-wider">AI Systems Built</div>
-                            </div>
-                            <div className="bg-muted/50 rounded-xl p-4">
-                                <div className="gradient-text font-heading font-bold text-2xl mb-1">98%</div>
-                                <div className="text-xs text-muted-foreground uppercase tracking-wider">Success Rate</div>
-                            </div>
+                            {[
+                                { icon: Search, step: "01", title: "Audit", desc: "We dig into how your business actually runs—where hours leak and money hides." },
+                                { icon: Map, step: "02", title: "Roadmap", desc: "You get a report naming the exact AI workflows worth building, in ROI order." },
+                                { icon: Hammer, step: "03", title: "Build", desc: "We build, test, and deploy the systems with your team—so they stick." }
+                            ].map((item, idx) => (
+                                <div key={idx} className="relative flex gap-5">
+                                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center text-white shadow-lg shadow-primary/20 z-10">
+                                        <item.icon className="w-5 h-5" />
+                                    </div>
+                                    <div className="pt-1">
+                                        <div className="flex items-center gap-2 mb-1">
+                                            <span className="text-xs font-heading font-bold text-primary tracking-wider">{item.step}</span>
+                                            <h3 className="font-heading font-bold text-lg">{item.title}</h3>
+                                        </div>
+                                        <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

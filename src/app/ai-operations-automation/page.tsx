@@ -96,7 +96,7 @@ export default function OpsPage() {
                 <section className="mb-24 max-w-4xl">
                     <h2 className="text-2xl font-bold text-white mb-6">Operations Eating Your Profit?</h2>
                     <p className="text-lg text-muted-foreground leading-relaxed border-l-4 border-primary pl-6">
-                        As you scale, the "boring" work scales with you. Invoicing, scheduling, compliance, and data entry can quickly consume 40% of your revenue in overhead. AI Operations Automation reverses this trend—allowing you to handle 10x the volume without adding a single new admin staff member.
+                        As you scale, the &quot;boring&quot; work scales with you. Invoicing, scheduling, compliance, and data entry can quickly consume 40% of your revenue in overhead. AI Operations Automation reverses this trend—allowing you to handle 10x the volume without adding a single new admin staff member.
                     </p>
                 </section>
 
@@ -192,7 +192,7 @@ export default function OpsPage() {
                                 Get Your Ops Audit
                             </Button>
                         </Link>
-                        <Link href="/#contact">
+                        <Link href="/book">
                             <Button variant="heroOutline" size="lg" className="rounded-full px-8 text-lg h-14">
                                 Book a Strategy Call
                             </Button>

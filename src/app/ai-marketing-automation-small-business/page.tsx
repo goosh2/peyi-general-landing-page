@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 const marketingFaqs = [
     {
         question: "Will AI-generated content sound like a robot?",
-        answer: "Not if we train it on your brand voice. We upload your past successful emails, blogs, and social posts to teach the AI exactly how you speak. The result is content that sounds 95% like you, but produced 100x faster."
+        answer: "Not if we train it on your brand voice. We upload your past successful emails, blogs, and social posts to teach the AI exactly how you speak. The result is content that sounds like you wrote it—because it's built from your own words—produced in a fraction of the time."
     },
     {
         question: "Can AI really handle my social media posting?",
@@ -96,7 +96,7 @@ export default function MarketingPage() {
                 <section className="mb-24 max-w-4xl">
                     <h2 className="text-2xl font-bold text-white mb-6">Consistency is Key (And AI Never Sleeps)</h2>
                     <p className="text-lg text-muted-foreground leading-relaxed border-l-4 border-primary pl-6">
-                        The biggest challenge for small business marketing isn't quality—it's consistency. You get busy, strict operations take over, and months go by without an email or social post. AI marketing automation solves this by ensuring your brand stays top-of-mind 24/7, executing your strategy rain or shine.
+                        The biggest challenge for small business marketing isn&apos;t quality—it&apos;s consistency. You get busy, strict operations take over, and months go by without an email or social post. AI marketing automation solves this by ensuring your brand stays top-of-mind 24/7, executing your strategy rain or shine.
                     </p>
                 </section>
 
@@ -140,7 +140,7 @@ export default function MarketingPage() {
                     <h2 className="text-3xl font-bold text-white mb-8 text-center">Marketing Stacks by Budget</h2>
                     <div className="grid md:grid-cols-2 gap-8">
                         <div className="p-6 rounded-2xl bg-[#0B0F19] border border-white/10">
-                            <h3 className="text-xl font-bold text-white mb-2">The "DIY" Starter Stack</h3>
+                            <h3 className="text-xl font-bold text-white mb-2">The &quot;DIY&quot; Starter Stack</h3>
                             <p className="text-muted-foreground mb-6 text-sm">Output: 3 posts/week + 1 newsletter.</p>
                             <ul className="space-y-3 mb-6">
                                 <li className="flex justify-between text-gray-300 text-sm"><span>ChatGPT Plus (Copy)</span> <span>$20/mo</span></li>
@@ -154,7 +154,7 @@ export default function MarketingPage() {
                         </div>
                         <div className="p-6 rounded-2xl bg-[#0B0F19] border border-white/10 relative overflow-hidden">
                             <div className="absolute top-0 right-0 bg-primary/20 px-3 py-1 rounded-bl-xl text-xs font-bold text-primary border-b border-l border-white/10">RECOMMENDED</div>
-                            <h3 className="text-xl font-bold text-white mb-2">The "Growth" Automation Stack</h3>
+                            <h3 className="text-xl font-bold text-white mb-2">The &quot;Growth&quot; Automation Stack</h3>
                             <p className="text-muted-foreground mb-6 text-sm">Output: Daily video/posts + Automated Nurture Sequences.</p>
                             <ul className="space-y-3 mb-6">
                                 <li className="flex justify-between text-gray-300 text-sm"><span>GoHighLevel (CRM/Email)</span> <span>$97/mo</span></li>
@@ -189,21 +189,33 @@ export default function MarketingPage() {
                     />
                 </section>
 
-                {/* ROI / Stats */}
-                <section className="mb-24 bg-gradient-to-br from-purple-500/10 to-transparent p-12 rounded-3xl border border-purple-500/20 text-center">
-                    <h2 className="text-3xl font-bold text-white mb-8">Marketing ROI You Can Measure</h2>
-                    <div className="grid md:grid-cols-3 gap-12">
-                        <div>
-                            <div className="text-4xl font-bold text-purple-400 mb-2">300%</div>
-                            <p className="text-muted-foreground">increase in leads reported by businesses using marketing automation.</p>
+                {/* What marketing automation frees you from */}
+                <section className="mb-24 bg-gradient-to-br from-purple-500/10 to-transparent p-12 rounded-3xl border border-purple-500/20">
+                    <h2 className="text-3xl font-bold text-white mb-4 text-center">Marketing That Runs Without You</h2>
+                    <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
+                        The point isn&apos;t a dashboard of numbers. It&apos;s that your marketing keeps working on the weeks you&apos;re too busy to think about it.
+                    </p>
+                    <div className="grid md:grid-cols-3 gap-10">
+                        <div className="text-center">
+                            <div className="w-14 h-14 rounded-2xl bg-purple-500/15 flex items-center justify-center mx-auto mb-5">
+                                <PenTool className="w-7 h-7 text-purple-400" />
+                            </div>
+                            <h3 className="text-xl font-bold text-white mb-2">Content that ships itself</h3>
+                            <p className="text-muted-foreground">Emails, posts, and captions drafted in your brand voice and scheduled ahead&mdash;so your marketing never goes quiet during a busy stretch.</p>
                         </div>
-                        <div>
-                            <div className="text-4xl font-bold text-purple-400 mb-2">10hrs</div>
-                            <p className="text-muted-foreground">saved per week on content creation and scheduling.</p>
+                        <div className="text-center">
+                            <div className="w-14 h-14 rounded-2xl bg-purple-500/15 flex items-center justify-center mx-auto mb-5">
+                                <Repeat className="w-7 h-7 text-purple-400" />
+                            </div>
+                            <h3 className="text-xl font-bold text-white mb-2">Consistency on autopilot</h3>
+                            <p className="text-muted-foreground">Nurture sequences, follow-ups, and review requests keep going out whether or not marketing crossed your mind that day.</p>
                         </div>
-                        <div>
-                            <div className="text-4xl font-bold text-purple-400 mb-2">50%</div>
-                            <p className="text-muted-foreground">lower cost per lead when using AI to optimize ad campaigns.</p>
+                        <div className="text-center">
+                            <div className="w-14 h-14 rounded-2xl bg-purple-500/15 flex items-center justify-center mx-auto mb-5">
+                                <Target className="w-7 h-7 text-purple-400" />
+                            </div>
+                            <h3 className="text-xl font-bold text-white mb-2">Spend that self-corrects</h3>
+                            <p className="text-muted-foreground">Ad budget shifts toward what&apos;s actually working, so you stop pouring money into creative that isn&apos;t landing.</p>
                         </div>
                     </div>
                 </section>
@@ -218,7 +230,7 @@ export default function MarketingPage() {
                 <section className="text-center py-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Put Your Marketing on Autopilot</h2>
                     <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-                        Don't let another week go by without posting. Build a system that grows your business while you sleep.
+                        Don&apos;t let another week go by without posting. Build a system that grows your business while you sleep.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Link href="/ai-readiness-quiz">
@@ -226,7 +238,7 @@ export default function MarketingPage() {
                                 Get Your Marketing Plan
                             </Button>
                         </Link>
-                        <Link href="/#contact">
+                        <Link href="/book">
                             <Button variant="heroOutline" size="lg" className="rounded-full px-8 text-lg h-14">
                                 Book a Strategy Call
                             </Button>
