@@ -12,6 +12,9 @@ export function QuizContainer() {
     const [currentStep, setCurrentStep] = useState(0);
     const [answers, setAnswers] = useState<number[]>(new Array(quizQuestions.length).fill(-1));
     const [showResults, setShowResults] = useState(false);
+    // Questions travel the way you're moving: forward exits left, back exits right.
+    // Entering and leaving along the same path keeps the stepper spatially coherent.
+    const [direction, setDirection] = useState(1);
 
     const totalSteps = quizQuestions.length;
     const progress = ((currentStep) / totalSteps) * 100;
@@ -24,10 +27,16 @@ export function QuizContainer() {
 
     const handleNext = () => {
         if (currentStep < totalSteps - 1) {
+            setDirection(1);
             setCurrentStep(currentStep + 1);
         } else {
             calculateResult();
         }
+    };
+
+    const handlePrevious = () => {
+        setDirection(-1);
+        setCurrentStep(currentStep - 1);
     };
 
     const calculateResult = () => {
@@ -108,19 +117,20 @@ export function QuizContainer() {
                         className="h-full bg-gradient-to-r from-primary to-secondary"
                         initial={{ width: 0 }}
                         animate={{ width: `${progress}%` }}
-                        transition={{ duration: 0.5 }}
+                        transition={{ type: "spring", bounce: 0, duration: 0.45 }}
                     />
                 </div>
             </div>
 
             {/* Question */}
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" custom={direction}>
                 <motion.div
                     key={currentQ.id}
-                    initial={{ opacity: 0, x: 20 }}
+                    custom={direction}
+                    initial={{ opacity: 0, x: 24 * direction }}
                     animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.3 }}
+                    exit={{ opacity: 0, x: -24 * direction }}
+                    transition={{ type: "spring", bounce: 0, duration: 0.35 }}
                     className="space-y-8"
                 >
                     <h2 className="font-heading font-bold text-2xl md:text-3xl leading-tight">
@@ -135,7 +145,9 @@ export function QuizContainer() {
                                     key={idx}
                                     onClick={() => handleSelect(idx)}
                                     className={cn(
-                                        "w-full text-left p-4 rounded-xl border-2 transition-all duration-200 flex items-center gap-4 group",
+                                        "w-full text-left p-4 rounded-xl border-2 flex items-center gap-4 group cursor-pointer",
+                                        "transition-[transform,background-color,border-color] duration-200 ease-[var(--ease-spring)]",
+                                        "active:scale-[0.99] active:duration-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                                         isSelected
                                             ? "border-primary bg-primary/10"
                                             : "border-border bg-card/50 hover:border-primary/50 hover:bg-primary/5"
@@ -163,7 +175,7 @@ export function QuizContainer() {
                     <Button
                         variant="ghost"
                         disabled={currentStep === 0}
-                        onClick={() => setCurrentStep(currentStep - 1)}
+                        onClick={handlePrevious}
                     >
                         <ArrowLeft className="mr-2 w-4 h-4" /> Previous
                     </Button>

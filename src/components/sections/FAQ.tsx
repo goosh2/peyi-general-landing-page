@@ -1,17 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { Plus } from "lucide-react";
 import { useState } from "react";
+import Link from "next/link";
 
 export const homepageFaqs = [
     {
         question: "How can AI actually help my business make more money?",
-        answer: "AI isn't just a buzzword—it's a profit multiplier. We help you automate repetitive tasks (saving labor costs), nurture leads 24/7 (increasing conversion rates), and identify upsell opportunities in your customer data. Our clients typically see ROI within the first 3 months."
+        answer: "AI isn't just a buzzword—it's a profit multiplier. We help you automate repetitive tasks (saving labor costs), nurture leads 24/7 (increasing conversion rates), and identify upsell opportunities in your customer data. We start with the workflow where the payoff is clearest, so you can judge the return for yourself before going further."
     },
     {
         question: "What are the best AI tools for automating customer service in a small business?",
-        answer: "The best tools depend on your business size and needs. For small businesses, we typically recommend Intercom (starting ~$39/mo), Tidio AI (~$29/mo), or GoHighLevel's built-in AI features (~$97/mo) for their balance of capability and affordability. The key isn't the tool — it's how it's configured. A poorly set up AI chatbot frustrates customers; a well-configured one resolves 80% of tickets instantly. That's why we handle full implementation. [→ Learn more about AI Customer Service Solutions](/ai-customer-service-small-business)"
+        answer: "The best tools depend on your business size and needs. For small businesses, we typically recommend Intercom (starting ~$39/mo), Tidio AI (~$29/mo), or GoHighLevel's built-in AI features (~$97/mo) for their balance of capability and affordability. The key isn't the tool — it's how it's configured. A poorly set up AI chatbot frustrates customers; a well-configured one resolves routine questions instantly and hands the rest to you with context. That's why we handle full implementation. [→ Learn more about AI Customer Service Solutions](/ai-customer-service-small-business)"
     },
     {
         question: "How much does it cost to implement AI for a small business?",
@@ -53,6 +54,53 @@ interface FAQProps {
     description?: string;
 }
 
+/**
+ * Answers are authored with inline markdown links. Render them as real anchors —
+ * printing the raw `[label](href)` source to the page loses the internal link
+ * entirely and reads as an unfinished page.
+ */
+const MARKDOWN_LINK = /\[([^\]]+)\]\(([^)]+)\)/g;
+
+/**
+ * Plain-text form for the FAQ JSON-LD. Answer engines read this schema directly,
+ * so it must not carry raw markdown syntax.
+ */
+function toPlainText(answer: string) {
+    return answer.replace(MARKDOWN_LINK, (_full, label: string) => label.replace(/^→\s*/, "")).trim();
+}
+
+function renderAnswer(answer: string) {
+    const nodes: React.ReactNode[] = [];
+    let cursor = 0;
+
+    for (const match of answer.matchAll(MARKDOWN_LINK)) {
+        const [full, label, href] = match;
+        const start = match.index ?? 0;
+
+        if (start > cursor) {
+            nodes.push(answer.slice(cursor, start));
+        }
+
+        nodes.push(
+            <Link
+                key={`${href}-${start}`}
+                href={href}
+                className="text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+            >
+                {label.replace(/^→\s*/, "")}
+            </Link>
+        );
+
+        cursor = start + full.length;
+    }
+
+    if (cursor < answer.length) {
+        nodes.push(answer.slice(cursor));
+    }
+
+    return nodes;
+}
+
 export function FAQ({ items = homepageFaqs, title = "Common Questions", description = "Clear answers about how we help you turn AI into a competitive advantage." }: FAQProps) {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -64,7 +112,7 @@ export function FAQ({ items = homepageFaqs, title = "Common Questions", descript
             "name": faq.question,
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": faq.answer
+                "text": toPlainText(faq.answer)
             }
         }))
     };
@@ -89,29 +137,35 @@ export function FAQ({ items = homepageFaqs, title = "Common Questions", descript
                     {items.map((faq, index) => (
                         <div
                             key={index}
-                            className="border border-white/5 rounded-2xl bg-white/5 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-white/10"
+                            className="border border-white/5 rounded-2xl bg-white/5 backdrop-blur-sm overflow-hidden transition-colors duration-200 hover:border-white/10"
                         >
                             <button
                                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                                className="w-full flex items-center justify-between p-6 text-left"
+                                className="w-full flex items-center justify-between p-6 text-left cursor-pointer transition-colors duration-150 hover:bg-white/[0.03] active:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-2xl"
                                 aria-expanded={openIndex === index}
                             >
                                 <span className="text-lg font-medium text-white pr-8">
                                     {faq.question}
                                 </span>
-                                <span className={`flex-shrink-0 text-primary transition-transform duration-300 ${openIndex === index ? "rotate-180" : ""}`}>
-                                    {openIndex === index ? <Minus className="w-6 h-6" /> : <Plus className="w-6 h-6" />}
-                                </span>
+                                {/* One glyph that rotates + into ×: continuous motion reads as the
+                                    same object changing state, where swapping icons reads as a cut. */}
+                                <motion.span
+                                    className="flex-shrink-0 text-primary"
+                                    animate={{ rotate: openIndex === index ? 45 : 0 }}
+                                    transition={{ type: "spring", bounce: 0, duration: 0.35 }}
+                                >
+                                    <Plus className="w-6 h-6" />
+                                </motion.span>
                             </button>
 
                             <motion.div
                                 initial={false}
                                 animate={{ height: openIndex === index ? "auto" : 0, opacity: openIndex === index ? 1 : 0 }}
-                                transition={{ duration: 0.3, ease: "easeInOut" }}
+                                transition={{ type: "spring", bounce: 0, duration: 0.35, opacity: { duration: 0.2 } }}
                                 className="overflow-hidden"
                             >
                                 <div className="p-6 pt-0 text-gray-400 leading-relaxed border-t border-white/5">
-                                    {faq.answer}
+                                    {renderAnswer(faq.answer)}
                                 </div>
                             </motion.div>
                         </div>

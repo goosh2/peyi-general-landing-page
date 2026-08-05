@@ -72,10 +72,11 @@ export function Navbar() {
                         <AnimatePresence>
                             {solutionsOpen && (
                                 <motion.div
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: 10 }}
-                                    transition={{ duration: 0.2 }}
+                                    initial={{ opacity: 0, y: -6, scale: 0.97 }}
+                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                    exit={{ opacity: 0, y: -6, scale: 0.97 }}
+                                    transition={{ type: "spring", bounce: 0, duration: 0.3 }}
+                                    style={{ transformOrigin: "top left" }}
                                     className="absolute top-full left-0 mt-2 w-64 bg-[#0B0F19]/95 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl py-2"
                                 >
                                     <Link href="/ai-customer-service-small-business" className="block px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
@@ -125,10 +126,11 @@ export function Navbar() {
                         <AnimatePresence>
                             {resourcesOpen && (
                                 <motion.div
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: 10 }}
-                                    transition={{ duration: 0.2 }}
+                                    initial={{ opacity: 0, y: -6, scale: 0.97 }}
+                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                    exit={{ opacity: 0, y: -6, scale: 0.97 }}
+                                    transition={{ type: "spring", bounce: 0, duration: 0.3 }}
+                                    style={{ transformOrigin: "top center" }}
                                     className="absolute top-full text-center left-1/2 -translate-x-1/2 w-48 bg-[#0B0F19] border border-white/10 rounded-xl shadow-2xl p-2 mt-1 backdrop-blur-3xl"
                                 >
                                     <DropdownItem href="/ai-readiness-quiz" onNavigate={closeDropdowns}>AI Readiness Quiz</DropdownItem>

@@ -58,10 +58,13 @@ export function Hero() {
                         <Button
                             size="xl"
                             variant="heroOutline"
-                            className="group border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 text-white transition-all duration-300"
+                            className="group border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 text-white"
+                            asChild
                         >
-                            <Calendar className="mr-2 w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
-                            Book AI Audit
+                            <Link href="/book">
+                                <Calendar className="mr-2 w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
+                                Book AI Audit
+                            </Link>
                         </Button>
                     </div>
 

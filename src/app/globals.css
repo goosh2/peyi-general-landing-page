@@ -52,6 +52,12 @@
   --animate-accordion-up: accordion-up 0.2s ease-out;
   --animate-pulse-slow: pulse-slow 4s ease-in-out infinite;
   --animate-float: float 6s ease-in-out infinite;
+  --animate-gradient: gradient-shift 6s ease infinite;
+
+  /* Spring-like easings. Critically damped (no overshoot) is the house default;
+     the bounce curve is reserved for momentum-driven interactions. */
+  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-spring-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   @keyframes accordion-down {
     from {
@@ -94,6 +100,18 @@
 
     50% {
       transform: translateY(-20px)
+    }
+  }
+
+  @keyframes gradient-shift {
+
+    0%,
+    100% {
+      background-position: 0% 50%
+    }
+
+    50% {
+      background-position: 100% 50%
     }
   }
 }
@@ -141,6 +159,40 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* Optical sizing: tracking is size-specific, never one fixed value.
+     Large display type reads too loose as it grows, so tighten it;
+     body copy sits near zero. Leading tightens as size increases. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-optical-sizing: auto;
+  }
+
+  h1 {
+    letter-spacing: -0.028em;
+    line-height: 1.05;
+  }
+
+  h2 {
+    letter-spacing: -0.022em;
+    line-height: 1.12;
+  }
+
+  h3 {
+    letter-spacing: -0.014em;
+    line-height: 1.2;
+  }
+
+  h4 {
+    letter-spacing: -0.008em;
+  }
+
+  /* Small uppercase labels are the one case that wants positive tracking. */
+  .text-xs {
+    letter-spacing: 0.01em;
+  }
 }
 
 @layer utilities {
@@ -168,5 +220,77 @@
 
   .animation-delay-2000 {
     animation-delay: 2s;
+  }
+
+  /* Scroll edge effect: content fades where it meets floating chrome,
+     instead of a hard 1px divider under the sticky header. */
+  .scroll-edge-mask {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 2.5rem);
+    mask-image: linear-gradient(to bottom, transparent 0, black 2.5rem);
+  }
+}
+
+/* Reduced motion: keep feedback, remove vestibular motion.
+   Cross-fades survive; travel, parallax, overshoot and the slow looping
+   ambient animations (float runs at ~0.17Hz, inside the flagged band) do not. */
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.15s !important;
+    transition-timing-function: ease !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Motion that conveys nothing on its own is removed outright. */
+  .animate-float,
+  .animate-pulse-slow,
+  .animate-gradient {
+    animation: none !important;
+  }
+
+  /* Drop press/hover scaling — opacity still confirms the interaction. */
+  .hover\:scale-105:hover,
+  .active\:scale-95:active,
+  .active\:scale-\[0\.98\]:active {
+    transform: none !important;
+  }
+}
+
+/* Reduced transparency: translucent surfaces become solid and legible. */
+@media (prefers-reduced-transparency: reduce) {
+
+  .glass-card {
+    background-color: hsl(var(--card));
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-color: hsl(var(--border));
+  }
+
+  .hero-glow {
+    display: none;
+  }
+}
+
+/* Increased contrast: near-solid surfaces with defined borders. */
+@media (prefers-contrast: more) {
+
+  :root {
+    --muted-foreground: 220 10% 78%;
+    --border: 220 15% 42%;
+  }
+
+  .glass-card {
+    background-color: hsl(var(--card));
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1px solid hsl(var(--border));
   }
 }
