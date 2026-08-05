@@ -5,7 +5,7 @@ const solutions = [
     {
         icon: MessageSquare,
         title: "AI Customer Service",
-        description: "Deploy intelligent chatbots and voice agents that handle 80% of support queries instantly, 24/7.",
+        description: "Deploy intelligent chatbots and voice agents that answer routine questions instantly, 24/7.",
         href: "/ai-customer-service-small-business"
     },
     {
@@ -23,7 +23,7 @@ const solutions = [
     {
         icon: Briefcase,
         title: "Operations Automation",
-        description: "Streamline invoicing, scheduling, and data entry. Reduce operational overhead by 40%.",
+        description: "Streamline invoicing, scheduling, and data entry so admin stops eating your week.",
         href: "/ai-operations-automation"
     }
 ];

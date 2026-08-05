@@ -245,7 +245,7 @@ export default function RealEstatePage() {
                         <div>
                             <h2 className="text-3xl font-bold text-white mb-6">Save 15+ Hours Per Week</h2>
                             <p className="text-muted-foreground mb-8">
-                                Most agents spend 80% of their time on low-value admin tasks. AI reverses this, letting you spend 80% of your time with clients.
+                                Most agents lose the bulk of their week to low-value admin. AI reverses that, so your time goes back to clients.
                             </p>
                             <ul className="space-y-4">
                                 {[

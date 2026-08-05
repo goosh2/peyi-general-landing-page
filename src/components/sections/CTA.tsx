@@ -16,17 +16,20 @@ export function CTA() {
                     Let&apos;s talk about your AI challenges. No pressure, no fluff—just a conversation about what&apos;s possible for your business.
                 </p>
 
+                {/* Booking the audit is the conversion this page exists for, so it
+                    carries the primary treatment; the quiz stays as the lighter
+                    alternative for people who aren't ready to book yet. */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                     <Button size="xl" variant="hero" className="group" asChild>
-                        <Link href="/ai-readiness-quiz">
-                            Take AI Readiness Quiz
+                        <Link href="/book">
+                            <Calendar className="mr-2 w-5 h-5" />
+                            Book AI Audit
                             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </Link>
                     </Button>
                     <Button size="xl" variant="heroOutline" asChild>
-                        <Link href="/book">
-                            <Calendar className="mr-2 w-5 h-5" />
-                            Book AI Audit
+                        <Link href="/ai-readiness-quiz">
+                            Take AI Readiness Quiz
                         </Link>
                     </Button>
                 </div>

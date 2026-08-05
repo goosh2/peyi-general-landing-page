@@ -13,7 +13,9 @@ const personas = [
         icon: Building2,
         href: "/ai-for-real-estate-agents",
         cta: "Explore Real Estate AI",
-        gradient: "from-blue-500/20 to-purple-500/20"
+        // Icon tints walk the brand gradient (orange → pink → purple, closing on the
+        // teal logo accent) so the three cards read as one family.
+        gradient: "from-orange-500/20 to-pink-500/20"
     },
     {
         title: "Service-Based Businesses",
@@ -21,7 +23,7 @@ const personas = [
         icon: Users,
         href: "/ai-customer-service-small-business",
         cta: "See Service Solutions",
-        gradient: "from-emerald-500/20 to-teal-500/20"
+        gradient: "from-pink-500/20 to-purple-500/20"
     },
     {
         title: "Small Business Owners",
@@ -29,7 +31,7 @@ const personas = [
         icon: Briefcase,
         href: "/ai-lead-generation-small-business",
         cta: "Explore Lead Gen AI",
-        gradient: "from-orange-500/20 to-pink-500/20"
+        gradient: "from-purple-500/20 to-teal-500/20"
     }
 ];
 

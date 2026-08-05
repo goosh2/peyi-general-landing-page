@@ -96,7 +96,7 @@ export default function LeadGenPage() {
                 <section className="mb-24 max-w-4xl">
                     <h2 className="text-2xl font-bold text-white mb-6">The &quot;Speed to Lead&quot; Advantage</h2>
                     <p className="text-lg text-muted-foreground leading-relaxed border-l-4 border-primary pl-6">
-                        In modern sales, the first vendor to respond wins 70% of the deals. AI gives you a chemically unfair advantage by responding to every lead within seconds—whether it&apos;s 2 PM or 2 AM—qualifying them, and booking the appointment before your competitor even opens their email.
+                        In modern sales, the first vendor to respond usually wins the deal. AI gives you an unfair advantage by responding to every lead within seconds—whether it&apos;s 2 PM or 2 AM—qualifying them, and booking the appointment before your competitor even opens their email.
                     </p>
                 </section>
 

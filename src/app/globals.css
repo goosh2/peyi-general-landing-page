@@ -168,6 +168,13 @@
   h3,
   h4 {
     font-optical-sizing: auto;
+    /* Balance headline line lengths so a single short word never strands
+       on its own line. */
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   h1 {

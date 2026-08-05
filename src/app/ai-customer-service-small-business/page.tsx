@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description: "Automate your customer support without losing the human touch. Implement AI chatbots and voice agents to answer questions 24/7.",
     openGraph: {
         title: "AI Customer Service Solutions for Small Business",
-        description: "Reduce support tickets by 80% with AI automation. 24/7 answers, instant resolution, and happy customers.",
+        description: "Cut your support load with AI automation. 24/7 answers, instant resolution, and happy customers.",
         type: "article",
         url: "https://www.peyiai.com/ai-customer-service-small-business",
         authors: ["Peyi Solutions"],
@@ -29,7 +29,7 @@ const customerServiceFaqs = [
     },
     {
         question: "Can the AI handle support tickets automatically?",
-        answer: "Yes. By connecting to your knowledge base, the AI can resolve up to 80% of common tier-1 tickets (like 'reset password', 'shipping status', or 'pricing') instantly without human intervention."
+        answer: "Yes. By connecting to your knowledge base, the AI can resolve common tier-1 tickets (like 'reset password', 'shipping status', or 'pricing') instantly without human intervention, and escalate anything it isn't confident about."
     },
     {
         question: "Does it work in languages other than English?",
@@ -81,7 +81,7 @@ export default function CustomerServicePage() {
             <PageHeader
                 title="AI Customer Service for Small Business"
                 gradientWord="Support Automation"
-                description="Provide instant, 24/7 support to your customers while reducing your team's workload by 80%."
+                description="Provide instant, 24/7 support to your customers while taking the repetitive load off your team."
             />
 
             <div className="container mx-auto px-6 mb-24">
@@ -96,7 +96,7 @@ export default function CustomerServicePage() {
                 <section className="mb-24 max-w-4xl">
                     <h2 className="text-2xl font-bold text-white mb-6">Automate Support Without Losing the Human Touch</h2>
                     <p className="text-lg text-muted-foreground leading-relaxed border-l-4 border-primary pl-6">
-                        AI Customer Service isn&apos;t about replacing your support team—it&apos;s about removing the repetitive &quot;busy work&quot; so they can focus on complex issues. By implementing intelligent chatbots and voice agents, you can answer 80% of questions instantly, 24/7, improving customer satisfaction and freeing up your staff.
+                        AI Customer Service isn&apos;t about replacing your support team—it&apos;s about removing the repetitive &quot;busy work&quot; so they can focus on complex issues. By implementing intelligent chatbots and voice agents, you can answer routine questions instantly, 24/7, improving customer satisfaction and freeing up your staff.
                     </p>
                 </section>
 

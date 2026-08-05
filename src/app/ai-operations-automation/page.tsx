@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description: "Streamline your back office. Automate invoicing, data entry, and scheduling so you can focus on strategy.",
     openGraph: {
         title: "AI Operations Automation: The Backbone of Scale",
-        description: "Reduce overhead by 40%. Automate the boring stuff with AI.",
+        description: "Cut operational overhead. Automate the boring stuff with AI.",
         type: "article",
         url: "https://www.peyiai.com/ai-operations-automation",
         authors: ["Peyi Solutions"],
@@ -96,7 +96,7 @@ export default function OpsPage() {
                 <section className="mb-24 max-w-4xl">
                     <h2 className="text-2xl font-bold text-white mb-6">Operations Eating Your Profit?</h2>
                     <p className="text-lg text-muted-foreground leading-relaxed border-l-4 border-primary pl-6">
-                        As you scale, the &quot;boring&quot; work scales with you. Invoicing, scheduling, compliance, and data entry can quickly consume 40% of your revenue in overhead. AI Operations Automation reverses this trend—allowing you to handle 10x the volume without adding a single new admin staff member.
+                        As you scale, the &quot;boring&quot; work scales with you. Invoicing, scheduling, compliance, and data entry quietly eat a growing share of your revenue in overhead. AI Operations Automation reverses this trend—letting you handle far more volume without adding a single new admin staff member.
                     </p>
                 </section>
 

@@ -316,7 +316,10 @@ export function Hero3D() {
     }, []);
 
     return (
-        <div ref={containerRef} className="absolute inset-0 z-0 pointer-events-none md:pointer-events-auto overflow-hidden">
+        // Below md the grid collapses to one column and this canvas sits directly
+        // behind the copy, so it is pushed back to stay a background rather than
+        // competing with the text it sits under.
+        <div ref={containerRef} className="absolute inset-0 z-0 pointer-events-none md:pointer-events-auto overflow-hidden opacity-30 md:opacity-100 motion-reduce:opacity-20">
             <canvas ref={canvasRef} className="w-full h-full block" />
         </div>
     );

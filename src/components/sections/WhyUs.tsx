@@ -57,7 +57,7 @@ export function WhyUs() {
                                 { icon: Hammer, step: "03", title: "Build", desc: "We build, test, and deploy the systems with your team—so they stick." }
                             ].map((item, idx) => (
                                 <div key={idx} className="relative flex gap-5">
-                                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center text-white shadow-lg shadow-primary/20 z-10">
+                                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[image:var(--gradient-ai)] flex items-center justify-center text-white shadow-lg shadow-primary/20 z-10">
                                         <item.icon className="w-5 h-5" />
                                     </div>
                                     <div className="pt-1">

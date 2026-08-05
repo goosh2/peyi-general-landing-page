@@ -8,7 +8,7 @@ export default function QuizPage() {
             <header className="fixed top-0 left-0 right-0 p-6 z-50 pointer-events-none">
                 <div className="container mx-auto flex justify-between items-center pointer-events-auto">
                     <Link href="/" className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded bg-gradient-primary flex items-center justify-center text-white font-bold font-heading">
+                        <div className="w-8 h-8 rounded bg-[image:var(--gradient-ai)] flex items-center justify-center text-white font-bold font-heading">
                             P
                         </div>
                         <span className="font-heading font-bold hidden sm:inline-block">Peyi Solutions</span>

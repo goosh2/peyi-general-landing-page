@@ -24,20 +24,31 @@ export function Hero() {
             {/* 3D Scene */}
             <Hero3D />
 
+            {/* Legibility scrim. On small screens the 3D scene sits directly behind the
+                copy; this keeps text on a settled dark ground instead of over moving
+                geometry. It clears on md, where the scene moves into its own column. */}
+            <div
+                className="absolute inset-0 z-[5] pointer-events-none md:hidden"
+                style={{
+                    background:
+                        "linear-gradient(to bottom, rgba(11,15,25,0.92) 0%, rgba(11,15,25,0.82) 55%, rgba(11,15,25,0.6) 100%)"
+                }}
+            />
+
             {/* Content */}
             <div className="container px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center h-full">
                 <div className="flex flex-col gap-8 max-w-2xl">
                     {/* Headline */}
                     <div className="space-y-4">
-                        <h1 className="font-heading font-bold text-5xl md:text-7xl leading-[1.1] tracking-tight text-white">
+                        {/* text-balance instead of a hard <br>: the forced break left
+                            "For" orphaned on its own line at desktop widths. */}
+                        <h1 className="font-heading font-bold text-5xl md:text-7xl leading-[1.1] tracking-tight text-white text-balance">
                             Turn AI Into{" "}
                             <span className="text-transparent bg-clip-text gradient-text">
-                                Profit For
-                                <br />
-                                Your Business
+                                Profit For Your Business
                             </span>
                         </h1>
-                        <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                        <p className="text-xl text-gray-400 max-w-2xl leading-relaxed text-pretty">
                             Overwhelmed by AI hype? We give you a clear roadmap to start small, scale fast, and see real returns. No jargon, just results.
                         </p>
                     </div>
