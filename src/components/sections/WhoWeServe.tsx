@@ -43,14 +43,13 @@ export function WhoWeServe() {
             <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] opacity-20 pointer-events-none" />
 
             <div className="container px-6 mx-auto relative z-10">
-                <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                    <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl tracking-tight">
-                        AI Implementation for the Businesses <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-400">
-                            That Need It Most
-                        </span>
+                <div className="text-center max-w-3xl mx-auto mb-16">
+                    <p className="type-eyebrow mb-4">Who we serve</p>
+                    <h2 className="type-section font-heading text-white mb-5">
+                        AI implementation for the businesses that{" "}
+                        <span className="accent-word">need it most</span>
                     </h2>
-                    <p className="text-lg text-muted-foreground">
+                    <p className="text-lg text-muted-foreground text-pretty">
                         We don&apos;t just talk about AI. We build the systems that save you time and make you money.
                     </p>
                 </div>
@@ -64,7 +63,7 @@ export function WhoWeServe() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                         >
-                            <Card className="h-full border-white/5 bg-white/5 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 group flex flex-col">
+                            <Card className="h-full surface-raised surface-interactive group flex flex-col">
                                 <CardHeader>
                                     <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${persona.gradient} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 border border-white/10`}>
                                         <persona.icon className="w-6 h-6 text-white" />

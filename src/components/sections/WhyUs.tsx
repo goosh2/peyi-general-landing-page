@@ -2,15 +2,19 @@ import { Wrench, Target, Rocket, Search, Map, Hammer } from "lucide-react";
 
 export function WhyUs() {
     return (
-        <section id="why-us" className="py-24 px-6">
+        // Full-bleed band: this is the emotional beat of the page, so it breaks the
+        // container and interrupts the section rhythm rather than being one more
+        // centred block in the stack.
+        <section id="why-us" className="band py-32 px-6">
             <div className="container mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
                 {/* Text Column */}
                 <div>
-                    <h2 className="font-heading font-bold text-4xl md:text-5xl mb-6">
-                        Why Partner With <span className="gradient-text">Peyi Solutions</span>
+                    <p className="type-eyebrow mb-4">Why Peyi</p>
+                    <h2 className="type-section font-heading text-white mb-6">
+                        No hype. Just <span className="accent-word">working systems</span>.
                     </h2>
-                    <p className="text-lg text-muted-foreground mb-12 max-w-lg">
+                    <p className="text-lg text-muted-foreground mb-12 max-w-lg text-pretty">
                         We&apos;re not consultants who disappear after a report. We&apos;re your AI implementation partner.
                     </p>
 
@@ -39,7 +43,7 @@ export function WhyUs() {
                     <div className="absolute -top-12 -right-12 w-64 h-64 bg-primary/20 rounded-full blur-[80px]" />
                     <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-secondary/20 rounded-full blur-[60px]" />
 
-                    <div className="relative glass-card rounded-3xl p-8 md:p-12 overflow-hidden border-white/10">
+                    <div className="relative surface-floating rounded-3xl p-8 md:p-12 overflow-hidden">
                         {/* Header Row */}
                         <div className="mb-8">
                             <div className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-1">How We Work</div>

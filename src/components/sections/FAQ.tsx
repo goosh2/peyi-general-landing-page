@@ -118,17 +118,20 @@ export function FAQ({ items = homepageFaqs, title = "Common Questions", descript
     };
 
     return (
-        <section className="py-24 bg-background relative overflow-hidden" id="faq">
+        // Denser padding and a narrower measure than the rest of the page: this is
+        // reference material, read at the visitor's own pace, not a statement beat.
+        <section className="py-16 md:py-20 bg-background relative overflow-hidden" id="faq">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
-            <div className="container mx-auto px-4 max-w-4xl relative z-10">
-                <div className="text-center mb-16 space-y-4">
-                    <h2 className="text-3xl md:text-5xl font-bold font-heading">
+            <div className="container mx-auto px-4 max-w-3xl relative z-10">
+                <div className="text-center mb-12">
+                    <p className="type-eyebrow mb-4">Answers</p>
+                    <h2 className="type-section font-heading text-white mb-4">
                         {title}
                     </h2>
-                    <p className="text-gray-400 max-w-2xl mx-auto">
+                    <p className="text-gray-400 max-w-xl mx-auto text-pretty">
                         {description}
                     </p>
                 </div>

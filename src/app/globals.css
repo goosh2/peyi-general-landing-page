@@ -218,6 +218,63 @@
     box-shadow: 0 4px 24px hsl(0, 0%, 0%, 0.4);
   }
 
+  /* ---------------------------------------------------------------
+     Material tiers. Weight encodes importance: heavier, blurrier and
+     more shadowed surfaces sit "closer" to the reader. A section
+     should contain at most one `surface-floating` element, or the
+     hierarchy flattens again.
+     Rule: never nest one translucent surface inside another.
+     --------------------------------------------------------------- */
+
+  /* Tier 2 — content cards, FAQ rows. Opaque, cheap, recedes. */
+  .surface-raised {
+    background-color: hsl(var(--card) / 0.6);
+    border: 1px solid hsl(0 0% 100% / 0.06);
+    box-shadow: 0 1px 2px hsl(0 0% 0% / 0.4);
+  }
+
+  /* Tier 3 — the one important thing per section. */
+  .surface-floating {
+    background-color: hsl(var(--card) / 0.55);
+    backdrop-filter: blur(28px) saturate(160%);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+    /* Brighter top edge reads as light catching a real material. */
+    border: 1px solid hsl(0 0% 100% / 0.08);
+    border-top-color: hsl(0 0% 100% / 0.16);
+    box-shadow:
+      0 24px 60px -20px hsl(0 0% 0% / 0.7),
+      0 2px 8px hsl(0 0% 0% / 0.35);
+  }
+
+  /* Physical response: lift on hover, compress on press. Spring-eased,
+     compositor-only properties. */
+  .surface-interactive {
+    transition:
+      transform 240ms var(--ease-spring),
+      border-color 240ms ease,
+      box-shadow 240ms ease;
+    will-change: transform;
+  }
+
+  .surface-interactive:hover {
+    transform: translateY(-4px);
+    border-color: hsl(0 0% 100% / 0.14);
+    box-shadow: 0 18px 40px -18px hsl(0 0% 0% / 0.75);
+  }
+
+  .surface-interactive:active {
+    transform: translateY(-1px) scale(0.995);
+    transition-duration: 100ms;
+  }
+
+  /* Full-bleed band that breaks the container to interrupt page rhythm. */
+  .band {
+    background:
+      radial-gradient(120% 100% at 50% 0%, hsl(var(--card) / 0.9) 0%, hsl(var(--background)) 70%);
+    border-top: 1px solid hsl(0 0% 100% / 0.05);
+    border-bottom: 1px solid hsl(0 0% 100% / 0.05);
+  }
+
   .hero-glow {
     @apply absolute rounded-full pointer-events-none;
     width: 600px;
@@ -227,6 +284,44 @@
 
   .animation-delay-2000 {
     animation-delay: 2s;
+  }
+
+  /* ---------------------------------------------------------------
+     Display type. Big type only reads as big next to small type, so
+     these run deliberately far above body copy rather than a step or
+     two up from it.
+     --------------------------------------------------------------- */
+
+  .type-display {
+    font-size: clamp(2.75rem, 8vw, 6.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    font-weight: 700;
+  }
+
+  .type-section {
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    line-height: 1.06;
+    letter-spacing: -0.028em;
+    font-weight: 700;
+  }
+
+  /* Small, wide, quiet label that sits above a section heading. Gives
+     the eye a rung between body copy and display type. */
+  .type-eyebrow {
+    font-size: 0.75rem;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* The single accent word in a section heading. Solid colour, not the
+     three-stop gradient — the gradient is reserved for the hero and
+     primary actions so it stays a signature. */
+  .accent-word {
+    color: var(--color-brand-orange);
   }
 
   /* Scroll edge effect: content fades where it meets floating chrome,
