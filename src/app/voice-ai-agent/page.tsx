@@ -7,7 +7,7 @@ import { ComparisonTable } from "@/components/ui/comparison-table";
 import { FAQ } from "@/components/sections/FAQ";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { CheckCircle2, Bot, Mic, MessageSquare, PhoneMissed, CalendarCheck, ShieldCheck, BadgeCheck, PhoneCall } from "lucide-react";
+import { CheckCircle2, MessageSquare, PhoneMissed, CalendarCheck, PhoneCall } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "Self-Selling Voice AI Agent | Peyi Solutions",
@@ -86,11 +86,11 @@ export default function VoiceAIPage() {
                 {/* Direct Answer / Intro */}
                 <section className="mb-24 flex flex-col md:flex-row gap-12 items-center">
                     <div className="flex-1">
-                        <h2 className="text-3xl font-bold text-white mb-6">Right now, you could be losing sales without even knowing it.</h2>
+                        <h2 className="font-heading text-3xl font-bold text-ink mb-6">Right now, you could be losing sales without even knowing it.</h2>
                         <p className="text-lg text-muted-foreground leading-relaxed border-l-4 border-primary pl-6 mb-6">
                             Every missed call is a lead that was ready to work with you...gone. A new lead calls someone else. A current client feels ignored. A deal slips away. How much longer can you afford to let business slip away?
                         </p>
-                        <ul className="space-y-4 text-gray-300">
+                        <ul className="space-y-4 text-body">
                             <li className="flex items-start gap-3">
                                 <PhoneCall className="w-6 h-6 text-primary shrink-0" />
                                 <span><strong>Peyi AI picks up every time:</strong> Ensuring your business feels approachable and professional.</span>
@@ -105,34 +105,32 @@ export default function VoiceAIPage() {
                             </li>
                         </ul>
                     </div>
-                    <div className="flex-1 bg-white/5 p-8 rounded-3xl border border-white/10 text-center flex flex-col justify-center items-center h-full">
-                        <PhoneMissed className="w-16 h-16 text-red-400 mb-6" />
-                        <h3 className="text-2xl font-bold text-white mb-4">Want to try it yourself right now?</h3>
-                        <p className="text-gray-400 mb-8 max-w-sm">
+                    <div className="flex-1 bg-sand/60 p-8 rounded-3xl border border-gold-soft text-center flex flex-col justify-center items-center h-full">
+                        <PhoneMissed className="w-16 h-16 text-amber mb-6" />
+                        <h3 className="font-heading text-2xl font-bold text-ink mb-4">Want to try it yourself right now?</h3>
+                        <p className="text-body mb-8 max-w-sm">
                             Listen as Peyi AI answers calls like a pro. Call our demo number to experience it live.
                         </p>
-                        <a href="tel:9548334829">
-                            <Button size="lg" className="rounded-full px-8 text-xl w-full bg-white text-black hover:bg-gray-200 font-bold mb-4">
-                                Call (954) 833-4829
-                            </Button>
-                        </a>
+                        <Button size="lg" variant="hero" className="w-full mb-4" asChild>
+                            <a href="tel:9548334829">Call (954) 833-4829</a>
+                        </Button>
                         <p className="text-xs text-muted-foreground uppercase tracking-widest font-bold">Live Interactive Demo</p>
                     </div>
                 </section>
 
                 {/* How It Works */}
                 <section className="mb-24">
-                    <h2 className="text-3xl font-bold text-white mb-12 text-center">Here&apos;s How It Works</h2>
+                    <h2 className="font-heading text-3xl font-bold text-ink mb-12 text-center">Here&apos;s How It Works</h2>
                     <div className="grid md:grid-cols-3 gap-8">
                         {[
                             { step: "STEP 1", title: "We Train Your Peyi AI", desc: "Share your FAQs, common scripts, and preferences. Peyi AI learns your style and business inside-out." },
                             { step: "STEP 2", title: "Peyi AI Handles Your Calls", desc: "Calls are answered promptly and professionally. Call recordings and transcripts are sent directly to you, so you're always informed." },
                             { step: "STEP 3", title: "Focus on Selling", desc: "Scheduling? Done. Initial lead qualification? Covered. Peyi AI does the rest while you focus on growth." }
                         ].map((phase, i) => (
-                            <div key={i} className="relative p-8 rounded-2xl border border-white/10 bg-[#0B0F19] hover:bg-white/5 transition-colors">
-                                <span className="absolute top-4 right-4 text-5xl font-bold text-white/5 font-heading block">{phase.step.replace('STEP ', '')}</span>
+                            <div key={i} className="relative p-8 rounded-2xl border border-gold-soft bg-paper hover:bg-sand/70 transition-colors">
+                                <span className="absolute top-4 right-4 text-5xl font-bold text-quiet/70 font-heading block">{phase.step.replace('STEP ', '')}</span>
                                 <div className="text-primary font-bold text-sm tracking-widest mb-4 uppercase">{phase.step}</div>
-                                <h3 className="text-xl font-bold text-white mb-4 relative z-10">{phase.title}</h3>
+                                <h3 className="font-heading text-xl font-bold text-ink mb-4 relative z-10">{phase.title}</h3>
                                 <p className="text-muted-foreground relative z-10 leading-relaxed">{phase.desc}</p>
                             </div>
                         ))}
@@ -141,18 +139,18 @@ export default function VoiceAIPage() {
 
                 {/* Bundle / Pricing */}
                 <section className="mb-24">
-                    <div className="bg-gradient-to-br from-primary/20 to-purple-500/20 p-1 rounded-3xl max-w-5xl mx-auto">
-                        <div className="bg-[#0B0F19] p-8 md:p-12 rounded-[22px] border border-white/5">
+                    <div className="bg-gradient-to-br from-primary/20 to-brand-purple/20 p-1 rounded-3xl max-w-5xl mx-auto">
+                        <div className="bg-paper p-8 md:p-12 rounded-[22px] border border-gold-soft">
                             <div className="text-center mb-10">
-                                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">The &quot;Peyi AI&quot; Bundle</h2>
+                                <h2 className="font-heading text-3xl md:text-4xl font-bold text-ink mb-4">The &quot;Peyi AI&quot; Bundle</h2>
                                 <p className="text-xl text-primary font-heading font-medium">Your Complete Client-Handling Solution</p>
-                                <div className="mt-6 inline-block bg-white/10 px-6 py-2 rounded-full border border-white/10">
-                                    <span className="text-gray-300">Just </span>
-                                    <span className="text-2xl font-bold text-white">$299/Month</span>
-                                    <span className="text-sm text-gray-400"> (with a one-time $500 setup fee)</span>
+                                <div className="mt-6 inline-block bg-sand px-6 py-2 rounded-full border border-gold-soft">
+                                    <span className="text-body">Just </span>
+                                    <span className="text-2xl font-bold text-ink">$299/Month</span>
+                                    <span className="text-sm text-body"> (with a one-time $500 setup fee)</span>
                                 </div>
-                                <p className="mt-4 text-gray-400 text-sm max-w-2xl mx-auto">
-                                    With Peyi AI, you get a complete client-handling system which you&apos;d typically pay nearly $4,000 per month for. It&apos;s like having an entire team behind you without the extra hires!
+                                <p className="mt-4 text-body text-sm max-w-2xl mx-auto">
+                                    With Peyi AI, you get a complete client-handling system — like having a team behind you, without the extra hires.
                                 </p>
                             </div>
 
@@ -170,20 +168,18 @@ export default function VoiceAIPage() {
                                     <div key={i} className="flex gap-4">
                                         <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-0.5" />
                                         <div>
-                                            <h4 className="text-white font-bold mb-1">{feature.title}</h4>
-                                            <p className="text-gray-400 text-sm leading-relaxed">{feature.desc}</p>
+                                            <h4 className="text-ink font-bold mb-1">{feature.title}</h4>
+                                            <p className="text-body text-sm leading-relaxed">{feature.desc}</p>
                                         </div>
                                     </div>
                                 ))}
                             </div>
 
                             <div className="text-center">
-                                <Link href="/book">
-                                    <Button size="lg" className="rounded-full px-12 text-lg h-14 bg-primary hover:bg-primary/90 text-background font-bold shadow-[0_0_20px_rgba(var(--primary),0.3)]">
-                                        START WORKING WITH PEYI AI NOW
-                                    </Button>
-                                </Link>
-                                <p className="mt-4 text-xs text-gray-500">Less than the cost of 1 employee. Definitely less than losing your next appointment.</p>
+                                <Button size="lg" variant="hero" asChild>
+                                    <Link href="/book">Book AI Audit</Link>
+                                </Button>
+                                <p className="mt-4 text-xs text-quiet">Less than the cost of 1 employee. Definitely less than losing your next appointment.</p>
                             </div>
                         </div>
                     </div>
@@ -191,7 +187,7 @@ export default function VoiceAIPage() {
 
                 {/* Comparison Table */}
                 <section className="mb-24 max-w-5xl mx-auto text-center">
-                    <h2 className="text-3xl font-bold text-white mb-12">Compare Your Options</h2>
+                    <h2 className="font-heading text-3xl font-bold text-ink mb-12">Compare Your Options</h2>
                     <ComparisonTable
                         headers={["Features", "Traditional Voicemail", "Answering Service", "Peyi AI"]}
                         rowHeaders={["Availability", "Client Experience", "Scheduling", "Overall Value"]}
@@ -213,21 +209,17 @@ export default function VoiceAIPage() {
 
                 {/* Final CTA */}
                 <section className="text-center py-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">You Don&apos;t Need To Be A Tech Wizard</h2>
+                    <h2 className="font-heading text-3xl md:text-4xl font-bold text-ink mb-6">You Don&apos;t Need To Be A Tech Wizard</h2>
                     <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
                         Simple, straightforward, and totally covered. We handle the setup so you can focus on doing what you do best.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link href="/book">
-                            <Button size="lg" className="rounded-full px-8 text-lg h-14 bg-white text-black hover:bg-gray-200 font-bold">
-                                Book AI Audit
-                            </Button>
-                        </Link>
-                        <a href="tel:9548334829">
-                            <Button variant="heroOutline" size="lg" className="rounded-full px-8 text-lg h-14">
-                                Test the AI (954) 833-4829
-                            </Button>
-                        </a>
+                        <Button size="lg" variant="hero" asChild>
+                            <Link href="/book">Book AI Audit</Link>
+                        </Button>
+                        <Button size="lg" variant="heroOutline" className="bg-paper" asChild>
+                            <a href="tel:9548334829">Test the AI: (954) 833-4829</a>
+                        </Button>
                     </div>
                 </section>
             </div>

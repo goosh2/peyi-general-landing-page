@@ -1,4 +1,6 @@
 import { X } from "lucide-react";
+import { PointerField } from "@/components/art/PointerField";
+import { PalmCluster, TREE } from "@/components/art/Palms";
 
 /**
  * The brand claims anti-hype everywhere and demonstrates it nowhere. Naming the
@@ -26,11 +28,21 @@ const cases = [
 
 export function NotTheAnswer() {
     return (
-        <section className="band py-32 px-6 relative overflow-hidden">
+        // #why-us: this section is the strongest argument for choosing Peyi, so the
+        // "Why Peyi" links in the nav and footer land here.
+        <PointerField as="section" className="band py-28 md:py-36 px-6 relative isolate overflow-hidden">
+            <div id="why-us" className="absolute -top-24" aria-hidden="true" />
+            <PalmCluster
+                fronds={TREE}
+                className="hidden lg:block right-4 bottom-0 w-[300px] h-[660px] -z-10 origin-bottom-right xl:right-16"
+                depth={10}
+                lean={2}
+                pivot="36% 100%"
+            />
             <div className="container mx-auto max-w-5xl">
                 <div className="max-w-2xl mb-14">
                     <p className="type-eyebrow mb-4">Straight answers</p>
-                    <h2 className="type-section font-heading text-white mb-5 text-balance">
+                    <h2 className="type-section font-heading text-ink mb-5 text-balance">
                         When AI <span className="accent-word">isn&apos;t the answer</span>.
                     </h2>
                     <p className="text-lg text-muted-foreground text-pretty">
@@ -42,13 +54,13 @@ export function NotTheAnswer() {
 
                 <div className="grid md:grid-cols-2 gap-5">
                     {cases.map((item) => (
-                        <div key={item.title} className="surface-raised rounded-2xl p-7">
+                        <div key={item.title} className="surface-raised surface-interactive rounded-2xl p-7">
                             <div className="flex items-start gap-4">
-                                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-muted-foreground">
+                                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-sand/60 border border-gold-soft flex items-center justify-center text-muted-foreground">
                                     <X className="w-4 h-4" />
                                 </div>
                                 <div>
-                                    <h3 className="font-heading font-bold text-white mb-2">
+                                    <h3 className="font-heading font-bold text-ink mb-2">
                                         {item.title}
                                     </h3>
                                     <p className="text-muted-foreground leading-relaxed text-pretty">
@@ -66,6 +78,6 @@ export function NotTheAnswer() {
                     which is worth more than a system you regret.
                 </p>
             </div>
-        </section>
+        </PointerField>
     );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Plus } from "lucide-react";
+import { ArrowRight, Calendar, Plus } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -118,61 +118,82 @@ export function FAQ({ items = homepageFaqs, title = "Common Questions", descript
     };
 
     return (
-        // Denser padding and a narrower measure than the rest of the page: this is
-        // reference material, read at the visitor's own pace, not a statement beat.
-        <section className="py-16 md:py-20 bg-background relative overflow-hidden" id="faq">
+        // Two columns: the heading and a way out ("ask it on the audit") stay pinned
+        // while the answers scroll, so a reader who doesn't find their question is
+        // always one step from asking it.
+        <section className="relative py-24 md:py-32" id="faq">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
-            <div className="container mx-auto px-4 max-w-3xl relative z-10">
-                <div className="text-center mb-12">
+            <div className="container mx-auto px-6 grid lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-16">
+                <div className="lg:sticky lg:top-28 self-start">
                     <p className="type-eyebrow mb-4">Answers</p>
-                    <h2 className="type-section font-heading text-white mb-4">
-                        {title}
-                    </h2>
-                    <p className="text-gray-400 max-w-xl mx-auto text-pretty">
-                        {description}
-                    </p>
+                    <h2 className="type-section font-heading text-ink text-balance mb-4">{title}</h2>
+                    <p className="text-body text-pretty mb-8 max-w-md">{description}</p>
+
+                    <div className="surface-raised rounded-2xl p-5 max-w-md">
+                        <p className="font-heading font-bold text-ink mb-1">Question not here?</p>
+                        <p className="text-sm text-body mb-4 text-pretty">
+                            Bring it to the audit — getting you straight answers is the point of it.
+                        </p>
+                        <Link
+                            href="/book"
+                            className="group inline-flex items-center gap-2 text-sm font-semibold text-ink"
+                        >
+                            <Calendar className="w-4 h-4 text-primary" />
+                            Book AI Audit
+                            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                    </div>
                 </div>
 
-                <div className="space-y-4">
-                    {items.map((faq, index) => (
-                        <div
-                            key={index}
-                            className="border border-white/5 rounded-2xl bg-white/5 backdrop-blur-sm overflow-hidden transition-colors duration-200 hover:border-white/10"
-                        >
-                            <button
-                                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                                className="w-full flex items-center justify-between p-6 text-left cursor-pointer transition-colors duration-150 hover:bg-white/[0.03] active:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-2xl"
-                                aria-expanded={openIndex === index}
+                <div className="space-y-3">
+                    {items.map((faq, index) => {
+                        const open = openIndex === index;
+                        return (
+                            <div
+                                key={index}
+                                className={`rounded-2xl border overflow-hidden transition-colors duration-300 ${
+                                    open
+                                        ? "border-gold/50 bg-sand/60"
+                                        : "border-gold-soft bg-paper/70 hover:border-gold"
+                                }`}
                             >
-                                <span className="text-lg font-medium text-white pr-8">
-                                    {faq.question}
-                                </span>
-                                {/* One glyph that rotates + into ×: continuous motion reads as the
-                                    same object changing state, where swapping icons reads as a cut. */}
-                                <motion.span
-                                    className="flex-shrink-0 text-primary"
-                                    animate={{ rotate: openIndex === index ? 45 : 0 }}
-                                    transition={{ type: "spring", bounce: 0, duration: 0.35 }}
+                                <button
+                                    onClick={() => setOpenIndex(open ? null : index)}
+                                    className="w-full flex items-center justify-between gap-6 p-5 md:p-6 text-left cursor-pointer active:bg-sand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-2xl"
+                                    aria-expanded={open}
                                 >
-                                    <Plus className="w-6 h-6" />
-                                </motion.span>
-                            </button>
+                                    <span className="text-base md:text-lg font-medium text-ink text-pretty">
+                                        {faq.question}
+                                    </span>
+                                    {/* One glyph that rotates + into ×: continuous motion reads as the
+                                        same object changing state, where swapping icons reads as a cut. */}
+                                    <motion.span
+                                        className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${
+                                            open ? "bg-primary/15 text-primary" : "bg-sand/60 text-body"
+                                        }`}
+                                        animate={{ rotate: open ? 45 : 0 }}
+                                        transition={{ type: "spring", bounce: 0, duration: 0.35 }}
+                                    >
+                                        <Plus className="w-4 h-4" />
+                                    </motion.span>
+                                </button>
 
-                            <motion.div
-                                initial={false}
-                                animate={{ height: openIndex === index ? "auto" : 0, opacity: openIndex === index ? 1 : 0 }}
-                                transition={{ type: "spring", bounce: 0, duration: 0.35, opacity: { duration: 0.2 } }}
-                                className="overflow-hidden"
-                            >
-                                <div className="p-6 pt-0 text-gray-400 leading-relaxed border-t border-white/5">
-                                    {renderAnswer(faq.answer)}
-                                </div>
-                            </motion.div>
-                        </div>
-                    ))}
+                                <motion.div
+                                    initial={false}
+                                    animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}
+                                    transition={{ type: "spring", bounce: 0, duration: 0.35, opacity: { duration: 0.2 } }}
+                                    className="overflow-hidden"
+                                >
+                                    <div className="px-5 md:px-6 pb-6 text-body leading-relaxed text-pretty">
+                                        {renderAnswer(faq.answer)}
+                                    </div>
+                                </motion.div>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </section>

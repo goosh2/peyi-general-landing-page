@@ -6,9 +6,8 @@ import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { ComparisonTable } from "@/components/ui/comparison-table";
 import { ToolTable } from "@/components/ui/tool-table";
 import { FAQ } from "@/components/sections/FAQ";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { MessageCircle, Phone, Globe, Clock, ShieldCheck, Zap, Server, Headphones, Bot } from "lucide-react";
+import { PageCTA } from "@/components/ui/page-cta";
+import { MessageCircle, Phone, Globe, Clock, ShieldCheck, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "AI Customer Service for Small Business: Chatbots, Voice & Automation",
@@ -94,7 +93,7 @@ export default function CustomerServicePage() {
 
                 {/* Intro */}
                 <section className="mb-24 max-w-4xl">
-                    <h2 className="text-2xl font-bold text-white mb-6">Automate Support Without Losing the Human Touch</h2>
+                    <h2 className="font-heading text-2xl font-bold text-ink mb-6">Automate Support Without Losing the Human Touch</h2>
                     <p className="text-lg text-muted-foreground leading-relaxed border-l-4 border-primary pl-6">
                         AI Customer Service isn&apos;t about replacing your support team—it&apos;s about removing the repetitive &quot;busy work&quot; so they can focus on complex issues. By implementing intelligent chatbots and voice agents, you can answer routine questions instantly, 24/7, improving customer satisfaction and freeing up your staff.
                     </p>
@@ -102,7 +101,7 @@ export default function CustomerServicePage() {
 
                 {/* Benefits / Tools Grid */}
                 <section className="mb-24">
-                    <h2 className="text-3xl font-bold text-white mb-12">Why Automate Customer Service?</h2>
+                    <h2 className="font-heading text-3xl font-bold text-ink mb-12">Why Automate Customer Service?</h2>
                     <div className="grid md:grid-cols-3 gap-8">
                         {[
                             { icon: Clock, title: "24/7 Availability", desc: "Your business never really closes. Answer questions at 2 AM as easily as 2 PM." },
@@ -112,9 +111,9 @@ export default function CustomerServicePage() {
                             { icon: Phone, title: "Voice AI Receptionist", desc: "Handle inbound calls, route enquires, and book appointments over the phone." },
                             { icon: ShieldCheck, title: "Consistent Answers", desc: "Ensure every customer gets the technically correct answer, every time." }
                         ].map((item, i) => (
-                            <div key={i} className="p-8 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+                            <div key={i} className="p-8 rounded-2xl surface-raised hover:bg-sand/70 transition-colors">
                                 <item.icon className="w-10 h-10 text-primary mb-6" />
-                                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                                <h3 className="font-heading text-xl font-bold text-ink mb-3">{item.title}</h3>
                                 <p className="text-muted-foreground">{item.desc}</p>
                             </div>
                         ))}
@@ -138,7 +137,7 @@ export default function CustomerServicePage() {
                 {/* Comparison */}
                 <section className="mb-24 max-w-5xl mx-auto">
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold text-white mb-4">Old Chatbots vs AI Agents</h2>
+                        <h2 className="font-heading text-3xl font-bold text-ink mb-4">Old Chatbots vs AI Agents</h2>
                         <p className="text-muted-foreground">Why Generative AI changes the game for small business support.</p>
                     </div>
                     <ComparisonTable
@@ -156,7 +155,7 @@ export default function CustomerServicePage() {
 
                 {/* Implementation Guide */}
                 <section className="mb-24">
-                    <h2 className="text-3xl font-bold text-white mb-12 text-center">Implementation Roadmap</h2>
+                    <h2 className="font-heading text-3xl font-bold text-ink mb-12 text-center">Implementation Roadmap</h2>
                     <div className="grid md:grid-cols-4 gap-6">
                         {[
                             { step: "01", title: "Audit", desc: "Analyze past tickets to find the top 10 repetitive questions." },
@@ -164,9 +163,9 @@ export default function CustomerServicePage() {
                             { step: "03", title: "Train & Test", desc: "Configure the AI Agent and stress-test it with sample queries." },
                             { step: "04", title: "Deploy", desc: "Go live, monitor conversations, and refine answers weekly." }
                         ].map((phase, i) => (
-                            <div key={i} className="relative p-6 pt-12 rounded-xl border border-white/10 bg-white/5">
-                                <span className="absolute top-6 left-6 text-4xl font-bold text-white/5 font-heading">{phase.step}</span>
-                                <h3 className="text-xl font-bold text-white mb-3 relative z-10">{phase.title}</h3>
+                            <div key={i} className="relative p-6 pt-12 rounded-xl surface-raised">
+                                <span className="absolute top-6 left-6 text-4xl font-bold text-quiet/70 font-heading">{phase.step}</span>
+                                <h3 className="font-heading text-xl font-bold text-ink mb-3 relative z-10">{phase.title}</h3>
                                 <p className="text-muted-foreground relative z-10">{phase.desc}</p>
                             </div>
                         ))}
@@ -175,7 +174,7 @@ export default function CustomerServicePage() {
 
                 {/* ROI / Stats */}
                 <section className="mb-24 bg-gradient-to-br from-primary/10 to-transparent p-12 rounded-3xl border border-primary/20 text-center">
-                    <h2 className="text-3xl font-bold text-white mb-8">The Cost of Doing Nothing</h2>
+                    <h2 className="font-heading text-3xl font-bold text-ink mb-8">The Cost of Doing Nothing</h2>
                     <div className="grid md:grid-cols-3 gap-12">
                         <div>
                             <div className="text-4xl font-bold text-primary mb-2">67%</div>
@@ -198,25 +197,11 @@ export default function CustomerServicePage() {
                     description="Common questions about automating support responsibly."
                 />
 
-                {/* CTA */}
-                <section className="text-center py-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Stop Burying Your Team in Support Tickets</h2>
-                    <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-                        Let AI handle the repetitive questions so your team can focus on building relationships.
-                    </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link href="/ai-readiness-quiz">
-                            <Button size="lg" className="rounded-full px-8 text-lg h-14 bg-primary hover:bg-primary/90 text-background font-bold">
-                                Get Your Support Audit
-                            </Button>
-                        </Link>
-                        <Link href="/book">
-                            <Button variant="heroOutline" size="lg" className="rounded-full px-8 text-lg h-14">
-                                Book a Demo
-                            </Button>
-                        </Link>
-                    </div>
-                </section>
+                {/* Closing CTA */}
+                <PageCTA
+                    title="Stop Burying Your Team in Support Tickets"
+                    description="Let AI handle the repetitive questions so your team can focus on building relationships."
+                />
             </div>
 
             <Footer />

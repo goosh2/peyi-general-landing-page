@@ -19,7 +19,7 @@ export default function BookPage() {
                 <div className="container mx-auto px-6">
                     <div className="max-w-xl mx-auto">
                         <div className="text-center mb-10">
-                            <h1 className="text-3xl sm:text-4xl font-heading font-bold text-white mb-4">
+                            <h1 className="text-3xl sm:text-4xl font-heading font-bold text-ink mb-4">
                                 Book an <span className="gradient-text">AI Audit</span>
                             </h1>
                             <p className="text-muted-foreground leading-relaxed">
@@ -33,8 +33,8 @@ export default function BookPage() {
                         {/* What the audit actually is. The form asks for commitment,
                             so the page has to answer "what am I signing up for?"
                             before it asks. */}
-                        <div className="mt-16 pt-12 border-t border-white/5">
-                            <h2 className="font-heading font-bold text-xl text-white mb-8 text-center">
+                        <div className="mt-16 pt-12 border-t border-gold-soft">
+                            <h2 className="font-heading font-bold text-xl text-ink mb-8 text-center">
                                 What happens after you book
                             </h2>
                             <ol className="space-y-6">
@@ -60,7 +60,7 @@ export default function BookPage() {
                                             <step.icon className="w-4 h-4" />
                                         </div>
                                         <div>
-                                            <h3 className="font-heading font-bold text-white mb-1">{step.title}</h3>
+                                            <h3 className="font-heading font-bold text-ink mb-1">{step.title}</h3>
                                             <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
                                         </div>
                                     </li>

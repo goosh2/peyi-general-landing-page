@@ -9,7 +9,7 @@ import { Linkedin, Youtube } from "lucide-react";
  * Hard rule from the brand: the founder is public, but family and personal life
  * never appear here. Keep this section about the work.
  *
- * NOTE: /founder-placeholder.png is a deliberate stand-in — a featureless
+ * NOTE: /founder-placeholder.webp is a deliberate stand-in — a featureless
  * silhouette, not a real or invented person. Replace it with a real photo
  * before this is treated as finished.
  */
@@ -20,14 +20,17 @@ export function Founder() {
                 <div className="grid md:grid-cols-[minmax(0,320px)_1fr] gap-10 md:gap-16 items-start">
                     {/* Portrait */}
                     <div className="relative">
-                        <div className="relative aspect-square rounded-3xl overflow-hidden surface-raised">
+                        {/* Deco arch frame: gold hairline outside, paper mat, portrait inside */}
+                        <div className="relative aspect-[3/4] arch p-3 bg-paper border-[1.5px] border-gold shadow-[0_30px_60px_-30px_rgba(80,50,20,0.45)]">
+                        <div className="relative h-full w-full arch overflow-hidden border border-gold/60">
                             <Image
-                                src="/founder-placeholder.png"
+                                src="/founder-placeholder.webp"
                                 alt="Portrait placeholder for the founder of Peyi Solutions"
                                 fill
                                 sizes="(max-width: 768px) 100vw, 320px"
                                 className="object-cover"
                             />
+                        </div>
                         </div>
                         <p className="mt-3 text-xs text-muted-foreground/70">
                             Placeholder image — to be replaced with a real photo.
@@ -37,7 +40,7 @@ export function Founder() {
                     {/* Statement */}
                     <div>
                         <p className="type-eyebrow mb-4">Who you&apos;re working with</p>
-                        <h2 className="type-section font-heading text-white mb-6 text-balance">
+                        <h2 className="type-section font-heading text-ink mb-6 text-balance">
                             You&apos;re not hiring an agency. You&apos;re hiring{" "}
                             <span className="accent-word">one person who builds</span>.
                         </h2>
@@ -68,7 +71,7 @@ export function Founder() {
                                 href="https://www.linkedin.com/company/peyi-solutions"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-4 py-2 rounded-full surface-raised surface-interactive text-sm text-white/80 hover:text-white"
+                                className="inline-flex items-center gap-2 px-4 py-2 rounded-full surface-raised surface-interactive text-sm text-ink/85 hover:text-ink"
                             >
                                 <Linkedin className="w-4 h-4" />
                                 LinkedIn
@@ -77,7 +80,7 @@ export function Founder() {
                                 href="https://www.youtube.com/channel/UClyFCi9ex6v2xhCx5TKppyQ"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-4 py-2 rounded-full surface-raised surface-interactive text-sm text-white/80 hover:text-white"
+                                className="inline-flex items-center gap-2 px-4 py-2 rounded-full surface-raised surface-interactive text-sm text-ink/85 hover:text-ink"
                             >
                                 <Youtube className="w-4 h-4" />
                                 YouTube

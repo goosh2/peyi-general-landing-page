@@ -52,12 +52,14 @@ export async function sendConfirmationEmail(args: ConfirmationEmailArgs): Promis
  */
 export function confirmationEmailHtml(args: ConfirmationEmailArgs): string {
     const greeting = args.name ? `Hi ${escapeHtml(args.name)},` : "Hi there,";
-    const bg = "#0B0F19";
-    const card = "#111624";
-    const border = "#232a3d";
-    const text = "#e6e9f2";
-    const muted = "#9aa3b8";
-    const gradient = "linear-gradient(135deg, #FA8938 0%, #EB477E 50%, #A65EED 100%)";
+    const bg = "#FDF6ED";
+    const card = "#FFFBF5";
+    const border = "#E6D7BD";
+    const text = "#06201C";
+    const muted = "#6E685F";
+    // Coral action gradient, matching the site. Email clients that drop
+    // gradients fall back to the solid coral set alongside it.
+    const gradient = "linear-gradient(135deg, #FF9D6C 0%, #F4774B 55%, #E8664B 100%)";
     const fontStack =
         "'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
 
@@ -74,7 +76,7 @@ export function confirmationEmailHtml(args: ConfirmationEmailArgs): string {
 <td align="center">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background-color:${card};border:1px solid ${border};border-radius:16px;overflow:hidden;">
 <tr>
-<td style="height:4px;background-image:${gradient};line-height:4px;font-size:0;">&nbsp;</td>
+<td style="height:4px;background-color:#F4774B;background-image:${gradient};line-height:4px;font-size:0;">&nbsp;</td>
 </tr>
 <tr>
 <td style="padding:40px 40px 32px 40px;font-family:${fontStack};">
@@ -85,7 +87,7 @@ Thanks for requesting an AI audit with Peyi Solutions. Click the button below to
 </p>
 <table role="presentation" cellpadding="0" cellspacing="0" style="margin:8px 0 28px 0;">
 <tr>
-<td align="center" style="border-radius:10px;background-image:${gradient};">
+<td align="center" bgcolor="#F4774B" style="border-radius:10px;background-color:#F4774B;background-image:${gradient};">
 <a href="${escapeHtml(args.confirmUrl)}" style="display:inline-block;padding:14px 32px;font-family:${fontStack};font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:10px;">Confirm &amp; book my audit</a>
 </td>
 </tr>
@@ -94,7 +96,7 @@ Thanks for requesting an AI audit with Peyi Solutions. Click the button below to
 If the button doesn't work, copy and paste this link into your browser:
 </p>
 <p style="margin:0 0 24px 0;font-size:13px;line-height:1.6;word-break:break-all;">
-<a href="${escapeHtml(args.confirmUrl)}" style="color:#EB477E;text-decoration:underline;">${escapeHtml(args.confirmUrl)}</a>
+<a href="${escapeHtml(args.confirmUrl)}" style="color:#E8664B;text-decoration:underline;">${escapeHtml(args.confirmUrl)}</a>
 </p>
 <p style="margin:0;font-size:12px;line-height:1.6;color:${muted};">
 If you didn't request this, you can safely ignore this email.

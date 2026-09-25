@@ -46,7 +46,7 @@ export default async function ConfirmedPage({ searchParams }: ConfirmedPageProps
                 <div className="container mx-auto px-6">
                     <div className="max-w-xl mx-auto">
                         <div className="glass-card rounded-2xl p-8 sm:p-10 text-center">
-                            <h1 className="text-3xl sm:text-4xl font-heading font-bold text-white mb-4">
+                            <h1 className="text-3xl sm:text-4xl font-heading font-bold text-ink mb-4">
                                 You&apos;re <span className="gradient-text">verified</span>
                             </h1>
                             <p className="text-muted-foreground leading-relaxed mb-8">

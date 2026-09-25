@@ -1,127 +1,156 @@
 import Link from "next/link";
-import { MessageSquare, Megaphone, Users, Briefcase, ArrowRight } from "lucide-react";
+import type { ComponentType } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { PointerField } from "@/components/art/PointerField";
+import { PalmCluster, SPRIG } from "@/components/art/Palms";
+import {
+    CalendarLoop,
+    ChatLoop,
+    HouseLoop,
+    InvoiceLoop,
+    PipelineLoop,
+    VoiceLoop
+} from "@/components/loops/MiniLoops";
 
 /**
- * Four offers are not four equal offers. The layout is a bento rather than a
- * uniform grid so the highest-intent solution reads as the headline and the
- * rest support it — a row of identical cards flattens them into a menu.
+ * Each tile shows its solution working rather than describing it. The bento is
+ * weighted: lead gen is the headline tile because it's where most owners feel
+ * the pain first; real estate gets a full-width band because it's a specialty.
  */
-const solutions = [
+
+type Tile = {
+    title: string;
+    blurb: string;
+    href: string;
+    span: string;
+    Loop: ComponentType;
+    feature?: boolean;
+};
+
+const tiles: Tile[] = [
     {
-        icon: Users,
-        title: "AI CRM & Lead Gen",
-        description:
-            "Capture every lead, qualify it while it's still warm, and follow up until it books a meeting on your calendar — without you touching it.",
+        title: "AI Lead Gen & CRM",
+        blurb:
+            "Every lead captured, answered while it's warm, qualified, and followed up until it books — without you chasing it.",
         href: "/ai-lead-generation-small-business",
         span: "lg:col-span-4",
-        feature: true,
-        points: ["Answers new leads in seconds", "Qualifies before it reaches you", "Books straight to your calendar"]
+        Loop: PipelineLoop,
+        feature: true
     },
     {
-        icon: MessageSquare,
         title: "AI Customer Service",
-        description: "Chatbots and voice agents that answer routine questions instantly, 24/7.",
+        blurb: "Chat that answers routine questions and books appointments, day or night.",
         href: "/ai-customer-service-small-business",
         span: "lg:col-span-2",
-        feature: false
+        Loop: ChatLoop
     },
     {
-        icon: Megaphone,
+        title: "Voice AI Receptionist",
+        blurb: "A phone agent that picks up every call and handles the routine ones.",
+        href: "/voice-ai-agent",
+        span: "lg:col-span-2",
+        Loop: VoiceLoop
+    },
+    {
         title: "Marketing Automation",
-        description: "Content, scheduling, and nurture sequences that keep running on your busy weeks.",
+        blurb: "Posts, emails, and nurture sequences that keep going on your busiest weeks.",
         href: "/ai-marketing-automation-small-business",
         span: "lg:col-span-2",
-        feature: false
+        Loop: CalendarLoop
     },
     {
-        icon: Briefcase,
         title: "Operations Automation",
-        description:
-            "Invoicing, scheduling, and data entry handled in the background, so admin stops eating your week.",
+        blurb: "Invoicing, scheduling, and data entry running quietly in the background.",
         href: "/ai-operations-automation",
-        span: "lg:col-span-4",
-        feature: false
+        span: "lg:col-span-2",
+        Loop: InvoiceLoop
     }
 ];
 
 export function Solutions() {
     return (
-        <section className="py-24 bg-background relative overflow-hidden" id="solutions">
-            {/* Background Elements */}
-            <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-secondary/5 rounded-full blur-3xl pointer-events-none" />
-
-            <div className="container mx-auto px-6 relative z-10">
-                <div className="max-w-2xl mb-14">
-                    <p className="type-eyebrow mb-4">What we build</p>
-                    <h2 className="type-section font-heading text-white mb-5">
-                        Solutions built for <span className="accent-word">real profit</span>
-                    </h2>
-                    <p className="text-muted-foreground text-lg text-pretty">
-                        We don&apos;t just install tools. We build complete workflows that increase
-                        efficiency and drive revenue.
+        <PointerField as="section" className="relative isolate overflow-hidden py-28 md:py-32">
+            <div id="solutions" className="absolute -top-24" aria-hidden="true" />
+            <PalmCluster
+                fronds={SPRIG}
+                className="hidden md:block right-0 top-0 w-[360px] h-[520px] -z-10 origin-top scale-x-[-1] opacity-90"
+                depth={14}
+                lean={-2.5}
+                pivot="0% 0%"
+            />
+            <div className="container mx-auto px-6">
+                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+                    <div className="max-w-2xl">
+                        <p className="type-eyebrow mb-4">What we build</p>
+                        <h2 className="type-section font-heading text-ink text-balance">
+                            Systems that do the work, <span className="accent-word">not just talk about it</span>.
+                        </h2>
+                    </div>
+                    <p className="text-body max-w-sm text-pretty">
+                        We don&apos;t install a tool and leave. We build complete workflows around how your
+                        business actually runs.
                     </p>
                 </div>
 
-                <div className="grid lg:grid-cols-6 gap-5">
-                    {solutions.map((solution, index) => (
-                        <Link
-                            href={solution.href}
-                            key={index}
-                            className={`block group ${solution.span}`}
-                        >
-                            <div
-                                className={`h-full rounded-2xl surface-interactive ${
-                                    solution.feature
-                                        ? "surface-floating p-8 md:p-10"
-                                        : "surface-raised p-8"
+                <div className="grid lg:grid-cols-6 gap-4">
+                    {tiles.map(({ title, blurb, href, span, Loop, feature }) => (
+                        <Link key={href} href={href} className={`group block ${span}`}>
+                            <article
+                                className={`h-full rounded-3xl surface-interactive overflow-hidden flex flex-col ${
+                                    feature ? "surface-floating" : "surface-raised"
                                 }`}
                             >
                                 <div
-                                    className={`rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mb-6 ${
-                                        solution.feature ? "w-14 h-14" : "w-11 h-11"
-                                    }`}
+                                    className={`relative border-b border-gold-soft bg-paper/70 ${
+                                        feature ? "h-44 md:h-52" : "h-36"
+                                    } px-6 py-5`}
                                 >
-                                    <solution.icon
-                                        className={`text-primary ${solution.feature ? "w-7 h-7" : "w-5 h-5"}`}
-                                    />
+                                    <div className="dot-grid absolute inset-0 opacity-60" />
+                                    <div className="relative h-full">
+                                        <Loop />
+                                    </div>
                                 </div>
-
-                                <h3
-                                    className={`font-heading font-bold text-white mb-3 ${
-                                        solution.feature ? "text-2xl md:text-3xl" : "text-lg"
-                                    }`}
-                                >
-                                    {solution.title}
-                                </h3>
-
-                                <p className="text-gray-400 leading-relaxed text-pretty max-w-xl">
-                                    {solution.description}
-                                </p>
-
-                                {solution.points && (
-                                    <ul className="mt-6 space-y-2">
-                                        {solution.points.map((point) => (
-                                            <li
-                                                key={point}
-                                                className="flex items-center gap-3 text-sm text-gray-300"
-                                            >
-                                                <span className="w-1 h-1 rounded-full bg-primary flex-shrink-0" />
-                                                {point}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
-
-                                <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-white/70 group-hover:text-white transition-colors">
-                                    Learn more
-                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                                </span>
-                            </div>
+                                <div className="p-6 md:p-7 flex-1 flex flex-col">
+                                    <div className="flex items-start justify-between gap-4 mb-2">
+                                        <h3
+                                            className={`font-heading font-bold text-ink ${
+                                                feature ? "text-2xl md:text-3xl" : "text-lg"
+                                            }`}
+                                        >
+                                            {title}
+                                        </h3>
+                                        <ArrowUpRight className="w-5 h-5 shrink-0 text-quiet/70 transition-all duration-300 group-hover:text-ink group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                                    </div>
+                                    <p className={`text-body leading-relaxed text-pretty ${feature ? "max-w-lg" : ""}`}>
+                                        {blurb}
+                                    </p>
+                                </div>
+                            </article>
                         </Link>
                     ))}
+
+                    {/* Real estate specialty band */}
+                    <Link href="/ai-for-real-estate-agents" className="group block lg:col-span-6">
+                        <article className="surface-raised surface-interactive rounded-3xl p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
+                            <HouseLoop />
+                            <div className="flex-1">
+                                <p className="type-eyebrow mb-2">Specialty</p>
+                                <h3 className="font-heading font-bold text-ink text-xl md:text-2xl mb-1">
+                                    AI for real estate agents
+                                </h3>
+                                <p className="text-body text-pretty">
+                                    Lead capture, follow-up, and showing scheduling built around how agents
+                                    actually work.
+                                </p>
+                            </div>
+                            <span className="inline-flex items-center gap-2 text-sm font-medium text-body group-hover:text-ink transition-colors">
+                                Explore Real Estate AI
+                                <ArrowUpRight className="w-4 h-4" />
+                            </span>
+                        </article>
+                    </Link>
                 </div>
             </div>
-        </section>
+        </PointerField>
     );
 }

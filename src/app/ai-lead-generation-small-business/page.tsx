@@ -6,9 +6,8 @@ import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { ComparisonTable } from "@/components/ui/comparison-table";
 import { ToolTable } from "@/components/ui/tool-table";
 import { FAQ } from "@/components/sections/FAQ";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { Users, Filter, MessageSquare, Database, Zap, Search, ArrowRight, Target, Magnet } from "lucide-react";
+import { PageCTA } from "@/components/ui/page-cta";
+import { Users, Filter, MessageSquare, Database, Zap, Search, Target, Magnet } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "AI Lead Generation & CRM for Small Business: Capture & Convert",
@@ -94,7 +93,7 @@ export default function LeadGenPage() {
 
                 {/* Intro */}
                 <section className="mb-24 max-w-4xl">
-                    <h2 className="text-2xl font-bold text-white mb-6">The &quot;Speed to Lead&quot; Advantage</h2>
+                    <h2 className="font-heading text-2xl font-bold text-ink mb-6">The &quot;Speed to Lead&quot; Advantage</h2>
                     <p className="text-lg text-muted-foreground leading-relaxed border-l-4 border-primary pl-6">
                         In modern sales, the first vendor to respond usually wins the deal. AI gives you an unfair advantage by responding to every lead within seconds—whether it&apos;s 2 PM or 2 AM—qualifying them, and booking the appointment before your competitor even opens their email.
                     </p>
@@ -102,7 +101,7 @@ export default function LeadGenPage() {
 
                 {/* Benefits / Tools Grid */}
                 <section className="mb-24">
-                    <h2 className="text-3xl font-bold text-white mb-12">Building Your Automated Pipeline</h2>
+                    <h2 className="font-heading text-3xl font-bold text-ink mb-12">Building Your Automated Pipeline</h2>
                     <div className="grid md:grid-cols-3 gap-8">
                         {[
                             { icon: Search, title: "Prospecting", desc: "Identify thousands of ideal clients and extract their verified contact info instantly." },
@@ -112,9 +111,9 @@ export default function LeadGenPage() {
                             { icon: Users, title: "Nurture", desc: "Keep leads warm with long-term follow-up sequences until they are ready to buy." },
                             { icon: Zap, title: "Instant Booking", desc: "Leads book directly into your calendar without back-and-forth emails." }
                         ].map((item, i) => (
-                            <div key={i} className="p-8 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+                            <div key={i} className="p-8 rounded-2xl surface-raised hover:bg-sand/70 transition-colors">
                                 <item.icon className="w-10 h-10 text-primary mb-6" />
-                                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                                <h3 className="font-heading text-xl font-bold text-ink mb-3">{item.title}</h3>
                                 <p className="text-muted-foreground">{item.desc}</p>
                             </div>
                         ))}
@@ -123,51 +122,51 @@ export default function LeadGenPage() {
 
                 {/* Strategy Section */}
                 <section className="mb-24">
-                    <h2 className="text-3xl font-bold text-white mb-12 text-center">Which System Do You Need?</h2>
+                    <h2 className="font-heading text-3xl font-bold text-ink mb-12 text-center">Which System Do You Need?</h2>
                     <div className="grid md:grid-cols-2 gap-8">
                         {/* Outbound Card */}
-                        <div className="p-8 rounded-3xl border border-white/10 bg-[#0B0F19] relative overflow-hidden group">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-bl-full transition-transform group-hover:scale-110" />
+                        <div className="p-8 rounded-3xl border border-gold-soft bg-paper relative overflow-hidden group">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-pink/10 rounded-bl-full transition-transform group-hover:scale-110" />
                             <div className="relative z-10">
-                                <Target className="w-12 h-12 text-blue-400 mb-6" />
-                                <h3 className="text-2xl font-bold text-white mb-4">Outbound Engine</h3>
+                                <Target className="w-12 h-12 text-brand-pink mb-6" />
+                                <h3 className="font-heading text-2xl font-bold text-ink mb-4">Outbound Engine</h3>
                                 <p className="text-muted-foreground mb-6">&quot;I need to go find clients.&quot;</p>
                                 <ul className="space-y-4 mb-8">
                                     <li className="flex items-start gap-3">
-                                        <div className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0 mt-0.5"><span className="text-blue-400 text-xs">1</span></div>
-                                        <span className="text-gray-300 text-sm">AI scrapes leads from Maps/LinkedIn.</span>
+                                        <div className="w-6 h-6 rounded-full bg-brand-pink/20 flex items-center justify-center shrink-0 mt-0.5"><span className="text-brand-pink text-xs">1</span></div>
+                                        <span className="text-body text-sm">AI scrapes leads from Maps/LinkedIn.</span>
                                     </li>
                                     <li className="flex items-start gap-3">
-                                        <div className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0 mt-0.5"><span className="text-blue-400 text-xs">2</span></div>
-                                        <span className="text-gray-300 text-sm">AI enriches data (email, phone, size).</span>
+                                        <div className="w-6 h-6 rounded-full bg-brand-pink/20 flex items-center justify-center shrink-0 mt-0.5"><span className="text-brand-pink text-xs">2</span></div>
+                                        <span className="text-body text-sm">AI enriches data (email, phone, size).</span>
                                     </li>
                                     <li className="flex items-start gap-3">
-                                        <div className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0 mt-0.5"><span className="text-blue-400 text-xs">3</span></div>
-                                        <span className="text-gray-300 text-sm">Sends personalized cold email/DM.</span>
+                                        <div className="w-6 h-6 rounded-full bg-brand-pink/20 flex items-center justify-center shrink-0 mt-0.5"><span className="text-brand-pink text-xs">3</span></div>
+                                        <span className="text-body text-sm">Sends personalized cold email/DM.</span>
                                     </li>
                                 </ul>
                             </div>
                         </div>
 
                         {/* Inbound Card */}
-                        <div className="p-8 rounded-3xl border border-white/10 bg-[#0B0F19] relative overflow-hidden group">
+                        <div className="p-8 rounded-3xl border border-gold-soft bg-paper relative overflow-hidden group">
                             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-bl-full transition-transform group-hover:scale-110" />
                             <div className="relative z-10">
                                 <Magnet className="w-12 h-12 text-primary mb-6" />
-                                <h3 className="text-2xl font-bold text-white mb-4">Inbound Capture</h3>
+                                <h3 className="font-heading text-2xl font-bold text-ink mb-4">Inbound Capture</h3>
                                 <p className="text-muted-foreground mb-6">&quot;I have traffic, but no leads.&quot;</p>
                                 <ul className="space-y-4 mb-8">
                                     <li className="flex items-start gap-3">
                                         <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5"><span className="text-primary text-xs">1</span></div>
-                                        <span className="text-gray-300 text-sm">AI Chatbot engages site visitors.</span>
+                                        <span className="text-body text-sm">AI Chatbot engages site visitors.</span>
                                     </li>
                                     <li className="flex items-start gap-3">
                                         <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5"><span className="text-primary text-xs">2</span></div>
-                                        <span className="text-gray-300 text-sm">Captures name, email, & intent.</span>
+                                        <span className="text-body text-sm">Captures name, email, & intent.</span>
                                     </li>
                                     <li className="flex items-start gap-3">
                                         <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5"><span className="text-primary text-xs">3</span></div>
-                                        <span className="text-gray-300 text-sm">Instantly books to your CRM.</span>
+                                        <span className="text-body text-sm">Instantly books to your CRM.</span>
                                     </li>
                                 </ul>
                             </div>
@@ -192,7 +191,7 @@ export default function LeadGenPage() {
                 {/* Comparison */}
                 <section className="mb-24 max-w-5xl mx-auto">
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold text-white mb-4">Manual Prospecting vs AI Systems</h2>
+                        <h2 className="font-heading text-3xl font-bold text-ink mb-4">Manual Prospecting vs AI Systems</h2>
                         <p className="text-muted-foreground">The difference between linear growth and exponential scale.</p>
                     </div>
                     <ComparisonTable
@@ -209,31 +208,31 @@ export default function LeadGenPage() {
                 </section>
 
                 {/* What the system does for your pipeline */}
-                <section className="mb-24 bg-gradient-to-br from-blue-500/10 to-transparent p-12 rounded-3xl border border-blue-500/20">
-                    <h2 className="text-3xl font-bold text-white mb-4 text-center">What a Lead System Actually Does For You</h2>
+                <section className="mb-24 bg-gradient-to-br from-brand-pink/10 to-transparent p-12 rounded-3xl border border-brand-pink/20">
+                    <h2 className="font-heading text-3xl font-bold text-ink mb-4 text-center">What a Lead System Actually Does For You</h2>
                     <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
                         No dashboards to babysit. The system works your pipeline in the background so you only talk to people worth talking to.
                     </p>
                     <div className="grid md:grid-cols-3 gap-10">
                         <div className="text-center">
-                            <div className="w-14 h-14 rounded-2xl bg-blue-500/15 flex items-center justify-center mx-auto mb-5">
-                                <Zap className="w-7 h-7 text-blue-400" />
+                            <div className="w-14 h-14 rounded-2xl bg-brand-pink/15 flex items-center justify-center mx-auto mb-5">
+                                <Zap className="w-7 h-7 text-brand-pink" />
                             </div>
-                            <h3 className="text-xl font-bold text-white mb-2">Answer leads first</h3>
+                            <h3 className="font-heading text-xl font-bold text-ink mb-2">Answer leads first</h3>
                             <p className="text-muted-foreground">Every new lead gets a reply in seconds&mdash;day, night, or weekend&mdash;before they move on to the next name on their list.</p>
                         </div>
                         <div className="text-center">
-                            <div className="w-14 h-14 rounded-2xl bg-blue-500/15 flex items-center justify-center mx-auto mb-5">
-                                <Magnet className="w-7 h-7 text-blue-400" />
+                            <div className="w-14 h-14 rounded-2xl bg-brand-pink/15 flex items-center justify-center mx-auto mb-5">
+                                <Magnet className="w-7 h-7 text-brand-pink" />
                             </div>
-                            <h3 className="text-xl font-bold text-white mb-2">Nothing slips through</h3>
+                            <h3 className="font-heading text-xl font-bold text-ink mb-2">Nothing slips through</h3>
                             <p className="text-muted-foreground">Form fills, DMs, and missed calls are captured, logged, and followed up automatically. No lead dies forgotten in an inbox.</p>
                         </div>
                         <div className="text-center">
-                            <div className="w-14 h-14 rounded-2xl bg-blue-500/15 flex items-center justify-center mx-auto mb-5">
-                                <Filter className="w-7 h-7 text-blue-400" />
+                            <div className="w-14 h-14 rounded-2xl bg-brand-pink/15 flex items-center justify-center mx-auto mb-5">
+                                <Filter className="w-7 h-7 text-brand-pink" />
                             </div>
-                            <h3 className="text-xl font-bold text-white mb-2">Only real buyers reach you</h3>
+                            <h3 className="font-heading text-xl font-bold text-ink mb-2">Only real buyers reach you</h3>
                             <p className="text-muted-foreground">Leads are qualified before they hit your calendar, so your time goes to the people actually ready to move.</p>
                         </div>
                     </div>
@@ -245,25 +244,11 @@ export default function LeadGenPage() {
                     description="Expert answers on building your sales machine."
                 />
 
-                {/* CTA */}
-                <section className="text-center py-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Fill Your Pipeline on Autopilot</h2>
-                    <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-                        Stop wondering where your next deal is coming from. Build a predictable system today.
-                    </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link href="/ai-readiness-quiz">
-                            <Button size="lg" className="rounded-full px-8 text-lg h-14 bg-primary hover:bg-primary/90 text-background font-bold">
-                                Get Your Lead Gen Audit
-                            </Button>
-                        </Link>
-                        <Link href="/book">
-                            <Button variant="heroOutline" size="lg" className="rounded-full px-8 text-lg h-14">
-                                Book a Strategy Call
-                            </Button>
-                        </Link>
-                    </div>
-                </section>
+                {/* Closing CTA */}
+                <PageCTA
+                    title="Fill Your Pipeline on Autopilot"
+                    description="Stop wondering where your next deal is coming from. Build a predictable system today."
+                />
             </div>
 
             <Footer />

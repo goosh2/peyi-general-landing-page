@@ -1,32 +1,37 @@
 import { Navbar } from "@/components/layout/Navbar";
-import { UntangleFilm } from "@/components/sections/UntangleFilm";
-import { WhoWeServe } from "@/components/sections/WhoWeServe";
+import { Footer } from "@/components/layout/Footer";
+import { StickyCTA } from "@/components/layout/StickyCTA";
+import { HomeHero } from "@/components/sections/HomeHero";
+import { TaskMarquee } from "@/components/sections/TaskMarquee";
 import { Solutions } from "@/components/sections/Solutions";
-import { WhyUs } from "@/components/sections/WhyUs";
+import { AfterHours } from "@/components/sections/AfterHours";
+import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Deliverable } from "@/components/sections/Deliverable";
 import { NotTheAnswer } from "@/components/sections/NotTheAnswer";
 import { Founder } from "@/components/sections/Founder";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTA } from "@/components/sections/CTA";
-import { Footer } from "@/components/layout/Footer";
 
 export default function Home() {
   return (
-    // Order follows the question a warm visitor actually asks, in sequence:
-    // what is this → who's it for → what do you build → how do you work →
-    // what do I get → when would you say no → who are you → details → book.
+    // The page answers a warm visitor's questions in the order they ask them:
+    // what is this → what could it take off my plate → what do you build →
+    // show me one working → how does it start → what do I get → why you →
+    // who are you → details → book.
     <main className="min-h-screen bg-background text-foreground selection:bg-primary/30">
       <Navbar />
-      <UntangleFilm />
-      <WhoWeServe />
+      <HomeHero />
+      <TaskMarquee />
       <Solutions />
-      <WhyUs />
+      <AfterHours />
+      <HowItWorks />
       <Deliverable />
       <NotTheAnswer />
       <Founder />
       <FAQ />
       <CTA />
       <Footer />
+      <StickyCTA />
     </main>
   );
 }

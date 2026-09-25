@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Inter, Playfair_Display, Mrs_Saint_Delafield } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
 import { Analytics } from "@vercel/analytics/react"
@@ -10,10 +10,23 @@ const inter = Inter({
   display: "swap"
 });
 
-const spaceGrotesk = Space_Grotesk({
+// Display serif for headlines and buttons — high contrast, with a true italic
+// for the single emphasised word in a headline ("Profit").
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
-  display: "swap" // Ensure fast text display
+  weight: ["500", "600", "700", "800"],
+  style: ["normal", "italic"],
+  variable: "--font-playfair",
+  display: "swap"
+});
+
+// Signature script. Decorative only ("A brighter way to work"), never for
+// anything someone needs to read to use the site.
+const script = Mrs_Saint_Delafield({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-script-face",
+  display: "swap"
 });
 
 export const metadata: Metadata = {
@@ -46,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={clsx(inter.variable, spaceGrotesk.variable, "antialiased font-sans bg-background text-foreground overflow-x-hidden")}
+        className={clsx(inter.variable, playfair.variable, script.variable, "antialiased font-sans bg-background text-foreground overflow-x-hidden")}
       >
         <script
           type="application/ld+json"

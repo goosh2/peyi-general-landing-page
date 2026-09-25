@@ -68,7 +68,7 @@ export function QuizContainer() {
                     <div className={cn("text-4xl font-bold", profileData.color)}>{resultProfile}</div>
                 </div>
 
-                <div className="bg-card/40 backdrop-blur border border-white/10 rounded-2xl p-8 mb-8 space-y-6">
+                <div className="bg-paper backdrop-blur border border-gold-soft rounded-2xl p-8 mb-8 space-y-6">
                     <p className="text-lg text-foreground/90 leading-relaxed font-medium">
                         {profileData.desc}
                     </p>
@@ -150,12 +150,12 @@ export function QuizContainer() {
                                         "active:scale-[0.99] active:duration-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                                         isSelected
                                             ? "border-primary bg-primary/10"
-                                            : "border-border bg-card/50 hover:border-primary/50 hover:bg-primary/5"
+                                            : "border-border bg-paper hover:border-primary/50 hover:bg-primary/5"
                                     )}
                                 >
                                     <div className={cn(
                                         "w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold border transition-colors",
-                                        isSelected ? "bg-primary text-white border-primary" : "border-white/20 text-muted-foreground group-hover:border-primary/50"
+                                        isSelected ? "bg-primary text-white border-primary" : "border-gold/50 text-muted-foreground group-hover:border-primary/50"
                                     )}>
                                         {String.fromCharCode(65 + idx)}
                                     </div>

@@ -6,9 +6,8 @@ import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { ComparisonTable } from "@/components/ui/comparison-table";
 import { ToolTable } from "@/components/ui/tool-table";
 import { FAQ } from "@/components/sections/FAQ";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { Mail, Share2, PenTool, Target, BarChart2, Repeat, CheckCircle2, Zap } from "lucide-react";
+import { PageCTA } from "@/components/ui/page-cta";
+import { Mail, Share2, PenTool, Target, BarChart2, Repeat } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "AI Marketing Automation for Small Business: Email, Social & Ads",
@@ -33,7 +32,7 @@ const marketingFaqs = [
     },
     {
         question: "Does this replace my marketing agency?",
-        answer: "For many small businesses, yes. AI can handle the execution work (writing, posting, emailing) that agencies typically charge $2k-$5k/month for. You'll still need strategy, but the heavy lifting becomes automated."
+        answer: "For many small businesses, yes. AI can handle the execution work (writing, posting, emailing) that agencies charge a monthly retainer for. You'll still need strategy, but the heavy lifting becomes automated."
     },
     {
         question: "How does AI help with email marketing?",
@@ -41,7 +40,7 @@ const marketingFaqs = [
     },
     {
         question: "Is it expensive to set up?",
-        answer: "Compared to hiring a marketing manager ($60k+) or an agency ($30k+/yr), AI is incredibly affordable. Most stacks cost under $300/mo in software fees."
+        answer: "Compared to hiring a marketing manager or retaining an agency, AI is far more affordable. Most stacks cost under $300/mo in software fees — see the sample stacks above."
     }
 ];
 
@@ -94,7 +93,7 @@ export default function MarketingPage() {
 
                 {/* Intro */}
                 <section className="mb-24 max-w-4xl">
-                    <h2 className="text-2xl font-bold text-white mb-6">Consistency is Key (And AI Never Sleeps)</h2>
+                    <h2 className="font-heading text-2xl font-bold text-ink mb-6">Consistency is Key (And AI Never Sleeps)</h2>
                     <p className="text-lg text-muted-foreground leading-relaxed border-l-4 border-primary pl-6">
                         The biggest challenge for small business marketing isn&apos;t quality—it&apos;s consistency. You get busy, strict operations take over, and months go by without an email or social post. AI marketing automation solves this by ensuring your brand stays top-of-mind 24/7, executing your strategy rain or shine.
                     </p>
@@ -102,7 +101,7 @@ export default function MarketingPage() {
 
                 {/* Benefits / Tools Grid */}
                 <section className="mb-24">
-                    <h2 className="text-3xl font-bold text-white mb-12">What Can You Automate?</h2>
+                    <h2 className="font-heading text-3xl font-bold text-ink mb-12">What Can You Automate?</h2>
                     <div className="grid md:grid-cols-3 gap-8">
                         {[
                             { icon: Mail, title: "Email Nurture", desc: "Send personalized sequences that warm up leads over months, not days." },
@@ -112,9 +111,9 @@ export default function MarketingPage() {
                             { icon: BarChart2, title: "Lead Scoring", desc: "Know exactly which leads are ready to buy based on their engagement." },
                             { icon: Repeat, title: "Review Generation", desc: "Automatically ask happy customers for reviews at the perfect moment." }
                         ].map((item, i) => (
-                            <div key={i} className="p-8 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+                            <div key={i} className="p-8 rounded-2xl surface-raised hover:bg-sand/70 transition-colors">
                                 <item.icon className="w-10 h-10 text-primary mb-6" />
-                                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                                <h3 className="font-heading text-xl font-bold text-ink mb-3">{item.title}</h3>
                                 <p className="text-muted-foreground">{item.desc}</p>
                             </div>
                         ))}
@@ -136,34 +135,34 @@ export default function MarketingPage() {
                 />
 
                 {/* Budget Breakdown */}
-                <section className="mb-24 bg-white/5 p-8 md:p-12 rounded-3xl border border-white/10">
-                    <h2 className="text-3xl font-bold text-white mb-8 text-center">Marketing Stacks by Budget</h2>
+                <section className="mb-24 bg-sand/60 p-8 md:p-12 rounded-3xl border border-gold-soft">
+                    <h2 className="font-heading text-3xl font-bold text-ink mb-8 text-center">Marketing Stacks by Budget</h2>
                     <div className="grid md:grid-cols-2 gap-8">
-                        <div className="p-6 rounded-2xl bg-[#0B0F19] border border-white/10">
-                            <h3 className="text-xl font-bold text-white mb-2">The &quot;DIY&quot; Starter Stack</h3>
+                        <div className="p-6 rounded-2xl bg-paper border border-gold-soft">
+                            <h3 className="font-heading text-xl font-bold text-ink mb-2">The &quot;DIY&quot; Starter Stack</h3>
                             <p className="text-muted-foreground mb-6 text-sm">Output: 3 posts/week + 1 newsletter.</p>
                             <ul className="space-y-3 mb-6">
-                                <li className="flex justify-between text-gray-300 text-sm"><span>ChatGPT Plus (Copy)</span> <span>$20/mo</span></li>
-                                <li className="flex justify-between text-gray-300 text-sm"><span>Canva Pro (Design)</span> <span>$15/mo</span></li>
-                                <li className="flex justify-between text-gray-300 text-sm"><span>Metricool (Posting)</span> <span>Free</span></li>
+                                <li className="flex justify-between text-body text-sm"><span>ChatGPT Plus (Copy)</span> <span>$20/mo</span></li>
+                                <li className="flex justify-between text-body text-sm"><span>Canva Pro (Design)</span> <span>$15/mo</span></li>
+                                <li className="flex justify-between text-body text-sm"><span>Metricool (Posting)</span> <span>Free</span></li>
                             </ul>
-                            <div className="border-t border-white/10 pt-4 flex justify-between items-center">
-                                <span className="font-bold text-white">Monthly Cost</span>
+                            <div className="border-t border-gold-soft pt-4 flex justify-between items-center">
+                                <span className="font-bold text-ink">Monthly Cost</span>
                                 <span className="text-2xl font-bold text-primary">$35/mo</span>
                             </div>
                         </div>
-                        <div className="p-6 rounded-2xl bg-[#0B0F19] border border-white/10 relative overflow-hidden">
-                            <div className="absolute top-0 right-0 bg-primary/20 px-3 py-1 rounded-bl-xl text-xs font-bold text-primary border-b border-l border-white/10">RECOMMENDED</div>
-                            <h3 className="text-xl font-bold text-white mb-2">The &quot;Growth&quot; Automation Stack</h3>
+                        <div className="p-6 rounded-2xl bg-paper border border-gold-soft relative overflow-hidden">
+                            <div className="absolute top-0 right-0 bg-primary/20 px-3 py-1 rounded-bl-xl text-xs font-bold text-primary border-b border-l border-gold-soft">RECOMMENDED</div>
+                            <h3 className="font-heading text-xl font-bold text-ink mb-2">The &quot;Growth&quot; Automation Stack</h3>
                             <p className="text-muted-foreground mb-6 text-sm">Output: Daily video/posts + Automated Nurture Sequences.</p>
                             <ul className="space-y-3 mb-6">
-                                <li className="flex justify-between text-gray-300 text-sm"><span>GoHighLevel (CRM/Email)</span> <span>$97/mo</span></li>
-                                <li className="flex justify-between text-gray-300 text-sm"><span>OpusClip (Video Repurposing)</span> <span>$19/mo</span></li>
-                                <li className="flex justify-between text-gray-300 text-sm"><span>Vapi (Inbound Lead Calls)</span> <span>~$50/mo</span></li>
-                                <li className="flex justify-between text-gray-300 text-sm"><span>Make.com (Integrations)</span> <span>$29/mo</span></li>
+                                <li className="flex justify-between text-body text-sm"><span>GoHighLevel (CRM/Email)</span> <span>$97/mo</span></li>
+                                <li className="flex justify-between text-body text-sm"><span>OpusClip (Video Repurposing)</span> <span>$19/mo</span></li>
+                                <li className="flex justify-between text-body text-sm"><span>Vapi (Inbound Lead Calls)</span> <span>~$50/mo</span></li>
+                                <li className="flex justify-between text-body text-sm"><span>Make.com (Integrations)</span> <span>$29/mo</span></li>
                             </ul>
-                            <div className="border-t border-white/10 pt-4 flex justify-between items-center">
-                                <span className="font-bold text-white">Monthly Cost</span>
+                            <div className="border-t border-gold-soft pt-4 flex justify-between items-center">
+                                <span className="font-bold text-ink">Monthly Cost</span>
                                 <span className="text-2xl font-bold text-primary">~$195/mo</span>
                             </div>
                         </div>
@@ -173,7 +172,7 @@ export default function MarketingPage() {
                 {/* Comparison */}
                 <section className="mb-24 max-w-5xl mx-auto">
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold text-white mb-4">Manual Marketing vs AI Automation</h2>
+                        <h2 className="font-heading text-3xl font-bold text-ink mb-4">Manual Marketing vs AI Automation</h2>
                         <p className="text-muted-foreground">Stop trading time for visibility.</p>
                     </div>
                     <ComparisonTable
@@ -190,31 +189,31 @@ export default function MarketingPage() {
                 </section>
 
                 {/* What marketing automation frees you from */}
-                <section className="mb-24 bg-gradient-to-br from-purple-500/10 to-transparent p-12 rounded-3xl border border-purple-500/20">
-                    <h2 className="text-3xl font-bold text-white mb-4 text-center">Marketing That Runs Without You</h2>
+                <section className="mb-24 bg-gradient-to-br from-brand-purple/10 to-transparent p-12 rounded-3xl border border-brand-purple/20">
+                    <h2 className="font-heading text-3xl font-bold text-ink mb-4 text-center">Marketing That Runs Without You</h2>
                     <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
                         The point isn&apos;t a dashboard of numbers. It&apos;s that your marketing keeps working on the weeks you&apos;re too busy to think about it.
                     </p>
                     <div className="grid md:grid-cols-3 gap-10">
                         <div className="text-center">
-                            <div className="w-14 h-14 rounded-2xl bg-purple-500/15 flex items-center justify-center mx-auto mb-5">
-                                <PenTool className="w-7 h-7 text-purple-400" />
+                            <div className="w-14 h-14 rounded-2xl bg-brand-purple/15 flex items-center justify-center mx-auto mb-5">
+                                <PenTool className="w-7 h-7 text-brand-purple" />
                             </div>
-                            <h3 className="text-xl font-bold text-white mb-2">Content that ships itself</h3>
+                            <h3 className="font-heading text-xl font-bold text-ink mb-2">Content that ships itself</h3>
                             <p className="text-muted-foreground">Emails, posts, and captions drafted in your brand voice and scheduled ahead&mdash;so your marketing never goes quiet during a busy stretch.</p>
                         </div>
                         <div className="text-center">
-                            <div className="w-14 h-14 rounded-2xl bg-purple-500/15 flex items-center justify-center mx-auto mb-5">
-                                <Repeat className="w-7 h-7 text-purple-400" />
+                            <div className="w-14 h-14 rounded-2xl bg-brand-purple/15 flex items-center justify-center mx-auto mb-5">
+                                <Repeat className="w-7 h-7 text-brand-purple" />
                             </div>
-                            <h3 className="text-xl font-bold text-white mb-2">Consistency on autopilot</h3>
+                            <h3 className="font-heading text-xl font-bold text-ink mb-2">Consistency on autopilot</h3>
                             <p className="text-muted-foreground">Nurture sequences, follow-ups, and review requests keep going out whether or not marketing crossed your mind that day.</p>
                         </div>
                         <div className="text-center">
-                            <div className="w-14 h-14 rounded-2xl bg-purple-500/15 flex items-center justify-center mx-auto mb-5">
-                                <Target className="w-7 h-7 text-purple-400" />
+                            <div className="w-14 h-14 rounded-2xl bg-brand-purple/15 flex items-center justify-center mx-auto mb-5">
+                                <Target className="w-7 h-7 text-brand-purple" />
                             </div>
-                            <h3 className="text-xl font-bold text-white mb-2">Spend that self-corrects</h3>
+                            <h3 className="font-heading text-xl font-bold text-ink mb-2">Spend that self-corrects</h3>
                             <p className="text-muted-foreground">Ad budget shifts toward what&apos;s actually working, so you stop pouring money into creative that isn&apos;t landing.</p>
                         </div>
                     </div>
@@ -226,25 +225,11 @@ export default function MarketingPage() {
                     description="How to scale your presence without losing your soul."
                 />
 
-                {/* CTA */}
-                <section className="text-center py-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Put Your Marketing on Autopilot</h2>
-                    <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-                        Don&apos;t let another week go by without posting. Build a system that grows your business while you sleep.
-                    </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link href="/ai-readiness-quiz">
-                            <Button size="lg" className="rounded-full px-8 text-lg h-14 bg-primary hover:bg-primary/90 text-background font-bold">
-                                Get Your Marketing Plan
-                            </Button>
-                        </Link>
-                        <Link href="/book">
-                            <Button variant="heroOutline" size="lg" className="rounded-full px-8 text-lg h-14">
-                                Book a Strategy Call
-                            </Button>
-                        </Link>
-                    </div>
-                </section>
+                {/* Closing CTA */}
+                <PageCTA
+                    title="Put Your Marketing on Autopilot"
+                    description="Don't let another week go by without posting. Build a system that grows your business while you sleep."
+                />
             </div>
 
             <Footer />

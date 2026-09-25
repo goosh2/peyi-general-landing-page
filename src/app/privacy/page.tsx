@@ -19,7 +19,7 @@ export default function PrivacyPage() {
             <section className="relative pt-32 pb-24">
                 <div className="container mx-auto px-6">
                     <div className="max-w-3xl mx-auto">
-                        <h1 className="text-3xl sm:text-4xl font-heading font-bold text-white mb-3">
+                        <h1 className="text-3xl sm:text-4xl font-heading font-bold text-ink mb-3">
                             Privacy <span className="gradient-text">Policy</span>
                         </h1>
                         <p className="text-sm text-muted-foreground mb-12">Last updated: {LAST_UPDATED}</p>
@@ -33,7 +33,7 @@ export default function PrivacyPage() {
                             </p>
 
                             <div>
-                                <h2 className="font-heading font-bold text-xl text-white mb-3">What we collect</h2>
+                                <h2 className="font-heading font-bold text-xl text-ink mb-3">What we collect</h2>
                                 <ul className="space-y-2 list-disc pl-5">
                                     <li>
                                         <span className="text-foreground font-medium">Booking requests.</span>{" "}
@@ -54,7 +54,7 @@ export default function PrivacyPage() {
                             </div>
 
                             <div>
-                                <h2 className="font-heading font-bold text-xl text-white mb-3">How we use it</h2>
+                                <h2 className="font-heading font-bold text-xl text-ink mb-3">How we use it</h2>
                                 <p>
                                     We use your information only to respond to your request, send the
                                     single-use link that confirms your email, schedule your audit, and
@@ -64,7 +64,7 @@ export default function PrivacyPage() {
                             </div>
 
                             <div>
-                                <h2 className="font-heading font-bold text-xl text-white mb-3">Who we share it with</h2>
+                                <h2 className="font-heading font-bold text-xl text-ink mb-3">Who we share it with</h2>
                                 <p>
                                     We rely on a small number of service providers to run this site and
                                     the booking flow&mdash;including an email delivery service and a
@@ -75,7 +75,7 @@ export default function PrivacyPage() {
                             </div>
 
                             <div>
-                                <h2 className="font-heading font-bold text-xl text-white mb-3">Your choices</h2>
+                                <h2 className="font-heading font-bold text-xl text-ink mb-3">Your choices</h2>
                                 <p>
                                     You can ask us to access or delete the information you&apos;ve given us
                                     at any time. Just reach out and we&apos;ll take care of it.
@@ -83,7 +83,7 @@ export default function PrivacyPage() {
                             </div>
 
                             <div>
-                                <h2 className="font-heading font-bold text-xl text-white mb-3">Contact</h2>
+                                <h2 className="font-heading font-bold text-xl text-ink mb-3">Contact</h2>
                                 <p>
                                     Questions about this policy? Start with the{" "}
                                     <Link href="/book" className="text-primary hover:underline">

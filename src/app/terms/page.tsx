@@ -19,7 +19,7 @@ export default function TermsPage() {
             <section className="relative pt-32 pb-24">
                 <div className="container mx-auto px-6">
                     <div className="max-w-3xl mx-auto">
-                        <h1 className="text-3xl sm:text-4xl font-heading font-bold text-white mb-3">
+                        <h1 className="text-3xl sm:text-4xl font-heading font-bold text-ink mb-3">
                             Terms of <span className="gradient-text">Service</span>
                         </h1>
                         <p className="text-sm text-muted-foreground mb-12">Last updated: {LAST_UPDATED}</p>
@@ -31,7 +31,7 @@ export default function TermsPage() {
                             </p>
 
                             <div>
-                                <h2 className="font-heading font-bold text-xl text-white mb-3">Using this site</h2>
+                                <h2 className="font-heading font-bold text-xl text-ink mb-3">Using this site</h2>
                                 <p>
                                     You may use this site for its intended purpose: learning about our
                                     services and requesting an AI audit. Please don&apos;t misuse the
@@ -41,7 +41,7 @@ export default function TermsPage() {
                             </div>
 
                             <div>
-                                <h2 className="font-heading font-bold text-xl text-white mb-3">Audit requests and bookings</h2>
+                                <h2 className="font-heading font-bold text-xl text-ink mb-3">Audit requests and bookings</h2>
                                 <p>
                                     Submitting the audit form is a request, not a confirmed booking. We
                                     confirm your email with a single-use link before any session is
@@ -50,7 +50,7 @@ export default function TermsPage() {
                             </div>
 
                             <div>
-                                <h2 className="font-heading font-bold text-xl text-white mb-3">Information and results</h2>
+                                <h2 className="font-heading font-bold text-xl text-ink mb-3">Information and results</h2>
                                 <p>
                                     The content on this site, including guides and comparisons, is for
                                     general information. Every business is different, and outcomes from
@@ -60,7 +60,7 @@ export default function TermsPage() {
                             </div>
 
                             <div>
-                                <h2 className="font-heading font-bold text-xl text-white mb-3">Intellectual property</h2>
+                                <h2 className="font-heading font-bold text-xl text-ink mb-3">Intellectual property</h2>
                                 <p>
                                     The Peyi Solutions name, brand, and site content belong to us. You may
                                     not copy or reuse them without permission. Third-party product names
@@ -69,7 +69,7 @@ export default function TermsPage() {
                             </div>
 
                             <div>
-                                <h2 className="font-heading font-bold text-xl text-white mb-3">Limitation of liability</h2>
+                                <h2 className="font-heading font-bold text-xl text-ink mb-3">Limitation of liability</h2>
                                 <p>
                                     This site is provided &quot;as is.&quot; To the extent permitted by
                                     law, we are not liable for indirect or incidental damages arising from
@@ -78,7 +78,7 @@ export default function TermsPage() {
                             </div>
 
                             <div>
-                                <h2 className="font-heading font-bold text-xl text-white mb-3">Changes and contact</h2>
+                                <h2 className="font-heading font-bold text-xl text-ink mb-3">Changes and contact</h2>
                                 <p>
                                     We may update these terms from time to time; the date above reflects
                                     the latest version. Questions? Start with the{" "}

@@ -65,10 +65,10 @@ export function BookingForm() {
     if (status === "success") {
         return (
             <div className="glass-card rounded-2xl p-8 text-center">
-                <h2 className="text-2xl font-heading font-bold text-white mb-3">Check your inbox</h2>
+                <h2 className="text-2xl font-heading font-bold text-ink mb-3">Check your inbox</h2>
                 <p className="text-muted-foreground leading-relaxed">
                     If everything checks out, we&apos;ve sent a confirmation link to{" "}
-                    <span className="text-white">{email.trim()}</span>. Click it to unlock your
+                    <span className="text-ink">{email.trim()}</span>. Click it to unlock your
                     booking page. The link is single-use and expires in 24 hours.
                 </p>
             </div>
@@ -76,7 +76,7 @@ export function BookingForm() {
     }
 
     const inputClass = cn(
-        "w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-sm text-white",
+        "w-full rounded-md bg-sand/60 border border-gold-soft px-4 py-3 text-sm text-ink",
         "placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand-pink/50",
         "focus:border-transparent transition-colors"
     );
@@ -84,7 +84,7 @@ export function BookingForm() {
     return (
         <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-6 sm:p-8 space-y-5" noValidate>
             <div className="space-y-2">
-                <label htmlFor="book-name" className="block text-sm font-medium text-white">
+                <label htmlFor="book-name" className="block text-sm font-medium text-ink">
                     Name
                 </label>
                 <input
@@ -101,7 +101,7 @@ export function BookingForm() {
             </div>
 
             <div className="space-y-2">
-                <label htmlFor="book-email" className="block text-sm font-medium text-white">
+                <label htmlFor="book-email" className="block text-sm font-medium text-ink">
                     Email
                 </label>
                 <input
@@ -118,7 +118,7 @@ export function BookingForm() {
             </div>
 
             <div className="space-y-2">
-                <label htmlFor="book-business" className="block text-sm font-medium text-white">
+                <label htmlFor="book-business" className="block text-sm font-medium text-ink">
                     Business name{" "}
                     <span className="text-muted-foreground font-normal">(optional)</span>
                 </label>
@@ -135,7 +135,7 @@ export function BookingForm() {
             </div>
 
             <div className="space-y-2">
-                <label htmlFor="book-need" className="block text-sm font-medium text-white">
+                <label htmlFor="book-need" className="block text-sm font-medium text-ink">
                     What do you want help with?
                 </label>
                 <textarea

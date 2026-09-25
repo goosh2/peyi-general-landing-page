@@ -1,74 +1,121 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight, Calendar, ChevronDown, Menu, X } from "lucide-react";
 
-// Dropdown Item Component (hoisted so it isn't re-created on every Navbar render)
-const DropdownItem = ({ href, children, onNavigate }: { href: string; children: React.ReactNode; onNavigate: () => void }) => (
+const SOLUTIONS = [
+    { href: "/ai-lead-generation-small-business", label: "AI Lead Gen & CRM", note: "Capture, qualify, follow up" },
+    { href: "/ai-customer-service-small-business", label: "AI Customer Service", note: "Answers and bookings, 24/7" },
+    { href: "/voice-ai-agent", label: "Voice AI Receptionist", note: "Every call picked up" },
+    { href: "/ai-marketing-automation-small-business", label: "Marketing Automation", note: "Content that keeps going" },
+    { href: "/ai-operations-automation", label: "Operations Automation", note: "Invoices, scheduling, admin" }
+];
+
+const LINKS = [
+    { href: "/#how-it-works", label: "How it works" },
+    { href: "/#why-us", label: "Why Peyi" },
+    { href: "/#faq", label: "FAQ" }
+];
+
+// Hoisted so it isn't re-created on every Navbar render.
+const DropdownItem = ({
+    href,
+    label,
+    note,
+    onNavigate
+}: {
+    href: string;
+    label: string;
+    note?: string;
+    onNavigate: () => void;
+}) => (
     <Link
         href={href}
-        className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/5 rounded-md transition-colors"
         onClick={onNavigate}
+        className="block rounded-xl px-3.5 py-2.5 transition-colors hover:bg-sand/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
-        {children}
+        <span className="block text-sm font-medium text-ink">{label}</span>
+        {note && <span className="block text-xs text-quiet">{note}</span>}
     </Link>
 );
 
+function Logo() {
+    return (
+        <Link href="/" className="flex items-center gap-2.5 shrink-0" aria-label="Peyi Solutions home">
+            <Image
+                src="/logo.png"
+                alt=""
+                width={44}
+                height={44}
+                className="rounded-full ring-1 ring-gold/40 shadow-[0_4px_12px_-4px_rgba(6,32,28,0.35)]"
+                priority
+            />
+            <span className="font-sans font-bold text-[1.35rem] tracking-[-0.02em] text-ink">Peyi Solutions</span>
+        </Link>
+    );
+}
+
 export function Navbar() {
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
     const [solutionsOpen, setSolutionsOpen] = useState(false);
-    const [resourcesOpen, setResourcesOpen] = useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
+        const onScroll = () => setScrolled(window.scrollY > 12);
+        const first = requestAnimationFrame(onScroll);
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => {
+            cancelAnimationFrame(first);
+            window.removeEventListener("scroll", onScroll);
         };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const closeDropdowns = () => {
+    // Lock page scroll behind the mobile sheet.
+    useEffect(() => {
+        document.body.style.overflow = mobileOpen ? "hidden" : "";
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [mobileOpen]);
+
+    const close = () => {
         setSolutionsOpen(false);
-        setResourcesOpen(false);
+        setMobileOpen(false);
     };
 
     return (
-        <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || mobileMenuOpen
-                ? "bg-[#0B0F19]/90 backdrop-blur-xl border-b border-white/5 py-3 shadow-lg shadow-purple-500/5"
-                : "bg-transparent py-6"
+        <header className="fixed top-3 inset-x-0 z-50 px-3">
+            <nav
+                className={`mx-auto max-w-7xl flex items-center justify-between gap-4 rounded-full pl-4 pr-2 py-2 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 ${
+                    scrolled || mobileOpen
+                        ? "surface-chrome"
+                        : "border border-transparent bg-transparent"
                 }`}
-        >
-            <div className="container px-6 mx-auto flex items-center justify-between">
-                {/* Left: Logo */}
-                <Link href="/" className="flex items-center gap-3 group relative z-50">
-                    <div className="relative w-11 h-11 rounded-full overflow-hidden border border-white/10 group-hover:border-primary/50 transition-colors">
-                        <div
-                            className="w-full h-full bg-white"
-                            style={{
-                                backgroundImage: "url('/logo.png')",
-                                backgroundSize: "cover",
-                                filter: "hue-rotate(90deg) saturate(1.2)"
-                            }}
-                        />
-                    </div>
-                    <span className="font-heading font-bold text-xl tracking-tight text-foreground">
-                        Peyi Solutions
-                    </span>
-                </Link>
+            >
+                <Logo />
 
-                {/* Right: Desktop Links & CTA */}
-                <div className="hidden md:flex items-center gap-8">
-
-                    {/* Solutions Dropdown */}
-                    <div className="relative group" onMouseEnter={() => setSolutionsOpen(true)} onMouseLeave={() => setSolutionsOpen(false)}>
-                        <button className="flex items-center gap-1 text-sm font-medium text-foreground/90 hover:text-primary transition-colors py-2">
-                            Solutions <ChevronDown className={`w-4 h-4 transition-transform ${solutionsOpen ? "rotate-180" : ""}`} />
+                {/* Desktop links */}
+                <div className="hidden md:flex items-center gap-1">
+                    <div
+                        className="relative"
+                        onMouseEnter={() => setSolutionsOpen(true)}
+                        onMouseLeave={() => setSolutionsOpen(false)}
+                    >
+                        <button
+                            type="button"
+                            aria-expanded={solutionsOpen}
+                            onClick={() => setSolutionsOpen((o) => !o)}
+                            className="flex items-center gap-1 rounded-full px-3.5 py-2 text-[15px] text-ink/85 hover:text-ink transition-colors"
+                        >
+                            Solutions
+                            <ChevronDown
+                                className={`w-4 h-4 transition-transform duration-200 ${solutionsOpen ? "rotate-180" : ""}`}
+                            />
                         </button>
+
                         <AnimatePresence>
                             {solutionsOpen && (
                                 <motion.div
@@ -77,121 +124,95 @@ export function Navbar() {
                                     exit={{ opacity: 0, y: -6, scale: 0.97 }}
                                     transition={{ type: "spring", bounce: 0, duration: 0.3 }}
                                     style={{ transformOrigin: "top left" }}
-                                    className="absolute top-full left-0 mt-2 w-64 bg-[#0B0F19]/95 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl py-2"
+                                    className="absolute left-0 top-full pt-3"
                                 >
-                                    <Link href="/ai-customer-service-small-business" className="block px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
-                                        AI Customer Service
-                                    </Link>
-                                    <Link href="/voice-ai-agent" className="block px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors font-semibold text-primary/90">
-                                        Self-Selling Voice AI
-                                    </Link>
-                                    <Link href="/ai-marketing-automation-small-business" className="block px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
-                                        AI Marketing Automation
-                                    </Link>
-                                    <Link href="/ai-lead-generation-small-business" className="block px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
-                                        AI Lead Gen & CRM
-                                    </Link>
-                                    <Link href="/ai-operations-automation" className="block px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
-                                        AI Operations Automation
-                                    </Link>
-                                    <div className="border-t border-white/10 my-1"></div>
-                                    <Link href="/ai-for-real-estate-agents" className="block px-4 py-3 text-sm text-primary hover:text-primary/80 hover:bg-white/5 transition-colors font-medium">
-                                        For Real Estate Agents
-                                    </Link>
+                                    <div className="w-72 rounded-2xl border border-gold-soft bg-paper p-2 shadow-[0_24px_60px_-24px_rgba(80,50,20,0.4)]">
+                                        {SOLUTIONS.map((s) => (
+                                            <DropdownItem key={s.href} {...s} onNavigate={close} />
+                                        ))}
+                                        <div className="my-1.5 gold-rule opacity-60" />
+                                        <DropdownItem
+                                            href="/ai-for-real-estate-agents"
+                                            label="For Real Estate Agents"
+                                            note="Our specialty"
+                                            onNavigate={close}
+                                        />
+                                    </div>
                                 </motion.div>
                             )}
                         </AnimatePresence>
                     </div>
 
-                    {/* Industries Link */}
-                    <Link
-                        href="/ai-for-real-estate-agents"
-                        className="text-sm font-medium text-foreground/90 hover:text-primary transition-colors"
-                    >
-                        Real Estate
-                    </Link>
-
-                    <Link
-                        href="/#why-us"
-                        className="text-sm font-medium text-foreground/90 hover:text-primary transition-colors"
-                    >
-                        Why Us
-                    </Link>
-
-                    {/* Resources Dropdown */}
-                    <div className="relative group" onMouseEnter={() => setResourcesOpen(true)} onMouseLeave={() => setResourcesOpen(false)}>
-                        <button className="flex items-center gap-1 text-sm font-medium text-foreground/90 hover:text-primary transition-colors py-2">
-                            Resources <ChevronDown className={`w-4 h-4 transition-transform ${resourcesOpen ? "rotate-180" : ""}`} />
-                        </button>
-                        <AnimatePresence>
-                            {resourcesOpen && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: -6, scale: 0.97 }}
-                                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                                    exit={{ opacity: 0, y: -6, scale: 0.97 }}
-                                    transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-                                    style={{ transformOrigin: "top center" }}
-                                    className="absolute top-full text-center left-1/2 -translate-x-1/2 w-48 bg-[#0B0F19] border border-white/10 rounded-xl shadow-2xl p-2 mt-1 backdrop-blur-3xl"
-                                >
-                                    <DropdownItem href="/ai-readiness-quiz" onNavigate={closeDropdowns}>AI Readiness Quiz</DropdownItem>
-                                    {/* <DropdownItem href="/blog">Blog & Guides</DropdownItem> */}
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </div>
-
-                    <Button variant="heroOutline" size="sm" asChild>
-                        <Link href="/ai-readiness-quiz">Get Started</Link>
-                    </Button>
+                    {LINKS.map((l) => (
+                        <Link
+                            key={l.href}
+                            href={l.href}
+                            className="rounded-full px-3.5 py-2 text-[15px] text-ink/85 hover:text-ink transition-colors"
+                        >
+                            {l.label}
+                        </Link>
+                    ))}
                 </div>
 
-                {/* Mobile Toggle */}
-                <button
-                    className="md:hidden text-foreground hover:text-primary transition-colors relative z-50"
-                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    aria-label="Toggle menu"
-                >
-                    {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-                </button>
+                <div className="flex items-center gap-2">
+                    <Link
+                        href="/book"
+                        className="hidden sm:inline-flex items-center gap-2.5 rounded-full bg-[image:var(--gradient-ai)] px-6 py-3 font-heading text-[17px] font-semibold text-white shadow-[0_14px_30px_-12px_rgba(232,102,75,0.6),inset_0_1px_0_rgba(255,255,255,0.35)] transition-transform duration-150 hover:scale-[1.03] active:scale-[0.97]"
+                    >
+                        <Calendar className="w-[18px] h-[18px]" />
+                        Book AI Audit
+                        <ArrowRight className="w-4 h-4" />
+                    </Link>
+                    <button
+                        type="button"
+                        className="md:hidden w-10 h-10 rounded-full flex items-center justify-center text-ink hover:bg-sand/70 transition-colors"
+                        onClick={() => setMobileOpen((o) => !o)}
+                        aria-label={mobileOpen ? "Close menu" : "Open menu"}
+                        aria-expanded={mobileOpen}
+                    >
+                        {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                    </button>
+                </div>
+            </nav>
 
-                {/* Mobile Menu Overlay */}
-                <AnimatePresence>
-                    {mobileMenuOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            className="fixed inset-0 bg-[#0B0F19] z-40 pt-24 px-6 flex flex-col gap-6 md:hidden overflow-y-auto"
+            {/* Mobile sheet */}
+            <AnimatePresence>
+                {mobileOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ type: "spring", bounce: 0, duration: 0.3 }}
+                        className="md:hidden mx-auto mt-2 max-w-7xl rounded-3xl border border-gold-soft bg-paper p-3 shadow-[0_24px_60px_-24px_rgba(80,50,20,0.4)] max-h-[calc(100svh-6rem)] overflow-y-auto"
+                    >
+                        <p className="px-3.5 pt-2 pb-1 font-label text-[10px] text-quiet">
+                            Solutions
+                        </p>
+                        {SOLUTIONS.map((s) => (
+                            <DropdownItem key={s.href} {...s} onNavigate={close} />
+                        ))}
+                        <DropdownItem
+                            href="/ai-for-real-estate-agents"
+                            label="For Real Estate Agents"
+                            note="Our specialty"
+                            onNavigate={close}
+                        />
+                        <div className="my-2 gold-rule opacity-60" />
+                        {LINKS.map((l) => (
+                            <DropdownItem key={l.href} href={l.href} label={l.label} onNavigate={close} />
+                        ))}
+                        <DropdownItem href="/ai-readiness-quiz" label="AI Readiness Quiz" onNavigate={close} />
+                        <Link
+                            href="/book"
+                            onClick={close}
+                            className="mt-3 flex items-center justify-center gap-2 rounded-full bg-[image:var(--gradient-ai)] px-4 py-3.5 font-heading text-lg font-semibold text-white"
                         >
-                            <div className="flex flex-col gap-4">
-                                <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">Solutions</p>
-                                <Link href="/ai-customer-service-small-business" className="text-lg font-medium text-gray-300" onClick={() => setMobileMenuOpen(false)}>Customer Service</Link>
-                                <Link href="/voice-ai-agent" className="text-lg font-bold text-primary/90" onClick={() => setMobileMenuOpen(false)}>Self-Selling Voice AI</Link>
-                                <Link href="/ai-marketing-automation-small-business" className="text-lg font-medium text-gray-300" onClick={() => setMobileMenuOpen(false)}>Marketing Automation</Link>
-                                <Link href="/ai-lead-generation-small-business" className="text-lg font-medium text-gray-300" onClick={() => setMobileMenuOpen(false)}>AI Lead Gen & CRM</Link>
-                            </div>
-
-                            <div className="h-px bg-white/10 w-full" />
-
-                            <div className="flex flex-col gap-4">
-                                <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">Industries</p>
-                                <Link href="/ai-for-real-estate-agents" className="text-lg font-medium text-gray-300" onClick={() => setMobileMenuOpen(false)}>Real Estate</Link>
-                            </div>
-
-                            <div className="h-px bg-white/10 w-full" />
-
-                            <Link href="/#why-us" className="text-xl font-bold text-white block" onClick={() => setMobileMenuOpen(false)}>Why Us</Link>
-                            <Link href="/ai-readiness-quiz" className="text-xl font-bold text-white block" onClick={() => setMobileMenuOpen(false)}>AI Readiness Quiz</Link>
-
-                            <div className="mt-8">
-                                <Button variant="hero" size="lg" className="w-full" asChild>
-                                    <Link href="/ai-readiness-quiz" onClick={() => setMobileMenuOpen(false)}>Get Started</Link>
-                                </Button>
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </div>
-        </nav>
+                            <Calendar className="w-4 h-4" />
+                            Book AI Audit
+                        </Link>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </header>
     );
 }

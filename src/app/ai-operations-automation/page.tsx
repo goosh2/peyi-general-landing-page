@@ -6,9 +6,8 @@ import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { ComparisonTable } from "@/components/ui/comparison-table";
 import { ToolTable } from "@/components/ui/tool-table";
 import { FAQ } from "@/components/sections/FAQ";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { FileText, Calculator, Calendar, Brain, Clock, DollarSign, Settings, CheckCircle } from "lucide-react";
+import { PageCTA } from "@/components/ui/page-cta";
+import { FileText, Calculator, Calendar, Brain, Clock, DollarSign } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "AI for Business Ops: Bookkeeping, Scheduling & Admin Automation",
@@ -94,7 +93,7 @@ export default function OpsPage() {
 
                 {/* Intro */}
                 <section className="mb-24 max-w-4xl">
-                    <h2 className="text-2xl font-bold text-white mb-6">Operations Eating Your Profit?</h2>
+                    <h2 className="font-heading text-2xl font-bold text-ink mb-6">Operations Eating Your Profit?</h2>
                     <p className="text-lg text-muted-foreground leading-relaxed border-l-4 border-primary pl-6">
                         As you scale, the &quot;boring&quot; work scales with you. Invoicing, scheduling, compliance, and data entry quietly eat a growing share of your revenue in overhead. AI Operations Automation reverses this trend—letting you handle far more volume without adding a single new admin staff member.
                     </p>
@@ -102,7 +101,7 @@ export default function OpsPage() {
 
                 {/* Benefits / Tools Grid */}
                 <section className="mb-24">
-                    <h2 className="text-3xl font-bold text-white mb-12">Automate the Back Office</h2>
+                    <h2 className="font-heading text-3xl font-bold text-ink mb-12">Automate the Back Office</h2>
                     <div className="grid md:grid-cols-3 gap-8">
                         {[
                             { icon: Calculator, title: "Bookkeeping", desc: "Auto-categorize transactions and reconcile accounts in real-time." },
@@ -112,9 +111,9 @@ export default function OpsPage() {
                             { icon: Clock, title: "Time Tracking", desc: "AI tracks billable hours automatically based on your activity." },
                             { icon: DollarSign, title: "Invoicing", desc: "Send invoices and chase late payments without human intervention." }
                         ].map((item, i) => (
-                            <div key={i} className="p-8 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+                            <div key={i} className="p-8 rounded-2xl surface-raised hover:bg-sand/70 transition-colors">
                                 <item.icon className="w-10 h-10 text-primary mb-6" />
-                                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                                <h3 className="font-heading text-xl font-bold text-ink mb-3">{item.title}</h3>
                                 <p className="text-muted-foreground">{item.desc}</p>
                             </div>
                         ))}
@@ -138,36 +137,36 @@ export default function OpsPage() {
                 {/* Comparison */}
                 <section className="mb-24 max-w-5xl mx-auto">
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold text-white mb-4">Virtual Assistant vs AI Ops</h2>
+                        <h2 className="font-heading text-3xl font-bold text-ink mb-4">Virtual Assistant vs AI Ops</h2>
                         <p className="text-muted-foreground">The cost of scale.</p>
                     </div>
                     <ComparisonTable
                         headers={["Human Admin / VA", "AI Operations Stack"]}
-                        rowHeaders={["Cost", "Availability", "Error Rate", "Speed", "Scalability"]}
+                        rowHeaders={["Cost", "Availability", "Consistency", "Speed", "Scalability"]}
                         rows={[
-                            ["$2,000 - $5,000/mo", "$100 - $500/mo"],
+                            ["A salary or hourly rate", "$100 - $500/mo in software"],
                             ["9am - 5pm (w/ breaks)", "24/7/365"],
-                            ["Human Error (Fatigue)", "Near Zero"],
-                            ["Minutes/Hours per task", "Milliseconds"],
-                            ["Linear (Hire more people)", "Exponential (Add server capacity)"],
+                            ["Slips when people are busy or tired", "Same steps, every time"],
+                            ["Minutes to hours per task", "Seconds"],
+                            ["Hire more people", "Handles more volume without new hires"],
                         ]}
                     />
                 </section>
 
                 {/* ROI / Stats */}
-                <section className="mb-24 bg-gradient-to-br from-green-500/10 to-transparent p-12 rounded-3xl border border-green-500/20 text-center">
-                    <h2 className="text-3xl font-bold text-white mb-8">Operational Excellence</h2>
+                <section className="mb-24 bg-gradient-to-br from-teal/10 to-transparent p-12 rounded-3xl border border-teal/20 text-center">
+                    <h2 className="font-heading text-3xl font-bold text-ink mb-8">Operational Excellence</h2>
                     <div className="grid md:grid-cols-3 gap-12">
                         <div>
-                            <div className="text-4xl font-bold text-green-400 mb-2">40%</div>
+                            <div className="text-4xl font-bold text-teal-deep mb-2">40%</div>
                             <p className="text-muted-foreground">reduction in operational overhead for AI-native businesses.</p>
                         </div>
                         <div>
-                            <div className="text-4xl font-bold text-green-400 mb-2">0</div>
+                            <div className="text-4xl font-bold text-teal-deep mb-2">0</div>
                             <p className="text-muted-foreground">missed invoices or billing errors.</p>
                         </div>
                         <div>
-                            <div className="text-4xl font-bold text-green-400 mb-2">15h</div>
+                            <div className="text-4xl font-bold text-teal-deep mb-2">15h</div>
                             <p className="text-muted-foreground">saved per week per executive on scheduling and email.</p>
                         </div>
                     </div>
@@ -180,25 +179,11 @@ export default function OpsPage() {
                     description="Expert answers on streamlining your business."
                 />
 
-                {/* CTA */}
-                <section className="text-center py-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Get Your Time Back</h2>
-                    <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-                        Stop being the highest paid admin assistant in your company. Let AI run the ops.
-                    </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link href="/ai-readiness-quiz">
-                            <Button size="lg" className="rounded-full px-8 text-lg h-14 bg-primary hover:bg-primary/90 text-background font-bold">
-                                Get Your Ops Audit
-                            </Button>
-                        </Link>
-                        <Link href="/book">
-                            <Button variant="heroOutline" size="lg" className="rounded-full px-8 text-lg h-14">
-                                Book a Strategy Call
-                            </Button>
-                        </Link>
-                    </div>
-                </section>
+                {/* Closing CTA */}
+                <PageCTA
+                    title="Get Your Time Back"
+                    description="Stop being the highest paid admin assistant in your company. Let AI run the ops."
+                />
             </div>
 
             <Footer />

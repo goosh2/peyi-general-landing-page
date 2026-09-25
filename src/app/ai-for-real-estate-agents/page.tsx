@@ -7,6 +7,7 @@ import { ComparisonTable } from "@/components/ui/comparison-table";
 import { ToolTable } from "@/components/ui/tool-table";
 import { FAQ } from "@/components/sections/FAQ";
 import { Button } from "@/components/ui/button";
+import { PageCTA } from "@/components/ui/page-cta";
 import Link from "next/link";
 import { CheckCircle2, Bot, Mic, MessageSquare, Database, PenTool, BarChart, BadgeCheck } from "lucide-react";
 
@@ -106,7 +107,7 @@ export default function RealEstatePage() {
 
                 {/* Direct Answer / Intro */}
                 <section className="mb-24 max-w-4xl">
-                    <h2 className="text-2xl font-bold text-white mb-6">What is AI for Real Estate?</h2>
+                    <h2 className="font-heading text-2xl font-bold text-ink mb-6">What is AI for Real Estate?</h2>
                     <p className="text-lg text-muted-foreground leading-relaxed border-l-4 border-primary pl-6">
                         AI for real estate is the application of artificial intelligence tools—such as voice agents, chatbots, and predictive analytics—to automate the repetitive tasks of a real estate business. Unlike simple automation, AI can understand context, hold conversations with leads, and personalize marketing at scale, allowing agents to service more clients without increasing headcount.
                     </p>
@@ -114,7 +115,7 @@ export default function RealEstatePage() {
 
                 {/* Tool Categories */}
                 <section className="mb-24">
-                    <h2 className="text-3xl font-bold text-white mb-12">The AI Tools Every Agent Should Know</h2>
+                    <h2 className="font-heading text-3xl font-bold text-ink mb-12">The AI Tools Every Agent Should Know</h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[
                             { icon: Mic, title: "AI Voice Agents", desc: "Answer calls 24/7, qualify leads, and book appointments instantly." },
@@ -124,9 +125,9 @@ export default function RealEstatePage() {
                             { icon: Bot, title: "Transaction Coordinator", desc: "Automate document collection, deadlines, and compliance checks." },
                             { icon: BarChart, title: "Marketing Automation", desc: "Run ads, retarget leads, and optimize spend with AI guidance." }
                         ].map((tool, i) => (
-                            <div key={i} className="p-8 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+                            <div key={i} className="p-8 rounded-2xl surface-raised hover:bg-sand/70 transition-colors">
                                 <tool.icon className="w-10 h-10 text-primary mb-6" />
-                                <h3 className="text-xl font-bold text-white mb-3">{tool.title}</h3>
+                                <h3 className="font-heading text-xl font-bold text-ink mb-3">{tool.title}</h3>
                                 <p className="text-muted-foreground">{tool.desc}</p>
                             </div>
                         ))}
@@ -150,7 +151,7 @@ export default function RealEstatePage() {
                 {/* Comparison Table */}
                 <section className="mb-24 max-w-5xl mx-auto">
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold text-white mb-4">Tool Comparison: AI CRM Systems</h2>
+                        <h2 className="font-heading text-3xl font-bold text-ink mb-4">Tool Comparison: AI CRM Systems</h2>
                         <p className="text-muted-foreground">Why we often recommend GoHighLevel for implementation.</p>
                     </div>
                     <ComparisonTable
@@ -166,41 +167,41 @@ export default function RealEstatePage() {
                         ]}
                     />
                     <div className="mt-8 p-6 rounded-xl bg-primary/10 border border-primary/20">
-                        <p className="text-sm text-gray-300">
+                        <p className="text-sm text-body">
                             <strong>Note:</strong> We specialize in GoHighLevel implementation for real estate professionals because of its all-in-one capabilities (replacing Mailchimp, Calendly, ClickFunnels, etc.) and cost-effectiveness.
                         </p>
                     </div>
                 </section>
 
                 {/* Cost Breakdown */}
-                <section className="mb-24 bg-white/5 p-8 md:p-12 rounded-3xl border border-white/10">
-                    <h2 className="text-3xl font-bold text-white mb-8 text-center">How Much Does an AI System Cost?</h2>
+                <section className="mb-24 bg-sand/60 p-8 md:p-12 rounded-3xl border border-gold-soft">
+                    <h2 className="font-heading text-3xl font-bold text-ink mb-8 text-center">How Much Does an AI System Cost?</h2>
                     <div className="grid md:grid-cols-2 gap-8">
-                        <div className="p-6 rounded-2xl bg-[#0B0F19] border border-white/10">
-                            <h3 className="text-xl font-bold text-white mb-2">Starter AI Stack</h3>
+                        <div className="p-6 rounded-2xl bg-paper border border-gold-soft">
+                            <h3 className="font-heading text-xl font-bold text-ink mb-2">Starter AI Stack</h3>
                             <p className="text-muted-foreground mb-6 text-sm">Best for solo agents just getting started.</p>
                             <ul className="space-y-3 mb-6">
-                                <li className="flex justify-between text-gray-300 text-sm"><span>Smart CRM (GoHighLevel)</span> <span>$97/mo</span></li>
-                                <li className="flex justify-between text-gray-300 text-sm"><span>AI Content Tools (ChatGPT Plus)</span> <span>$20/mo</span></li>
-                                <li className="flex justify-between text-gray-300 text-sm"><span>Video AI (OpusClip)</span> <span>$19/mo</span></li>
+                                <li className="flex justify-between text-body text-sm"><span>Smart CRM (GoHighLevel)</span> <span>$97/mo</span></li>
+                                <li className="flex justify-between text-body text-sm"><span>AI Content Tools (ChatGPT Plus)</span> <span>$20/mo</span></li>
+                                <li className="flex justify-between text-body text-sm"><span>Video AI (OpusClip)</span> <span>$19/mo</span></li>
                             </ul>
-                            <div className="border-t border-white/10 pt-4 flex justify-between items-center">
-                                <span className="font-bold text-white">Total Estimated Cost</span>
+                            <div className="border-t border-gold-soft pt-4 flex justify-between items-center">
+                                <span className="font-bold text-ink">Total Estimated Cost</span>
                                 <span className="text-2xl font-bold text-primary">~$136/mo</span>
                             </div>
                         </div>
-                        <div className="p-6 rounded-2xl bg-[#0B0F19] border border-white/10 relative overflow-hidden">
-                            <div className="absolute top-0 right-0 bg-primary/20 px-3 py-1 rounded-bl-xl text-xs font-bold text-primary border-b border-l border-white/10">RECOMMENDED</div>
-                            <h3 className="text-xl font-bold text-white mb-2">Pro Growth Stack</h3>
+                        <div className="p-6 rounded-2xl bg-paper border border-gold-soft relative overflow-hidden">
+                            <div className="absolute top-0 right-0 bg-primary/20 px-3 py-1 rounded-bl-xl text-xs font-bold text-primary border-b border-l border-gold-soft">RECOMMENDED</div>
+                            <h3 className="font-heading text-xl font-bold text-ink mb-2">Pro Growth Stack</h3>
                             <p className="text-muted-foreground mb-6 text-sm">For agents & teams ready to scale.</p>
                             <ul className="space-y-3 mb-6">
-                                <li className="flex justify-between text-gray-300 text-sm"><span>All-in-One CRM & Automation</span> <span>$97/mo</span></li>
-                                <li className="flex justify-between text-gray-300 text-sm"><span>AI Voice Agent (500 mins)</span> <span>~$50/mo</span></li>
-                                <li className="flex justify-between text-gray-300 text-sm"><span>Data Scraper (PropStream)</span> <span>$99/mo</span></li>
-                                <li className="flex justify-between text-gray-300 text-sm"><span>Make.com Automation</span> <span>$29/mo</span></li>
+                                <li className="flex justify-between text-body text-sm"><span>All-in-One CRM & Automation</span> <span>$97/mo</span></li>
+                                <li className="flex justify-between text-body text-sm"><span>AI Voice Agent (500 mins)</span> <span>~$50/mo</span></li>
+                                <li className="flex justify-between text-body text-sm"><span>Data Scraper (PropStream)</span> <span>$99/mo</span></li>
+                                <li className="flex justify-between text-body text-sm"><span>Make.com Automation</span> <span>$29/mo</span></li>
                             </ul>
-                            <div className="border-t border-white/10 pt-4 flex justify-between items-center">
-                                <span className="font-bold text-white">Total Estimated Cost</span>
+                            <div className="border-t border-gold-soft pt-4 flex justify-between items-center">
+                                <span className="font-bold text-ink">Total Estimated Cost</span>
                                 <span className="text-2xl font-bold text-primary">~$275/mo</span>
                             </div>
                         </div>
@@ -211,77 +212,75 @@ export default function RealEstatePage() {
                 <section className="mb-24 flex flex-col md:flex-row items-center gap-12">
                     <div className="flex-1">
                         <BadgeCheck className="w-16 h-16 text-primary mb-6" />
-                        <h2 className="text-3xl font-bold text-white mb-6">Why Partner With Peyi Solutions?</h2>
+                        <h2 className="font-heading text-3xl font-bold text-ink mb-6">Why Partner With Peyi Solutions?</h2>
                         <p className="text-lg text-muted-foreground mb-6">
                             We don&apos;t just sell you software and wish you luck. <strong>We build the entire system for you.</strong>
                         </p>
-                        <p className="text-gray-400 leading-relaxed mb-6">
+                        <p className="text-body leading-relaxed mb-6">
                             Real estate is a relationship business. You shouldn&apos;t be stuck behind a computer configuring webhooks or training chatbots. Peyi Solutions specializes in the technical implementation of AI for real estate. We configure the voice agents to sound like you, build the nurtures to convert your leads, and train your team on how to manage the dashboard.
                         </p>
-                        <ul className="space-y-2 text-gray-300">
+                        <ul className="space-y-2 text-body">
                             <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> <span>Custom-built workflows for your market</span></li>
                             <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> <span>Done-for-you technical setup</span></li>
                             <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> <span>Ongoing support & optimization</span></li>
                         </ul>
                     </div>
-                    <div className="flex-1 bg-gradient-to-br from-primary/20 to-purple-500/20 p-1 rounded-3xl">
-                        <div className="bg-[#0B0F19] p-8 rounded-[22px] h-full flex flex-col justify-center items-center text-center">
-                            <h3 className="text-2xl font-bold text-white mb-4">Ready to Automate?</h3>
-                            <p className="text-gray-400 mb-8 max-w-sm">
+                    <div className="flex-1 bg-gradient-to-br from-primary/20 to-brand-purple/20 p-1 rounded-3xl">
+                        <div className="bg-paper p-8 rounded-[22px] h-full flex flex-col justify-center items-center text-center">
+                            <h3 className="font-heading text-2xl font-bold text-ink mb-4">Ready to Automate?</h3>
+                            <p className="text-body mb-8 max-w-sm">
                                 Find out exactly where AI can save you the most time and money right now.
                             </p>
-                            <Link href="/ai-readiness-quiz">
-                                <Button size="lg" className="rounded-full px-8 text-lg w-full bg-white text-black hover:bg-gray-200 font-bold">
-                                    Take the Free AI Quiz
-                                </Button>
-                            </Link>
+                            <Button size="lg" variant="heroOutline" asChild>
+                                <Link href="/ai-readiness-quiz">Find Your AI Starting Point</Link>
+                            </Button>
                         </div>
                     </div>
                 </section>
 
                 {/* ROI Section */}
-                <section className="mb-24 bg-gradient-to-br from-white/5 to-transparent p-12 rounded-3xl border border-white/10">
+                <section className="mb-24 bg-gradient-to-br from-white/5 to-transparent p-12 rounded-3xl border border-gold-soft">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <div>
-                            <h2 className="text-3xl font-bold text-white mb-6">Save 15+ Hours Per Week</h2>
+                            <h2 className="font-heading text-3xl font-bold text-ink mb-6">Get Your Week Back</h2>
                             <p className="text-muted-foreground mb-8">
                                 Most agents lose the bulk of their week to low-value admin. AI reverses that, so your time goes back to clients.
                             </p>
                             <ul className="space-y-4">
                                 {[
-                                    { saved: "3-5 Hours", task: "Lead Follow-up & Reactivation" },
-                                    { saved: "2-3 Hours", task: "Appointment Scheduling" },
-                                    { saved: "2-3 Hours", task: "Listing Descriptions & Social Content" },
-                                    { saved: "2-4 Hours", task: "Data Entry & CRM Updates" }
+                                    { task: "Lead follow-up & reactivation" },
+                                    { task: "Appointment scheduling" },
+                                    { task: "Listing descriptions & social content" },
+                                    { task: "Data entry & CRM updates" }
                                 ].map((item, i) => (
-                                    <li key={i} className="flex items-center gap-4 text-gray-300">
-                                        <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 font-bold text-xs">
+                                    <li key={i} className="flex items-center gap-4 text-body">
+                                        <div className="w-8 h-8 rounded-full bg-teal/20 flex items-center justify-center text-teal-deep font-bold text-xs">
                                             <CheckCircle2 className="w-5 h-5" />
                                         </div>
-                                        <span><strong className="text-white">{item.saved}</strong> saved on {item.task}</span>
+                                        <span><strong className="text-ink">{item.task}</strong> — handled for you</span>
                                     </li>
                                 ))}
                             </ul>
                         </div>
                         <div className="relative">
                             <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full" />
-                            <div className="relative bg-[#0B0F19] p-8 rounded-2xl border border-white/10 shadow-2xl">
-                                <h3 className="text-xl font-bold text-white mb-6 border-b border-white/10 pb-4">The &quot;Old Way&quot; vs &quot;AI Way&quot;</h3>
+                            <div className="relative bg-paper p-8 rounded-2xl border border-gold-soft shadow-2xl">
+                                <h3 className="font-heading text-xl font-bold text-ink mb-6 border-b border-gold-soft pb-4">The &quot;Old Way&quot; vs &quot;AI Way&quot;</h3>
                                 <div className="space-y-6">
                                     <div className="flex justify-between items-center text-sm">
-                                        <span className="text-red-400">Manual Follow-up</span>
-                                        <span className="text-gray-500">vs</span>
-                                        <span className="text-green-400 font-bold">Instant AI Voice Call</span>
+                                        <span className="text-quiet">Manual Follow-up</span>
+                                        <span className="text-quiet">vs</span>
+                                        <span className="text-teal-deep font-bold">Instant AI Voice Call</span>
                                     </div>
                                     <div className="flex justify-between items-center text-sm">
-                                        <span className="text-red-400">Chase Leads for Days</span>
-                                        <span className="text-gray-500">vs</span>
-                                        <span className="text-green-400 font-bold">Booked on Calendar Automatically</span>
+                                        <span className="text-quiet">Chase Leads for Days</span>
+                                        <span className="text-quiet">vs</span>
+                                        <span className="text-teal-deep font-bold">Booked on Calendar Automatically</span>
                                     </div>
                                     <div className="flex justify-between items-center text-sm">
-                                        <span className="text-red-400">Generic Batch Emails</span>
-                                        <span className="text-gray-500">vs</span>
-                                        <span className="text-green-400 font-bold">Personalized 1:1 Messages</span>
+                                        <span className="text-quiet">Generic Batch Emails</span>
+                                        <span className="text-quiet">vs</span>
+                                        <span className="text-teal-deep font-bold">Personalized 1:1 Messages</span>
                                     </div>
                                 </div>
                             </div>
@@ -291,7 +290,7 @@ export default function RealEstatePage() {
 
                 {/* Implementation Guide */}
                 <section className="mb-24">
-                    <h2 className="text-3xl font-bold text-white mb-12 text-center">Your Implementation Roadmap</h2>
+                    <h2 className="font-heading text-3xl font-bold text-ink mb-12 text-center">Your Implementation Roadmap</h2>
                     <div className="grid md:grid-cols-4 gap-6">
                         {[
                             { step: "01", title: "Audit", desc: "We identify your biggest time-drains and missed opportunities." },
@@ -299,9 +298,9 @@ export default function RealEstatePage() {
                             { step: "03", title: "Build", desc: "We configure the tools, voice agents, and automations for you." },
                             { step: "04", title: "Launch", desc: "We train you and your team, then flip the switch." }
                         ].map((phase, i) => (
-                            <div key={i} className="relative p-6 pt-12 rounded-xl border border-white/10 bg-white/5">
-                                <span className="absolute top-6 left-6 text-4xl font-bold text-white/5 font-heading">{phase.step}</span>
-                                <h3 className="text-xl font-bold text-white mb-3 relative z-10">{phase.title}</h3>
+                            <div key={i} className="relative p-6 pt-12 rounded-xl surface-raised">
+                                <span className="absolute top-6 left-6 text-4xl font-bold text-quiet/70 font-heading">{phase.step}</span>
+                                <h3 className="font-heading text-xl font-bold text-ink mb-3 relative z-10">{phase.title}</h3>
                                 <p className="text-muted-foreground relative z-10">{phase.desc}</p>
                             </div>
                         ))}
@@ -315,25 +314,11 @@ export default function RealEstatePage() {
                     description="Specific answers for agents, brokers, and team leaders."
                 />
 
-                {/* CTA */}
-                <section className="text-center py-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Modernize Your Real Estate Business?</h2>
-                    <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-                        Stop chasing leads manually. Let us build an AI system that works 24/7 to fill your calendar with qualified appointments.
-                    </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link href="/ai-readiness-quiz">
-                            <Button size="lg" className="rounded-full px-8 text-lg h-14 bg-primary hover:bg-primary/90 text-background font-bold">
-                                Take the AI Readiness Quiz
-                            </Button>
-                        </Link>
-                        <Link href="/book">
-                            <Button variant="heroOutline" size="lg" className="rounded-full px-8 text-lg h-14">
-                                Book a Strategy Call
-                            </Button>
-                        </Link>
-                    </div>
-                </section>
+                {/* Closing CTA */}
+                <PageCTA
+                    title="Ready to Modernize Your Real Estate Business?"
+                    description="Stop chasing leads manually. Let us build an AI system that works 24/7 to fill your calendar with qualified appointments."
+                />
             </div>
 
             <Footer />
