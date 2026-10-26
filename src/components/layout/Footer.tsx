@@ -20,7 +20,10 @@ const columns = [
         links: [
             { href: "/ai-for-real-estate-agents", label: "AI for Real Estate Agents" },
             { href: "/ai-customer-service-small-business", label: "Service Businesses" },
-            { href: "/ai-operations-automation", label: "Small Business Automation" }
+            { href: "/ai-operations-automation", label: "Small Business Automation" },
+            { href: "/grants", label: "Grants for Nonprofits & Small Businesses" },
+            { href: "/grants/readiness-check", label: "Grant Readiness Check" },
+            { href: "/grants/miami-grants", label: "Miami Grants" }
         ]
     },
     {

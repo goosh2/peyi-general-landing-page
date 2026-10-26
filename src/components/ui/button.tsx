@@ -19,6 +19,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         return (
             <Comp
                 ref={ref}
+                data-variant={variant}
                 className={cn(
                     "inline-flex items-center justify-center rounded-full font-heading font-semibold tracking-[-0.005em] cursor-pointer select-none",
                     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-cream",

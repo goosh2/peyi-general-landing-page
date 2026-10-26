@@ -24,10 +24,10 @@ export function DecoArch({
             <div className="depth absolute -inset-10 arch border border-gold/25" style={{ ["--d" as string]: "10px" }} />
 
             {/* Sage body */}
-            <div className="absolute inset-0 arch bg-gradient-to-b from-[#DFE7D9] via-[#D3DECD] to-[#BFD0BE] shadow-[0_40px_80px_-40px_rgba(60,70,40,0.45)]" />
+            <div className="deco-wall absolute inset-0 arch bg-gradient-to-b from-[#DFE7D9] via-[#D3DECD] to-[#BFD0BE] shadow-[0_40px_80px_-40px_rgba(60,70,40,0.45)]" />
 
             {/* Cream frame with a gold inner line */}
-            <div className="absolute inset-[18px] arch bg-gradient-to-b from-[#FBF1E4] to-[#F1E2CF] border border-gold/70" />
+            <div className="deco-frame absolute inset-[18px] arch bg-gradient-to-b from-[#FBF1E4] to-[#F1E2CF] border border-gold/70" />
 
             {/* The window */}
             <div className="absolute inset-[34px] arch overflow-hidden border-[1.5px] border-gold/80 bg-peach">

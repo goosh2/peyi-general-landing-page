@@ -124,3 +124,57 @@ function escapeHtml(value: string): string {
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#39;");
 }
+
+export interface GrantsInquiryEmailArgs {
+    to: string;
+    intent: string;
+    name: string;
+    email: string;
+    organization: string;
+    orgType: string;
+    location: string | null;
+    track: string | null;
+    deadline: string | null;
+    message: string | null;
+    readiness: string | null;
+}
+
+const INTENT_LABEL: Record<string, string> = {
+    call: "Call request",
+    intake: "Org Vault intake start",
+    question: "Question"
+};
+
+/** Notify Peyi of a new Grants inquiry. Plain, readable, every value escaped. */
+export async function sendGrantsInquiryNotification(args: GrantsInquiryEmailArgs): Promise<void> {
+    const resend = getResend();
+    const rows: [string, string | null][] = [
+        ["Type", INTENT_LABEL[args.intent] ?? args.intent],
+        ["Name", args.name],
+        ["Email", args.email],
+        ["Organization", args.organization],
+        ["Organization type", args.orgType],
+        ["Based in", args.location],
+        ["Track", args.track],
+        ["Deadline pressure", args.deadline],
+        ["Readiness Check", args.readiness],
+        ["Message", args.message]
+    ];
+    const html = `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;color:#06201C;font-size:15px;line-height:1.5">
+<h2 style="margin:0 0 12px;font-size:18px">New Grants inquiry — ${escapeHtml(INTENT_LABEL[args.intent] ?? args.intent)}</h2>
+<table cellpadding="6" style="border-collapse:collapse">${rows
+        .filter(([, v]) => v)
+        .map(([k, v]) => `<tr><td style="color:#7A736A;vertical-align:top;white-space:nowrap">${k}</td><td>${escapeHtml(String(v)).replace(/\n/g, "<br>")}</td></tr>`)
+        .join("")}</table></div>`;
+    const { error } = await resend.emails.send({
+        from: FROM_ADDRESS,
+        to: args.to,
+        replyTo: args.email,
+        subject: `Grants inquiry: ${args.organization} (${INTENT_LABEL[args.intent] ?? args.intent})`,
+        html
+    });
+    if (error) {
+        console.error("[email] Resend send error:", error);
+        throw new Error("Failed to send inquiry notification.");
+    }
+}

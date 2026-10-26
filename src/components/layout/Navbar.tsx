@@ -15,6 +15,7 @@ const SOLUTIONS = [
 ];
 
 const LINKS = [
+    { href: "/grants", label: "Grants" },
     { href: "/#how-it-works", label: "How it works" },
     { href: "/#why-us", label: "Why Peyi" },
     { href: "/#faq", label: "FAQ" }

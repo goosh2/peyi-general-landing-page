@@ -32,3 +32,31 @@ create index if not exists booking_requests_token_hash_idx
 
 -- Enable RLS with no policies => only the service role can touch this table.
 alter table public.booking_requests enable row level security;
+
+-- Grants inquiries from /grants/book-a-call (call requests, Org Vault intake
+-- starts, and questions). Same access model as booking_requests: RLS on, no
+-- policies, server-only access via the service-role key. Never stores EINs,
+-- bank details or documents — the form doesn't ask for them.
+create table if not exists public.grants_inquiries (
+    id               uuid primary key default gen_random_uuid(),
+    intent           text not null,
+    email            text not null,
+    name             text not null,
+    organization     text not null,
+    org_type         text not null,
+    location         text,
+    track            text,
+    deadline         text,
+    message          text,
+    readiness_score  integer,
+    readiness_band   text,
+    ip_hash          text,
+    created_at       timestamptz not null default now()
+);
+
+create index if not exists grants_inquiries_email_idx
+    on public.grants_inquiries (email);
+create index if not exists grants_inquiries_ip_hash_idx
+    on public.grants_inquiries (ip_hash);
+
+alter table public.grants_inquiries enable row level security;

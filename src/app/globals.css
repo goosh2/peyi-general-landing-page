@@ -676,3 +676,88 @@
     --border: 38 40% 55%;
   }
 }
+
+/* =====================================================================
+   GRANTS — "late afternoon" hue
+   The same Tropical Deco system, shifted from golden hour to the rose and
+   red of late afternoon. Scoped: it applies to the whole document (nav and
+   footer included) only while a .theme-dusk element is on the page, so the
+   rest of the site is untouched. Gold, ink and the palms stay as they are —
+   they're what make it read as the same brand.
+   ===================================================================== */
+
+:root:has(.theme-dusk) {
+  --color-cream: #FCF2EF;
+  --color-paper: #FFF9F7;
+  --color-sand: #F6E2DD;
+  --color-coral: #E0506A;
+  --color-coral-deep: #C23B57;
+  --color-peach: #F5B4B6;
+  --color-brand-orange: #EE7F86;
+  --color-brand-pink: #E0506A;
+  --color-brand-purple: #C23B57;
+  --gradient-ai: linear-gradient(135deg, #F48C8A 0%, #E0506A 55%, #C23B57 100%);
+  --image-gradient-primary: var(--gradient-ai);
+  --primary: 350 70% 60%;
+  --ring: 350 70% 60%;
+  --muted: 10 50% 92%;
+  --background: 12 64% 96%;
+  --card: 12 100% 98%;
+  --popover: 12 100% 98%;
+}
+
+:root:has(.theme-dusk) ::selection { background: hsl(350 70% 60% / 0.22); }
+
+:root:has(.theme-dusk) .accent-word,
+:root:has(.theme-dusk) .gradient-text {
+  background-image: linear-gradient(170deg, #F48C8A 10%, #E0506A 55%, #B5304D 100%);
+}
+
+:root:has(.theme-dusk) .shimmer-bar { background-image: linear-gradient(90deg, #F5B4B6, #E0506A); }
+
+/* Section bands: sage becomes a soft rose wash. */
+.theme-dusk .band {
+  background: radial-gradient(120% 90% at 50% 0%, #FBE6E2 0%, #F4D3CE 70%);
+}
+
+/* The arch window keeps its video; the sky is tinted from gold toward rose. */
+.theme-dusk .arch video,
+.theme-dusk .arch img.arch-media {
+  filter: hue-rotate(-24deg) saturate(1.12) brightness(0.98);
+}
+
+/* Arch walls: sage plaster becomes a warm blush. */
+.theme-dusk .deco-wall { background-image: linear-gradient(180deg, #F1D9D4 0%, #E9C8C2 55%, #DDB3AD 100%) !important; }
+.theme-dusk .deco-frame { background-image: linear-gradient(180deg, #FFF3EF 0%, #F6DFD8 100%) !important; }
+
+/* Buttons' coral glow follows the hue. */
+.theme-dusk [data-variant="hero"] { box-shadow: 0 14px 30px -12px rgba(194, 59, 87, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35); }
+
+/* "To confirm" markers: visible in preview, never mistaken for real content. */
+.tbc {
+  display: inline;
+  padding: 0.05em 0.55em;
+  border-radius: 999px;
+  border: 1px dashed var(--color-gold);
+  background: color-mix(in srgb, var(--color-gold-soft) 45%, transparent);
+  color: var(--color-gold-deep);
+  font-size: 0.78em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: normal;
+  vertical-align: 0.08em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Readiness Check print view: only the result, as a clean checklist. */
+@media print {
+  body * { visibility: hidden; }
+  #readiness-result, #readiness-result * { visibility: visible; }
+  #readiness-result { position: absolute; inset: 0 auto auto 0; width: 100%; }
+  #readiness-result .no-print { display: none !important; }
+}
+
+.blitz-fill { animation: blitz-fill 1.8s var(--ease-spring) 0.3s both; }
+@keyframes blitz-fill { from { transform: scaleX(0); } }
+@media (prefers-reduced-motion: reduce) { .blitz-fill { animation: none; } }
