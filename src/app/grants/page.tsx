@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Check, X } from "lucide-react";
 import { GrantsHeader } from "@/components/grants/GrantsHeader";
 import { GrantPipelineCard } from "@/components/grants/GrantPipelineCard";
-import { GrantsActions, GrantsCTA, Guardrails, LastUpdated, SectionHead, Tbc } from "@/components/grants/bits";
+import { GrantsActions, GrantsCTA, Guardrails, LastUpdated, SectionHead } from "@/components/grants/bits";
 import { ReadinessShort } from "@/components/grants/ReadinessCheck";
 import { COMPARISON, DELIVERABLES, NOT_FOR, PROBLEM, SEGMENTS, STEPS, STEPS_CLOSER } from "@/lib/grants/content";
 import { grantsMeta } from "@/lib/grants/meta";
@@ -44,15 +44,15 @@ export default function GrantsHub() {
             <GrantsHeader
                 title="Find grants. Apply properly."
                 accent="Never miss a deadline."
-                lead="Peyi Solutions Grants finds funding opportunities for your organization, drafts applications from your own documents, and tracks every deadline and funder reply — with a human approving every submission."
+                lead="Peyi Solutions Grants finds funding for your organization, writes applications from your own documents, and tracks every deadline and funder reply. You approve each submission before it goes out."
                 crumbs={[{ label: "Grants", href: "/grants" }]}
                 aside={<GrantPipelineCard />}
             >
                 <GrantsActions />
                 <p className="mt-6 text-[15px] text-quiet leading-relaxed max-w-xl">
-                    Built for nonprofits and small businesses in Miami-Dade and Broward.
+                    Built for nonprofits and small businesses.
                     <br />
-                    No success fees. No submitted application without your approval.
+                    No success fees. Nothing is submitted without your approval.
                 </p>
             </GrantsHeader>
 
@@ -62,10 +62,30 @@ export default function GrantsHub() {
                     <div>
                         <p className="type-eyebrow mb-5">The problem</p>
                         <h2 className="type-section text-balance">
-                            Grants are lost on the <span className="accent-word">calendar</span>, not the merits.
+                            Grants get lost on the <span className="accent-word">calendar</span>, not on merit.
                         </h2>
                     </div>
-                    <p className="font-heading text-2xl md:text-[1.7rem] leading-[1.45] text-ink/90 text-pretty">{PROBLEM}</p>
+                    <div className="font-heading text-ink/90">
+                        <p className="text-xl md:text-2xl leading-snug">{PROBLEM.intro}</p>
+                        <ul className="mt-4 space-y-3 text-xl md:text-2xl leading-snug">
+                            {PROBLEM.causes.map((c) => (
+                                <li key={c} className="flex gap-4">
+                                    <span aria-hidden="true" className="mt-[0.7em] h-1.5 w-1.5 shrink-0 rotate-45 bg-coral" />
+                                    {c}
+                                </li>
+                            ))}
+                        </ul>
+                        <p className="mt-8 text-xl md:text-2xl leading-snug">{PROBLEM.gapIntro}</p>
+                        <ul className="mt-4 space-y-3 text-xl md:text-2xl leading-snug">
+                            {PROBLEM.gaps.map((g) => (
+                                <li key={g} className="flex gap-4">
+                                    <span aria-hidden="true" className="mt-[0.7em] h-1.5 w-1.5 shrink-0 rotate-45 bg-gold" />
+                                    {g}
+                                </li>
+                            ))}
+                        </ul>
+                        <p className="mt-8 text-2xl md:text-[1.7rem] leading-snug font-bold text-coral-deep">{PROBLEM.close}</p>
+                    </div>
                 </div>
             </section>
 
@@ -93,7 +113,7 @@ export default function GrantsHub() {
 
             {/* What you get */}
             <section className="container mx-auto px-6 lg:px-16 py-24 md:py-32">
-                <SectionHead eyebrow="What you get" title="Deliverables," accent="not vague promises." />
+                <SectionHead eyebrow="What you get" title="What you have in hand" accent="at the end." />
                 <ul className="grid gap-4 md:grid-cols-2">
                     {DELIVERABLES.map((d) => (
                         <li key={d.text} className="flex gap-4 rounded-2xl border border-gold-soft/80 bg-paper px-5 py-4">
@@ -101,7 +121,7 @@ export default function GrantsHub() {
                                 <Check className="h-4 w-4" strokeWidth={3} />
                             </span>
                             <span className="text-[17px] text-ink leading-snug">
-                                {d.text} {d.tbc && <Tbc item={d.tbc} />}
+                                {d.text}
                             </span>
                         </li>
                     ))}
@@ -150,8 +170,8 @@ export default function GrantsHub() {
                             Know where you stand in <span className="accent-word">5 minutes.</span>
                         </h2>
                         <p className="mt-5 text-lg text-body leading-relaxed">
-                            Answer a few questions about your organization and leave with a readiness score, a prioritized gap list and your next three
-                            actions — whether or not you ever hire Peyi.
+                            Answer a few questions about your organization and you get a readiness score, a prioritized gap list and your next three actions.
+                            It&apos;s yours whether or not you ever hire Peyi.
                         </p>
                     </div>
                     <ReadinessShort />
@@ -201,16 +221,16 @@ export default function GrantsHub() {
             {/* Trust, proof, honesty */}
             <section className="container mx-auto px-6 lg:px-16 py-24 md:py-32">
                 <div className="max-w-3xl">
-                    <p className="type-eyebrow mb-5">Proof, honestly</p>
+                    <p className="type-eyebrow mb-5">Proof</p>
                     <blockquote className="font-heading text-3xl md:text-4xl leading-tight text-ink text-balance">
-                        This service is being built and tested on Peyi Solutions itself first.{" "}
-                        <span className="accent-word">The case study writes itself only if the work holds up</span> — real applications, real deadlines, real
+                        This service is being built and tested on Peyi Solutions first.{" "}
+                        <span className="accent-word">If the work holds up, that becomes the case study</span>: real applications, real deadlines, real
                         approvals.
                     </blockquote>
                     <p className="mt-6 text-body leading-relaxed">
-                        So you won&apos;t find client logos, win rates or award totals here. When there are results worth showing, they&apos;ll be shown with
-                        permission. Peyi Solutions is an independent AI consulting agency that helps organizations apply — it is not a funder, and it isn&apos;t
-                        affiliated with Grants.gov, any county, city or foundation.
+                        That&apos;s why there are no client logos, win rates or award totals here. When there are results worth showing, they&apos;ll go up with
+                        the client&apos;s permission. Peyi Solutions is an independent AI consulting agency that helps organizations apply. It is not a funder
+                        and has no affiliation with Grants.gov or any county, city or foundation.
                     </p>
                 </div>
                 <Guardrails className="mt-14" />

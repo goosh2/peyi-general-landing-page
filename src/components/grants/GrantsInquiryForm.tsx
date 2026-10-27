@@ -5,18 +5,17 @@ import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 /**
- * The Grants inquiry form — the "Book a call" step, and the Org Vault intake
+ * The Grants inquiry form — the "Book a call" step, and the intake
  * entry point until the reviewed intake form is linked. It asks only for what
  * Peyi needs to reply; it never asks for EINs, bank details or documents.
  */
 
 const INTENTS = [
     { value: "call", label: "Book a call" },
-    { value: "intake", label: "Start my Org Vault intake" },
+    { value: "intake", label: "Tell us about my organization" },
     { value: "question", label: "Ask a question first" },
 ];
 const ORG_TYPES = ["Nonprofit", "For-profit small business", "School", "Healthcare", "Municipal-adjacent", "Other"];
-const LOCATIONS = ["Miami-Dade", "Broward", "Elsewhere in Florida", "Elsewhere in the US"];
 const TRACKS = ["Done-for-you", "Enablement", "Not sure yet"];
 const DEADLINES = ["None yet", "Within 30 days", "Within 90 days", "Just exploring"];
 
@@ -105,9 +104,7 @@ export function GrantsInquiryForm() {
                         municipal: "Municipal-adjacent",
                         other: "Other",
                     }[r.orgType ?? ""];
-                    const loc = { "miami-dade": "Miami-Dade", broward: "Broward", florida: "Elsewhere in Florida", us: "Elsewhere in the US" }[
-                        r.location ?? ""
-                    ];
+                    const loc = r.location;
                     setForm((f) => ({ ...f, orgType: f.orgType || ot || "", location: f.location || loc || "" }));
                 }
             } catch {
@@ -163,7 +160,7 @@ export function GrantsInquiryForm() {
                 <p className="mt-3 text-body leading-relaxed max-w-md mx-auto">
                     Peyi has your details and will reply to <span className="text-ink">{form.email.trim()}</span>
                     {form.intent === "intake"
-                        ? " with your Org Vault intake and the Uploads folder for your documents."
+                        ? " with the intake questions and a private folder for your documents."
                         : " to set up a time to talk."}
                 </p>
             </div>
@@ -212,12 +209,7 @@ export function GrantsInquiryForm() {
                 </label>
                 <label className="block">
                     <span className="block font-heading font-semibold text-ink mb-2">Where you&apos;re based</span>
-                    <select className={field} value={form.location} onChange={set("location")}>
-                        <option value="">Choose one</option>
-                        {LOCATIONS.map((o) => (
-                            <option key={o}>{o}</option>
-                        ))}
-                    </select>
+                    <input className={field} value={form.location} onChange={set("location")} maxLength={60} placeholder="City and state or country" />
                 </label>
             </div>
 
@@ -277,7 +269,7 @@ export function GrantsInquiryForm() {
                 {status === "submitting"
                     ? "Sending…"
                     : form.intent === "intake"
-                      ? "Start my intake"
+                      ? "Send my details"
                       : form.intent === "question"
                         ? "Send my question"
                         : "Request a call"}

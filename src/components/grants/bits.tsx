@@ -10,19 +10,8 @@ import {
     GRANTS_LAST_UPDATED,
     GRANTS_LAST_UPDATED_LABEL,
     INTAKE_HREF,
-    READINESS_HREF,
-    SHOW_TBC_MARKERS,
-    TBC
+    READINESS_HREF
 } from "@/lib/grants/config";
-
-/** A visible "To confirm" marker for anything Peyi hasn't confirmed yet. */
-export function Tbc({ item }: { item: keyof typeof TBC }) {
-    return (
-        <span className="tbc" title={`To confirm: ${TBC[item]}`}>
-            To confirm{SHOW_TBC_MARKERS ? `: ${TBC[item]}` : ""}
-        </span>
-    );
-}
 
 export function LastUpdated({ className = "" }: { className?: string }) {
     return (
@@ -49,7 +38,7 @@ export function GrantsActions({ center = false, third = false }: { center?: bool
                 <Button size="xl" variant="heroOutline" className="whitespace-nowrap" asChild>
                     <Link href={INTAKE_HREF}>
                         <FileText className="mr-2.5 w-5 h-5" />
-                        Start your Org Vault intake
+                        Tell us about your organization
                     </Link>
                 </Button>
             </Magnetic>

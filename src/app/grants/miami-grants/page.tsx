@@ -131,9 +131,7 @@ export default function MiamiGrants() {
                     <p className="mb-8 flex gap-3 rounded-2xl border border-dashed border-gold bg-paper/80 p-4 text-[15px] text-body">
                         <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-gold-deep" />
                         <span>
-                            <span className="tbc mr-2">To confirm</span>
-                            Every entry below must be re-verified against the funder&apos;s own notice before this page is published. Links were last checked{" "}
-                            {LINKS_CHECKED}.
+                            Programs and deadlines change. Links were last checked {LINKS_CHECKED}; always confirm eligibility and dates on the funder&apos;s own page.
                         </span>
                     </p>
                     <div className="grid gap-5 lg:grid-cols-2">

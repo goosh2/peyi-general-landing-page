@@ -2,8 +2,8 @@
  * Peyi Solutions Grants — every value Peyi may still change lives here, so the
  * pages never need rebuilding to swap a price, a link or a confirmed detail.
  *
- * Anything not yet confirmed is `null` or marked with `tbc`, and renders as a
- * visible "To confirm" marker (see <Tbc />) instead of an invented value.
+ * Anything not yet confirmed is `null`, and the page leaves it out rather than
+ * showing a placeholder. Public pages never carry internal notes.
  */
 
 export const GRANTS_LAST_UPDATED = "2026-10-26";
@@ -12,7 +12,7 @@ export const GRANTS_LAST_UPDATED_LABEL = "October 26, 2026";
 /** Links that must come from Peyi. Never invent these. */
 export const GRANTS_LINKS = {
     /** The reviewed Org Vault intake form (Drive/Forms). Until it exists, the
-        intake CTA opens the inquiry form with "Start my Org Vault intake" chosen. */
+        intake CTA opens the inquiry form with "Tell us about my organization" chosen. */
     intakeForm: null as string | null,
     /** Shown on the book-a-call page once confirmed. */
     contactEmail: null as string | null
@@ -21,9 +21,6 @@ export const GRANTS_LINKS = {
 export const INTAKE_HREF = GRANTS_LINKS.intakeForm ?? "/grants/book-a-call?intent=intake";
 export const BOOK_HREF = "/grants/book-a-call";
 export const READINESS_HREF = "/grants/readiness-check";
-
-/** Turn off before launch to hide the "To confirm" markers' explanatory text. */
-export const SHOW_TBC_MARKERS = true;
 
 /* ------------------------------------------------------------------ */
 /* Pricing — draft numbers published at the founder's request          */
@@ -41,7 +38,6 @@ export type Tier = {
     price: string;
     priceAlt?: string;
     term: string;
-    termTbc?: string;
     wow?: string;
     includes: string[];
     guardrail?: string;
@@ -58,7 +54,7 @@ export const TIERS: Tier[] = [
         price: "$1,495 one-time",
         priceAlt: "or $495/month for 3 months — the same total",
         term: "90-day sprint",
-        wow: "Five tailored applications in 90 days, for less than one standard human-written proposal.",
+        wow: "Five tailored applications in 90 days — about $299 per application, versus $1,200–$2,500 for a single simple human-written application.",
         includes: [
             "Org Vault built, with a gap list",
             "Hundreds of opportunities scanned, top 25 ranked for fit",
@@ -94,7 +90,6 @@ export const TIERS: Tier[] = [
             "Larger nonprofits, university departments, or any organization with federal ambition, several programs or several approvers.",
         price: "$2,500–$3,500 setup + $2,500–$4,500/month",
         term: "6-month initial term, then month-to-month",
-        termTbc: "whether federal Pro engagements start at 12 months",
         includes: [
             "Everything in Core, plus federal applications",
             "3–4 applications per month across a multi-program pipeline",
@@ -126,15 +121,6 @@ export const WRITER_COST_SOURCES = [
 ];
 export const WRITER_COST_NOTE =
     "A standard program proposal written by a human grant writer typically costs $2,500–$6,000 (Allied Grant Writers; Grantboost, accessed October 2026).";
-
-/** Items Peyi still has to confirm, rendered as markers where they appear. */
-export const TBC = {
-    monthlySummary: "monthly summary format and frequency",
-    replySla: "exact reply turnaround in business days",
-    hourEstimates: "hour ranges, set from Peyi's own measured applications",
-    onboarding: "onboarding timeline, once the in-house build is measured",
-    outsideArea: "whether other Florida organizations are accepted, waitlisted or referred",
-    postAward: "post-award reporting in later versions",
-    vaultSections: "Org Vault section names 02–06",
-    proTerm: "whether federal Pro engagements start at 12 months"
-} as const;
+export const SIMPLE_APPLICATION_COST_NOTE =
+    "Simple grant applications written by a human typically cost $1,200–$2,500 (Grantboost, accessed October 2026).";
+export const SIMPLE_APPLICATION_COST_SOURCE = "https://www.grantboost.io/blog/grant-writing-fees/";

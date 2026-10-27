@@ -2,8 +2,16 @@ import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TiltCard } from "@/components/art/TiltCard";
-import { Tbc } from "./bits";
-import { BOOK_HREF, PUBLISH_PRICES, TIERS, WRITER_COST_NOTE, WRITER_COST_SOURCES, type Tier } from "@/lib/grants/config";
+import {
+    BOOK_HREF,
+    PUBLISH_PRICES,
+    SIMPLE_APPLICATION_COST_NOTE,
+    SIMPLE_APPLICATION_COST_SOURCE,
+    TIERS,
+    WRITER_COST_NOTE,
+    WRITER_COST_SOURCES,
+    type Tier
+} from "@/lib/grants/config";
 
 /** The Grant Blitz's 90 days, drawn as a timeline. */
 export function BlitzTimeline() {
@@ -73,7 +81,7 @@ function TierCard({ t, featured }: { t: Tier; featured?: boolean }) {
                         <p className="font-heading text-xl font-bold text-ink">Pricing on application</p>
                     )}
                     <p className="mt-2 text-sm text-quiet">
-                        {t.term} {t.termTbc && <Tbc item="proTerm" />}
+                        {t.term}
                     </p>
                 </div>
 
@@ -124,6 +132,12 @@ export function PricingTiers() {
                             {i < WRITER_COST_SOURCES.length - 1 ? "; " : "."}
                         </span>
                     ))}
+                </p>
+                <p className="mt-2">
+                    {SIMPLE_APPLICATION_COST_NOTE} Source:{" "}
+                    <a href={SIMPLE_APPLICATION_COST_SOURCE} target="_blank" rel="noopener" className="underline decoration-gold underline-offset-2 hover:text-ink">
+                        {SIMPLE_APPLICATION_COST_SOURCE}
+                    </a>
                 </p>
                 <p className="mt-2">
                     Starting prices as of October 2026. Your scope and price are confirmed in writing before anything starts.{" "}

@@ -1,6 +1,6 @@
 import { Ban, CalendarClock, Handshake, ShieldCheck } from "lucide-react";
 import { GrantsHeader } from "@/components/grants/GrantsHeader";
-import { GrantsCTA, Guardrails, LastUpdated, SectionHead, Tbc } from "@/components/grants/bits";
+import { GrantsCTA, Guardrails, LastUpdated, SectionHead } from "@/components/grants/bits";
 import { PricingTiers } from "@/components/grants/Pricing";
 import { grantsMeta } from "@/lib/grants/meta";
 
@@ -54,7 +54,7 @@ export default function Pricing() {
                             <p className="mt-3 text-body leading-relaxed">
                                 What Peyi guarantees is the process: the vault complete on a set timeline, the Scout list on a set cadence, draft turnaround per
                                 application type, zero missed deadlines on Peyi&apos;s watch (if Peyi misses one, that month is free), and funder-email replies
-                                drafted within 1 business day <Tbc item="replySla" />.
+                                drafted within 1 business day.
                             </p>
                         </div>
                         <div className="rounded-[1.5rem] border border-gold-soft bg-paper p-7">
@@ -69,8 +69,7 @@ export default function Pricing() {
                             <CalendarClock className="h-7 w-7 text-coral-deep" />
                             <h3 className="mt-4 font-heading text-2xl font-bold text-ink">What costs extra</h3>
                             <p className="mt-3 text-body leading-relaxed">
-                                Applications beyond your tier&apos;s monthly allowance are quoted separately. Post-award reporting management is out of scope today{" "}
-                                <Tbc item="postAward" />.
+                                Applications beyond your tier&apos;s monthly allowance are quoted separately. Post-award reporting management is out of scope today.
                             </p>
                         </div>
                     </div>

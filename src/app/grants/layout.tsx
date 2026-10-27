@@ -11,7 +11,7 @@ export default function GrantsLayout({ children }: { children: React.ReactNode }
         <div className="theme-dusk min-h-screen bg-cream overflow-x-clip">
             <Navbar />
             <main>{children}</main>
-            <Footer />
+            <Footer hideCta />
         </div>
     );
 }

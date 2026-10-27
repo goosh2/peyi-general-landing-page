@@ -49,7 +49,7 @@ const socials = [
  * Evening in the same place: deep palm-green ground, gold hairlines, and the
  * palms from the hero again — shaded almost to silhouette, still swaying.
  */
-export function Footer() {
+export function Footer({ hideCta = false }: { hideCta?: boolean }) {
     return (
         <PointerField as="footer" className="relative isolate overflow-hidden bg-[#0B2A24] text-[#F3E9DA]">
             <div
@@ -78,8 +78,10 @@ export function Footer() {
                 pivot="0% 100%"
             />
 
-            <div className="container mx-auto px-6 pt-24">
+            <div className={`container mx-auto px-6 ${hideCta ? "pt-8" : "pt-24"}`}>
                 {/* Closing line + action */}
+                {!hideCta && (
+                <>
                 <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 pb-16">
                     <div>
                         <p className="font-label text-[11px] text-gold mb-4">Peyi Solutions</p>
@@ -98,6 +100,8 @@ export function Footer() {
                 </div>
 
                 <div className="gold-rule opacity-40" />
+                </>
+                )}
 
                 <div className="grid gap-12 lg:grid-cols-[1.3fr_2fr] py-16">
                     {/* Brand */}

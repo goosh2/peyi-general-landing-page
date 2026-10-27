@@ -733,23 +733,6 @@
 /* Buttons' coral glow follows the hue. */
 .theme-dusk [data-variant="hero"] { box-shadow: 0 14px 30px -12px rgba(194, 59, 87, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35); }
 
-/* "To confirm" markers: visible in preview, never mistaken for real content. */
-.tbc {
-  display: inline;
-  padding: 0.05em 0.55em;
-  border-radius: 999px;
-  border: 1px dashed var(--color-gold);
-  background: color-mix(in srgb, var(--color-gold-soft) 45%, transparent);
-  color: var(--color-gold-deep);
-  font-size: 0.78em;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  white-space: normal;
-  vertical-align: 0.08em;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
-
 /* Readiness Check print view: only the result, as a clean checklist. */
 @media print {
   body * { visibility: hidden; }

@@ -3,40 +3,128 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { AlertTriangle, ArrowRight, Calendar, Check, Download, FileText, Printer } from "lucide-react";
+import { AlertTriangle, ArrowRight, Calendar, Check, Download, FileText, Printer, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
+    COUNTRIES,
     QUESTIONS,
     SHORT_IDS,
+    US_STATES,
     checklistText,
+    isAnswered,
     isComplete,
+    labelOf,
+    locationLabel,
     score,
     visibleOptions,
+    visibleQuestions,
     type Answers,
     type Question,
     type Result
 } from "@/lib/grants/readiness";
 import { BOOK_HREF, INTAKE_HREF, READINESS_HREF } from "@/lib/grants/config";
-import { Tbc } from "./bits";
 
 /* ------------------------------------------------------------------ */
 /* One question, as a group of pill options (real radios/checkboxes)   */
 /* ------------------------------------------------------------------ */
 
+const control =
+    "w-full rounded-2xl border border-gold-soft bg-paper px-4 py-2.5 text-[15px] text-ink placeholder:text-quiet/70 transition-[border-color,box-shadow] duration-200 hover:border-gold focus:outline-none focus:border-coral focus:shadow-[0_0_0_4px_rgba(224,80,106,0.14)]";
+
+/** Country (US by default), then state or region, then city. Geography only: no street address. */
+function LocationFields({
+    answers,
+    onChange,
+    compact = false
+}: {
+    answers: Answers;
+    onChange: (id: keyof Answers, value: string) => void;
+    compact?: boolean;
+}) {
+    const country = answers.country ?? "US";
+    return (
+        <div className="mt-3.5 grid gap-3 sm:grid-cols-2">
+            <label className="block">
+                <span className="mb-1.5 block text-sm font-semibold text-ink">Country</span>
+                <select className={control} value={country} onChange={(e) => onChange("country", e.target.value)}>
+                    {COUNTRIES.map((c) => (
+                        <option key={c.value} value={c.value}>
+                            {c.label}
+                        </option>
+                    ))}
+                </select>
+            </label>
+            {country === "other" && (
+                <label className="block">
+                    <span className="mb-1.5 block text-sm font-semibold text-ink">Country name</span>
+                    <input
+                        className={control}
+                        value={answers.countryOther ?? ""}
+                        maxLength={60}
+                        onChange={(e) => onChange("countryOther", e.target.value)}
+                        placeholder="Type your country"
+                    />
+                </label>
+            )}
+            {country === "US" ? (
+                <label className="block">
+                    <span className="mb-1.5 block text-sm font-semibold text-ink">State / District</span>
+                    <select className={control} value={answers.usState ?? ""} onChange={(e) => onChange("usState", e.target.value)} required>
+                        <option value="">Choose one</option>
+                        {US_STATES.map((st) => (
+                            <option key={st.value} value={st.value}>
+                                {st.label}
+                            </option>
+                        ))}
+                    </select>
+                </label>
+            ) : (
+                !compact && (
+                    <label className="block">
+                        <span className="mb-1.5 block text-sm font-semibold text-ink">Region / department / province</span>
+                        <input
+                            className={control}
+                            value={answers.region ?? ""}
+                            maxLength={60}
+                            onChange={(e) => onChange("region", e.target.value)}
+                            placeholder="For example: Antioquia"
+                        />
+                    </label>
+                )
+            )}
+            {!compact && (
+                <label className="block sm:col-span-2">
+                    <span className="mb-1.5 block text-sm font-semibold text-ink">City / metro area</span>
+                    <input
+                        className={control}
+                        value={answers.city ?? ""}
+                        maxLength={60}
+                        onChange={(e) => onChange("city", e.target.value)}
+                        placeholder="Your city"
+                    />
+                    <span className="mt-1.5 block text-sm text-quiet">For example: Atlanta, Seattle, Washington DC, Miami, Bogotá</span>
+                </label>
+            )}
+        </div>
+    );
+}
+
 function QuestionField({
     q,
     index,
     answers,
-    onChange
+    onChange,
+    compact = false
 }: {
     q: Question;
     index: number;
     answers: Answers;
     onChange: (id: keyof Answers, value: string | string[]) => void;
+    compact?: boolean;
 }) {
-    const value = answers[q.id];
+    const value = q.kind === "location" ? undefined : answers[q.id as keyof Answers];
     const opts = visibleOptions(q, answers);
-    const answered = q.multi ? true : Boolean(value);
+    const answered = q.multi ? true : isAnswered(q, answers);
 
     return (
         <fieldset className="rq relative grid grid-cols-[38px_1fr] gap-x-4 py-6 border-b border-gold-soft/70 last:border-b-0">
@@ -52,10 +140,11 @@ function QuestionField({
             </span>
             <div>
                 <legend className="font-heading font-semibold text-ink text-lg leading-snug">
-                    {q.label}
+                    {labelOf(q.label, answers)}
                     {q.hint && <span className="block mt-1 font-sans font-normal text-sm text-quiet">{q.hint}</span>}
                 </legend>
-                <div className="mt-3.5 flex flex-wrap gap-2">
+                {q.kind === "location" && <LocationFields answers={answers} onChange={onChange} compact={compact} />}
+                <div className={q.kind === "location" ? "hidden" : "mt-3.5 flex flex-wrap gap-2"}>
                     {opts.map((o) => {
                         const checked = q.multi ? ((value as string[] | undefined) ?? []).includes(o.value) : value === o.value;
                         return (
@@ -73,10 +162,11 @@ function QuestionField({
                                     value={o.value}
                                     checked={checked}
                                     onChange={() => {
+                                        const id = q.id as keyof Answers;
                                         if (q.multi) {
                                             const cur = (value as string[] | undefined) ?? [];
-                                            onChange(q.id, checked ? cur.filter((v) => v !== o.value) : [...cur, o.value]);
-                                        } else onChange(q.id, o.value);
+                                            onChange(id, checked ? cur.filter((v) => v !== o.value) : [...cur, o.value]);
+                                        } else onChange(id, o.value);
                                     }}
                                     className="peer sr-only"
                                 />
@@ -102,6 +192,13 @@ function QuestionField({
 /* ------------------------------------------------------------------ */
 /* Result                                                              */
 /* ------------------------------------------------------------------ */
+
+/** Typical hours per application, doing it yourself versus done-for-you. */
+const EFFORT: [string, string, string][] = [
+    ["Simple local application", "3–10 hours", "About 30 minutes of batch approvals per application"],
+    ["Standard county or state application", "10–25 hours", "1–2 hours of review per application"],
+    ["Complex federal or foundation application", "30–60+ hours", "2–4 hours of review per application"]
+];
 
 function ScoreRing({ value }: { value: number }) {
     const r = 58;
@@ -153,7 +250,7 @@ function ScoreRing({ value }: { value: number }) {
     );
 }
 
-function ResultView({ r }: { r: Result }) {
+function ResultView({ r, onReset }: { r: Result; onReset: () => void }) {
     const download = () => {
         const blob = new Blob([checklistText(r)], { type: "text/plain" });
         const url = URL.createObjectURL(blob);
@@ -217,7 +314,7 @@ function ResultView({ r }: { r: Result }) {
             {/* 2. Gap checklist */}
             <section className="rounded-[1.75rem] border border-gold-soft bg-paper p-7 md:p-10">
                 <h3 className="font-heading text-2xl font-bold text-ink">Your gap checklist</h3>
-                <p className="mt-2 text-body">In priority order, mapped to the sections of an Org Vault.</p>
+                <p className="mt-2 text-body">In priority order, grouped by the section of your Org Vault where each item belongs.</p>
                 {r.gaps.length === 0 ? (
                     <p className="mt-6 text-body">No gaps found from your answers. The next step is a ranked opportunity list.</p>
                 ) : (
@@ -244,8 +341,8 @@ function ResultView({ r }: { r: Result }) {
             <section className="rounded-[1.75rem] border border-gold-soft bg-paper p-7 md:p-10">
                 <h3 className="font-heading text-2xl font-bold text-ink">Grant types that fit your profile</h3>
                 <p className="mt-2 text-body">
-                    These are types, not specific grants. This grant type fits your profile — eligibility must be confirmed against the funder&apos;s current
-                    notice.
+                    These are types, not specific grants. Each type below fits your profile — eligibility must be confirmed against each funder&apos;s
+                    current notice.
                 </p>
                 <ul className="mt-6 grid gap-3 md:grid-cols-2">
                     {r.types.map((t) => (
@@ -253,6 +350,14 @@ function ResultView({ r }: { r: Result }) {
                             <p className="font-heading font-semibold text-ink text-lg">{t.name}</p>
                             <p className="mt-1.5 text-[15px] text-body leading-relaxed">{t.why}</p>
                             <p className="mt-2 text-sm text-quiet leading-relaxed">{t.watch}</p>
+                            {t.blocked && (
+                                <p className="mt-3 flex gap-2 rounded-xl border border-coral/30 bg-coral/[0.06] px-3 py-2 text-sm text-body">
+                                    <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-coral-deep" />
+                                    <span>
+                                        <strong className="text-ink">{t.blocked}</strong>
+                                    </span>
+                                </p>
+                            )}
                         </li>
                     ))}
                 </ul>
@@ -273,21 +378,20 @@ function ResultView({ r }: { r: Result }) {
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gold-soft">
-                            {["Simple local application", "Standard county or state application", "Complex federal or foundation application"].map((row) => (
+                            {EFFORT.map(([row, solo, done]) => (
                                 <tr key={row}>
                                     <td className="p-4 text-ink">{row}</td>
-                                    <td className="p-4">
-                                        <Tbc item="hourEstimates" />
-                                    </td>
-                                    <td className="p-4">
-                                        <Tbc item="hourEstimates" />
-                                    </td>
+                                    <td className="p-4 text-body">{solo}</td>
+                                    <td className="p-4 text-body">{done}</td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
                 </div>
-                <p className="mt-4 text-sm text-quiet">Federal submissions stay human-clicked by design.</p>
+                <p className="mt-4 text-sm text-quiet">
+                    Typical ranges; actual effort varies by funder, application complexity, and how complete your vault is. Federal submissions stay
+                    human-clicked by design.
+                </p>
             </section>
 
             {/* 5. Next actions */}
@@ -309,7 +413,7 @@ function ResultView({ r }: { r: Result }) {
                     <Button size="lg" variant="hero" className="group" asChild>
                         <Link href={INTAKE_HREF}>
                             <FileText className="mr-2 h-4 w-4" />
-                            Start your Org Vault intake
+                            Tell us about your organization
                             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Link>
                     </Button>
@@ -327,6 +431,10 @@ function ResultView({ r }: { r: Result }) {
                         <Download className="mr-2 h-4 w-4" />
                         Save as text
                     </Button>
+                    <Button size="lg" variant="ghost" onClick={onReset}>
+                        <RotateCcw className="mr-2 h-4 w-4" />
+                        Retake the quiz
+                    </Button>
                 </div>
             </section>
         </div>
@@ -339,8 +447,11 @@ function ResultView({ r }: { r: Result }) {
 
 const STORE_KEY = "peyi-grants-readiness";
 
+/** United States is pre-selected; nothing else is assumed. */
+const DEFAULT_ANSWERS: Answers = { docs: [], categories: [], country: "US" };
+
 export function ReadinessCheck() {
-    const [answers, setAnswers] = useState<Answers>({ docs: [], categories: [] });
+    const [answers, setAnswers] = useState<Answers>(DEFAULT_ANSWERS);
     const [result, setResult] = useState<Result | null>(null);
     const resultRef = useRef<HTMLDivElement>(null);
 
@@ -351,28 +462,46 @@ export function ReadinessCheck() {
             const p = new URLSearchParams(window.location.search);
             const pre: Answers = {};
             for (const id of SHORT_IDS) {
+                if (id === "location") continue;
                 const v = p.get(id);
                 const q = QUESTIONS.find((x) => x.id === id);
                 if (v && q?.options.some((o) => o.value === v)) (pre as Record<string, string>)[id] = v;
             }
+            const country = p.get("country");
+            if (country && COUNTRIES.some((c) => c.value === country)) pre.country = country;
+            const st = p.get("usState");
+            if (st && US_STATES.some((x) => x.value === st)) pre.usState = st;
             if (Object.keys(pre).length) setAnswers((a) => ({ ...a, ...pre }));
         });
         return () => cancelAnimationFrame(raf);
     }, []);
 
-    const asked = QUESTIONS;
-    const done = asked.filter((q) => (q.multi ? ((answers[q.id] as string[] | undefined) ?? []).length > 0 : Boolean(answers[q.id]))).length;
+    const asked = visibleQuestions(answers);
+    const done = asked.filter((q) => isAnswered(q, answers)).length;
     const complete = isComplete(answers);
 
     const set = (id: keyof Answers, v: string | string[]) => {
         setAnswers((a) => ({ ...a, [id]: v }));
     };
 
+    const reset = () => {
+        setAnswers(DEFAULT_ANSWERS);
+        setResult(null);
+        try {
+            sessionStorage.removeItem(STORE_KEY);
+        } catch {
+            /* storage unavailable: nothing to clear */
+        }
+        // Drop any prefilled answers from the URL so a refresh starts clean too.
+        window.history.replaceState(null, "", `${window.location.pathname}#check`);
+        document.getElementById("check")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
     const submit = () => {
         const r = score(answers);
         setResult(r);
         try {
-            sessionStorage.setItem(STORE_KEY, JSON.stringify({ total: r.total, band: r.band.label, orgType: answers.orgType, location: answers.location }));
+            sessionStorage.setItem(STORE_KEY, JSON.stringify({ total: r.total, band: r.band.label, orgType: answers.orgType, location: locationLabel(answers) }));
         } catch {
             /* storage unavailable: the result still shows */
         }
@@ -414,10 +543,20 @@ export function ReadinessCheck() {
                     <p className="text-sm text-quiet">
                         {complete ? "No email needed — your result shows right here." : "Answer every question to see your score. Nothing leaves your browser."}
                     </p>
+                    {(done > 0 || result) && (
+                        <button
+                            type="button"
+                            onClick={reset}
+                            className="inline-flex items-center gap-2 self-start rounded-full px-4 py-2 text-sm font-semibold text-coral-deep transition-colors hover:bg-coral/10 sm:ml-auto"
+                        >
+                            <RotateCcw className="h-4 w-4" />
+                            Start over
+                        </button>
+                    )}
                 </div>
             </form>
 
-            <div ref={resultRef}>{result && <ResultView r={result} />}</div>
+            <div ref={resultRef}>{result && <ResultView r={result} onReset={reset} />}</div>
         </div>
     );
 }
@@ -428,9 +567,9 @@ export function ReadinessCheck() {
 
 export function ReadinessShort() {
     const router = useRouter();
-    const [answers, setAnswers] = useState<Answers>({});
+    const [answers, setAnswers] = useState<Answers>({ country: "US" });
     const qs = QUESTIONS.filter((q) => SHORT_IDS.includes(q.id));
-    const ready = qs.every((q) => answers[q.id]);
+    const ready = qs.every((q) => isAnswered(q, answers));
 
     return (
         <div className="rounded-[1.75rem] border border-gold/60 bg-paper p-6 md:p-9 shadow-[0_40px_70px_-50px_rgba(120,50,50,0.5)]">
@@ -439,7 +578,7 @@ export function ReadinessShort() {
             <p className="mt-2 text-body">Then finish the full check for your score, gap list and next three actions. No email needed.</p>
             <div className="mt-2">
                 {qs.map((q, i) => (
-                    <QuestionField key={q.id} q={q} index={i} answers={answers} onChange={(id, v) => setAnswers((a) => ({ ...a, [id]: v }))} />
+                    <QuestionField key={q.id} q={q} index={i} answers={answers} compact onChange={(id, v) => setAnswers((a) => ({ ...a, [id]: v }))} />
                 ))}
             </div>
             <Button
@@ -449,7 +588,13 @@ export function ReadinessShort() {
                 disabled={!ready}
                 onClick={() => {
                     const p = new URLSearchParams();
-                    for (const id of SHORT_IDS) if (answers[id]) p.set(id, String(answers[id]));
+                    for (const id of SHORT_IDS) {
+                        if (id === "location") continue;
+                        const v = answers[id];
+                        if (v) p.set(id, String(v));
+                    }
+                    p.set("country", answers.country ?? "US");
+                    if (answers.usState) p.set("usState", answers.usState);
                     router.push(`${READINESS_HREF}?${p.toString()}#check`);
                 }}
             >

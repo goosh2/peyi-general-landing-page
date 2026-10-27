@@ -8,12 +8,12 @@ import { grantsMeta } from "@/lib/grants/meta";
 
 export const metadata = grantsMeta(
     "/grants/book-a-call",
-    "Book a Grants Call or Start Your Org Vault Intake | Peyi Solutions Grants",
-    "Use this form to book a call with Peyi Solutions about grants, start your Org Vault intake, or ask a question first. No payment, and nothing sensitive is collected."
+    "Book a Grants Call or Tell Us About Your Organization | Peyi Solutions Grants",
+    "Use this form to book a call with Peyi Solutions about grants, tell us about your organization, or ask a question first. No payment, and nothing sensitive is collected."
 );
 
 const NEXT = [
-    { icon: MessagesSquare, title: "Peyi replies", body: "With a time to talk, or your Org Vault intake if that's what you asked for." },
+    { icon: MessagesSquare, title: "Peyi replies", body: "With a time to talk, or the intake questions if that's what you asked for." },
     { icon: FolderOpen, title: "Intake and documents", body: "16 intake questions, plus your documents in a private Uploads folder." },
     { icon: ClipboardCheck, title: "Your gap list", body: "Peyi reviews what you sent and returns what's missing or expired." },
     { icon: Route, title: "Scope and tier", body: "A short discovery call confirms the right tier — then Vault, Scout, drafting, your approval, and the Tracker." }
@@ -23,9 +23,9 @@ export default function BookACall() {
     return (
         <>
             <GrantsHeader
-                title="Book a call, or start your"
-                accent="Org Vault intake."
-                lead="Use this form to book a call with Peyi Solutions about grants, start your Org Vault intake, or ask a question first. There's no payment and no obligation, and the form never asks for EINs, bank details or documents."
+                title="Book a call, or tell us about"
+                accent="your organization."
+                lead="Use this form to book a call with Peyi Solutions about grants, tell us about your organization, or ask a question first. There's no payment and no obligation, and the form never asks for EINs, bank details or documents."
                 crumbs={[
                     { label: "Grants", href: "/grants" },
                     { label: "Book a call", href: "/grants/book-a-call" }
@@ -60,13 +60,9 @@ export default function BookACall() {
                                 Readiness Check
                             </Link>{" "}
                             yet? It takes about 5 minutes, and your score comes along with this form.
-                            {GRANTS_LINKS.contactEmail ? (
+                            {GRANTS_LINKS.contactEmail && (
                                 <p className="mt-3">
                                     Prefer email? <a href={`mailto:${GRANTS_LINKS.contactEmail}`} className="text-ink underline">{GRANTS_LINKS.contactEmail}</a>
-                                </p>
-                            ) : (
-                                <p className="mt-3">
-                                    Prefer email? <span className="tbc">To confirm: contact email</span>
                                 </p>
                             )}
                         </div>
