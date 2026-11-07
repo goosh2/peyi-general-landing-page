@@ -7,8 +7,8 @@ import { grantsMeta } from "@/lib/grants/meta";
 
 export const metadata = grantsMeta(
     "/grants/who-its-for",
-    "Who Peyi Solutions Grants Is For: Nonprofits, Small Businesses, Schools & Healthcare in South Florida",
-    "Peyi Solutions Grants is for Miami-Dade and Broward nonprofits and small businesses without grant staff, and for schools, healthcare and municipal-adjacent organizations that need a repeatable pipeline."
+    "Who Peyi Solutions Grants Is For: Nonprofits, Small Businesses, Schools & Healthcare with No Grant Staff",
+    "Peyi Solutions Grants is for nonprofits and small businesses with no grant staff, and for schools, healthcare and municipal-adjacent organizations that need a repeatable pipeline."
 );
 
 export default function WhoItsFor() {
@@ -17,7 +17,7 @@ export default function WhoItsFor() {
             <GrantsHeader
                 title="Who Peyi Solutions Grants"
                 accent="is for."
-                lead="Peyi Solutions Grants is for three kinds of organizations in South Florida: nonprofits in Miami-Dade and Broward with no dedicated grant staff, small businesses that qualify for local, county, state and small-business programs, and schools, healthcare and municipal-adjacent organizations that need a disciplined pipeline rather than a one-off proposal."
+                lead="Peyi Solutions Grants is for three kinds of organizations: nonprofits with no dedicated grant staff, small businesses that qualify for local, county, state and small-business programs, and schools, healthcare and municipal-adjacent organizations that need a disciplined pipeline rather than a one-off proposal."
                 crumbs={[
                     { label: "Grants", href: "/grants" },
                     { label: "Who it's for", href: "/grants/who-its-for" }

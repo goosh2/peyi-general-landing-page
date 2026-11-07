@@ -111,7 +111,7 @@ export const SEGMENTS = [
         id: "small-businesses",
         name: "Small businesses",
         short: "Small businesses going after local and county programs, small-business development funds, and tech and AI programs they actually qualify for.",
-        wrong: "The pain is district-by-district windows and eligibility rules that change by program. Miami-Dade's Mom and Pop program, for example, runs per commission district, each with its own window — so a single “is it open?” answer is usually wrong.",
+        wrong: "The pain is district-by-district windows and eligibility rules that change by program. A city or county small-business micro-grant program, for example, runs per commission district, each with its own window — so a single “is it open?” answer is usually wrong.",
         different: "The Scout filters by entity type, location and size, so you only see programs you could plausibly qualify for, and it watches each district and city window separately.",
         example: "Local micro-grants, county small-business programs and small-business development programs."
     },

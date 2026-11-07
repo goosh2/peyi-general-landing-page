@@ -9,6 +9,7 @@ export function grantsMeta(path: string, title: string, description: string): Me
         title,
         description,
         alternates: { canonical: url },
-        openGraph: { title, description, url, type: "website", siteName: "Peyi Solutions" }
+        openGraph: { title, description, url, type: "website", siteName: "Peyi Solutions" },
+        twitter: { card: "summary_large_image", title, description }
     };
 }

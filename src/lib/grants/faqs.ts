@@ -62,11 +62,11 @@ export const grantsFaqs = [
     },
     {
         question: "Do you work with nonprofits, small businesses, or both?",
-        answer: "Both, plus municipal-adjacent, school, and healthcare organizations in South Florida. The Scout filters by entity type, so a for-profit does not get a pile of nonprofit-only programs, and vice versa. [→ Who it's for](/grants/who-its-for)"
+        answer: "Both, plus municipal-adjacent, school, and healthcare organizations with no grant staff, wherever they're based. The Scout filters by entity type, so a for-profit does not get a pile of nonprofit-only programs, and vice versa. [→ Who it's for](/grants/who-its-for)"
     },
     {
         question: "Do you serve organizations outside Miami-Dade and Broward?",
-        answer: "The service is built for Miami-Dade and Broward first, where Peyi knows the local programs and district rules. If you're elsewhere in Florida, [ask on a call](/grants/book-a-call) and Peyi will tell you plainly whether it can help."
+        answer: "Yes. Peyi Solutions Grants works with organizations wherever they're based, in the US and internationally. The Readiness Check adapts to your location, so local programs are matched to your own city and jurisdiction."
     },
     {
         question: "What is the enablement track?",

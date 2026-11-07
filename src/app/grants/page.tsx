@@ -9,8 +9,8 @@ import { grantsMeta } from "@/lib/grants/meta";
 
 export const metadata = grantsMeta(
     "/grants",
-    "Grant Help for Miami-Dade & Broward Nonprofits and Small Businesses | Peyi Solutions Grants",
-    "Peyi Solutions Grants finds funding opportunities, drafts applications from your own documents, and tracks every deadline and funder reply — with a human approving every submission. No success fees."
+    "Grant Help for Nonprofits and Small Businesses With No Grant Staff | Peyi Solutions Grants",
+    "Peyi Solutions Grants finds funding opportunities, drafts applications from your own documents, and tracks deadlines and funder replies — with a human approving every submission. Built for nonprofits and small businesses with no grant staff, wherever you're based."
 );
 
 export default function GrantsHub() {
@@ -27,10 +27,6 @@ export default function GrantsHub() {
                         description:
                             "A done-for-you grant service, plus a separate enablement track: Peyi finds grants, drafts applications from the client's own documents, and tracks deadlines and funder replies, with the client approving every submission.",
                         provider: { "@type": "ProfessionalService", name: "Peyi Solutions", url: "https://www.peyiai.com" },
-                        areaServed: [
-                            { "@type": "AdministrativeArea", name: "Miami-Dade County, Florida" },
-                            { "@type": "AdministrativeArea", name: "Broward County, Florida" }
-                        ],
                         audience: [
                             { "@type": "Audience", audienceType: "Nonprofits" },
                             { "@type": "Audience", audienceType: "Small businesses" },
@@ -50,7 +46,7 @@ export default function GrantsHub() {
             >
                 <GrantsActions />
                 <p className="mt-6 text-[15px] text-quiet leading-relaxed max-w-xl">
-                    Built for nonprofits and small businesses.
+                    Built for nonprofits and small businesses with no grant staff.
                     <br />
                     No success fees. Nothing is submitted without your approval.
                 </p>
