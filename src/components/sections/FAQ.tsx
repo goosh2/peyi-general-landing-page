@@ -36,7 +36,7 @@ export const homepageFaqs = [
     },
     {
         question: "Can Peyi Solutions help us find and apply for grants?",
-        answer: "Yes. Peyi Solutions Grants finds funding opportunities for nonprofits and small businesses in Miami-Dade and Broward, drafts applications from your own documents, and tracks every deadline and funder reply — with you approving every submission and no success fees. [→ See Peyi Solutions Grants](/grants)"
+        answer: "Yes. Peyi Solutions Grants finds funding opportunities for nonprofits and small businesses wherever they're based, in the US and internationally, drafts applications from your own documents, and tracks every deadline and funder reply — with you approving every submission and no success fees. [→ See Peyi Solutions Grants](/grants)"
     },
     {
         question: "I don't know where to start. What is the first step?",
